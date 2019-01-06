@@ -1,3 +1,9 @@
+# Jvs-Mairistem
+.DS_Store
+/docker-logs
+/docker-libs
+/target
+
 # Compiled class file
 *.class
 
