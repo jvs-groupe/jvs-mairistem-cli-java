@@ -16,9 +16,28 @@ import fr.jvsonline.jvsmairistemcli.core.Hawk;
 public class HawkAuthentication extends Loggable implements ClientRequestFilter {
 
   /**
-   * Constructor
+   * Id
+   * 
+   * @var String
    */
-  public HawkAuthentication() {
+  private final String id;
+  
+  /**
+   * Key
+   * 
+   * @var key
+   */
+  private final String key;
+  
+  /**
+   * Constructor
+   * 
+   * @param String p_id
+   * @param String p_key
+   */
+  public HawkAuthentication(String p_id, String p_key) {
+    this.id = p_id;
+    this.key = p_key;
   }
 
   /**
@@ -32,7 +51,7 @@ public class HawkAuthentication extends Loggable implements ClientRequestFilter 
   public void filter(ClientRequestContext p_requestContext) throws IOException {
     logger.info("filter.start");
     MultivaluedMap<String, Object> headers = p_requestContext.getHeaders();
-    Hawk hawkAuth = new Hawk();
+    Hawk hawkAuth = new Hawk(this.id, this.key);
     final String basicAuthentication = hawkAuth.getHawkHeader(p_requestContext);
     headers.add("Authorization", basicAuthentication);
     logger.info("filter.end");

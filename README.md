@@ -2,7 +2,9 @@
 
 Client Jvs-Mairistem (Java 8)
 
-Client pour les API Omega spécifique pour les partenaires. Le but de ce projet est d'abstraire la partie technique d'échange de données avec les applications Jvs-Mairistem, en commençant par Omega. Ce projet évoluera avec les modifications d'Omega, il faut donc garder une cohérence entre la version d'Omega et celle du client utilisé, cohérene assurée et vérifié par le client.
+Client pour les API Jvs-Mairstem pour les partenaires. 
+
+Le but de ce projet est d'abstraire la partie technique d'échange de données avec les applications Jvs-Mairistem, en commençant par Omega. Ce projet évoluera avec les modifications d'Omega, il faut donc garder une cohérence entre la version d'Omega et celle du client utilisé, cohérene assurée et vérifié par le client.
 
 ** Pour le détail des versions, se référer au fichier CHANGELOG. **
 
@@ -30,6 +32,29 @@ Depuis le conteneur dans le homedir du projet, à l'emplacement du fichier pom.x
     // Compile
     mvn clean compile exec:java -Dexec.mainClass="fr.jvsonline.jvsmairistemcli.App"
 ```
+
+## Structure / utilisation
+
+Ce projet contient différentes parties :
+
+```
+   jvsmairistemcli
+     |---- core                // Pour les classes techniques (config, ws, ...)
+     |---- jackson             // Surcharge de la partie jackson des services web
+     |---- model               // Modèles communs, lorsque c'est possible (personne, adresse, ...)
+     |---- omega               // Partie spécifique Omega
+          |---- manager        // Les managers d'accès aux services web
+          |---- model          // Les modèles Omega
+```
+
+En fonction de l'application utilisée, un ensemble de modèles et services vont être mis à disposition. Ces classes serviront pour les échanges et le contrôle des données. Chaque application mettra également à disposition une documentation complète.
+
+Le reste de la documentation se trouve dans le répertoire doc, voici la table des matières :
+
+* Instancier le client jvsmairistemcli
+* Omega
+    * Lecture de données
+
 
 ## Client Omega
 

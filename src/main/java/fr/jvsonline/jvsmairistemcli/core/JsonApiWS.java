@@ -18,9 +18,17 @@ import fr.jvsonline.jvsmairistemcli.core.ClientWSInterface;
 public class JsonApiWS extends Loggable implements ClientWSInterface {
 
   /**
+   * Settings
+   * 
+   * @var Settings
+   */
+  Settings settings;
+  
+  /**
    * Constructor
    */
-  public JsonApiWS() {
+  public JsonApiWS(Settings p_settings) {
+    this.settings = p_settings;
   }
 
   /**
@@ -43,12 +51,16 @@ public class JsonApiWS extends Loggable implements ClientWSInterface {
    */
   public Invocation.Builder getClient(String p_service) {
     logger.info("getJsonApiWS.start for " + p_service);
-    Settings wsSettings = Settings.getInstance();
-    HawkAuthentication hawkAuth = new HawkAuthentication();
+    HawkAuthentication hawkAuth = new HawkAuthentication(
+      this.settings.getWsHawkId(),
+      this.settings.getWsHawkKey()
+    );
     Client client = ClientBuilder.newClient().register(hawkAuth);
-    WebTarget target = client.target(wsSettings.getWsEndpoint()).path(p_service);
+    WebTarget target = client.target(
+      this.settings.getWsEndpoint()
+    ).path(p_service);
     Invocation.Builder invocationBuilder = target.request(JsonApiWS.getMediaType());
-    invocationBuilder.header("ApiId", wsSettings.getWsApiId());
+    invocationBuilder.header("ApiId", this.settings.getWsApiId());
     logger.info("getJsonApiWS.end");
     return invocationBuilder;
   }

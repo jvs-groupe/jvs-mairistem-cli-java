@@ -31,11 +31,13 @@ public class Hawk extends Loggable {
 
   /**
    * Constructor
+   * 
+   * @param String p_id
+   * @param String p_key
    */
-  public Hawk() {
-    Settings omegaSettings = Settings.getInstance();
-    this.id = omegaSettings.getWsHawkId();
-    this.key = omegaSettings.getWsHawkKey();
+  public Hawk(String p_id, String p_key) {
+    this.id = p_id;
+    this.key = p_key;
   }
 
   /**

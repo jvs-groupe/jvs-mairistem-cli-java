@@ -65,8 +65,10 @@ public class Settings {
   /**
    * Constructor
    */
-  protected Settings() {
-    this.read();
+  protected Settings(String p_config) {
+    if (p_config != null && p_config != "") {
+      this.read(p_config);
+    }
   }
 
   /**
@@ -76,20 +78,36 @@ public class Settings {
    */
   public static Settings getInstance() {
     if (instance == null) {
-      instance = new Settings();
+      instance = new Settings("");
     }
     return instance;
   }
 
   /**
+   * Get Instance
+   * 
+   * @param String p_config
+   * 
+   * @return Settings
+   */
+  public static Settings getInstance(String p_config) {
+    if (instance == null) {
+      instance = new Settings(p_config);
+    }
+    return instance;
+  }
+  
+  /**
    * Read config
+   * 
+   * @param String p_config
    * 
    * @return void
    */
-  protected void read() {
+  protected void read(String p_config) {
     InputStream inputStream;
     Properties properties = new Properties();
-    String propFileName = "jvsmairistemcli.properties";
+    String propFileName = p_config;
     inputStream = Tools.getResource(propFileName);
     try {
       if (inputStream != null) {

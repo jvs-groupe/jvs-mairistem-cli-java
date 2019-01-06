@@ -36,11 +36,11 @@ public class App {
   public static void main(String[] p_args) {
     logger.info("----------------------------------------------------------");
     logger.info("Read settings...");
-    Settings omegaSettings = Settings.getInstance();
+    Settings omegaSettings = Settings.getInstance("jvsmairistemcli.properties");
     logger.info("   Version  : " + omegaSettings.getVersion());
     logger.info("   Endpoint : " + omegaSettings.getWsEndpoint());
     logger.info("----------------------------------------------------------");
-    JsonApiWS wsClient = new JsonApiWS();
+    JsonApiWS wsClient = new JsonApiWS(omegaSettings);
     Container omegaContainer = new Container();
     
     
