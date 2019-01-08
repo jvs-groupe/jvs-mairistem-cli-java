@@ -6,7 +6,7 @@ Client pour les API Jvs-Mairstem pour les partenaires.
 
 Le but de ce projet est d'abstraire la partie technique d'échange de données avec les applications Jvs-Mairistem, en commençant par Omega. Ce projet évoluera avec les modifications d'Omega, il faut donc garder une cohérence entre la version d'Omega et celle du client utilisé, cohérene assurée et vérifié par le client.
 
-** Pour le détail des versions, se référer au fichier CHANGELOG. **
+**Pour le détail des versions, se référer au fichier CHANGELOG.**
 
 ## Installation
 
