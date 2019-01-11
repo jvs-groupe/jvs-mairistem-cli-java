@@ -145,7 +145,15 @@ public class PointDeConsommationModel {
    */
   @Relationship("pdessadr")
   private AdresseDesserteModel adresseDesserte;
-
+  
+  /**
+   * Contrat actif
+   * 
+   * @var ContratModel
+   */
+  @Relationship("contratactif")
+  private ContratModel contratActif;
+  
   /**
    * Constructor
    */
@@ -336,6 +344,16 @@ public class PointDeConsommationModel {
    */
   public AdresseDesserteModel getAdresseDesserte() {
     return this.adresseDesserte;
+  }
+  
+  /**
+   * Get contrat actif
+   * 
+   * @return ContratModel
+   */
+  public ContratModel getContratActif()
+  {
+    return this.contratActif;
   }
   
   /**

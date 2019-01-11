@@ -140,7 +140,7 @@
       </plugins>
     </pluginManagement>
   </build>
-  
+
   <profiles>
     <profile>
       <id>development</id>
@@ -158,7 +158,7 @@
     <profile>
       <id>production</id>
       <properties>
-        <ws.endpoint>https://omegaweb.jvsonline.fr/api/v1</ws.endpoint>
+        <ws.endpoint>https://omegaweb-pp.jvsonline.fr/api/v1</ws.endpoint>
         <ws.apiId>dfc7258e09f94ba6e495a08c50d6fd00@partner-kis-jolieville</ws.apiId>
         <ws.hawkId>partner-kis-jolieville</ws.hawkId>
         <ws.hawkKey>be58e42b95c303f3a64faf5c70f7d7e7</ws.hawkKey>
