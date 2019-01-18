@@ -1,5 +1,7 @@
 package fr.jvsonline.jvsmairistemcli.core;
 
+import java.util.Map;
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -45,11 +47,12 @@ public class JsonApiWS extends Loggable implements ClientWSInterface {
   /**
    * Return an Invocation.Builder
    * 
-   * @param String p_service
+   * @param String            p_service
+   * @param RequestParameters p_parameters
    * 
    * @return InputStream
    */
-  public Invocation.Builder getClient(String p_service) {
+  public Invocation.Builder getClient(String p_service, RequestParameters p_parameters) {
     logger.info("getJsonApiWS.start for " + p_service);
     HawkAuthentication hawkAuth = new HawkAuthentication(
       this.settings.getWsHawkId(),
@@ -59,6 +62,13 @@ public class JsonApiWS extends Loggable implements ClientWSInterface {
     WebTarget target = client.target(
       this.settings.getWsEndpoint()
     ).path(p_service);
+    for (RequestParameter param : p_parameters.getParameters()) {
+      target = target.queryParam("filter[" + param.getName() + "][" + param.getOperator() + "]", param.getValue());
+    }
+    if (p_parameters.isPaginated()) {
+      target = target.queryParam("page[offset]", p_parameters.getOffset());
+      target = target.queryParam("page[limit]", p_parameters.getLimit());
+    }
     Invocation.Builder invocationBuilder = target.request(JsonApiWS.getMediaType());
     invocationBuilder.header("ApiId", this.settings.getWsApiId());
     logger.info("getJsonApiWS.end");

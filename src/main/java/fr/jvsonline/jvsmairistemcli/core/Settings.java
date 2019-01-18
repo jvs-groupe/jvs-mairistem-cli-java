@@ -116,7 +116,7 @@ public class Settings {
         throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
       }
     } catch (Exception e) {
-      System.out.println(e);
+      //System.out.println(e);
     }
     this.version = properties.getProperty("version");
     this.artifactId = properties.getProperty("artifactId");

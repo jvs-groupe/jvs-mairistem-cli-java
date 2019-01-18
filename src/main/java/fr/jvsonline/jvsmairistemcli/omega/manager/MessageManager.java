@@ -3,9 +3,11 @@ package fr.jvsonline.jvsmairistemcli.omega.manager;
 import java.util.List;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.core.Response;
-import fr.jvsonline.jvsmairistemcli.core.Loggable;
+import fr.jvsonline.jvsmairistemcli.core.BaseManager;
 import fr.jvsonline.jvsmairistemcli.core.ClientWSInterface;
+import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.MessageModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
 import com.github.jasminb.jsonapi.ResourceConverter;
 import com.github.jasminb.jsonapi.JSONAPIDocument;
 
@@ -15,14 +17,8 @@ import com.github.jasminb.jsonapi.JSONAPIDocument;
  * @author jeromeklam
  * @package Message
  */
-public class MessageManager extends Loggable {
+public class MessageManager extends BaseManager {
 
-  /**
-   * WS client
-   * @var ClientWSInterface
-   */
-  ClientWSInterface client;
-  
   /**
    * Constructor
    */
@@ -40,20 +36,38 @@ public class MessageManager extends Loggable {
     List<MessageModel> bookCollection = null;
     try {
       //
-      Invocation.Builder invocationBuilder = this.client.getClient("partner/message");
+      Invocation.Builder invocationBuilder = this.client.getClient("partner/message",
+          this.parameters);
       Response response = invocationBuilder.get();
-      System.out.println("Output from Server .... \n");
       String strResponse = response.readEntity(String.class);
       byte[] rawResponse = strResponse.getBytes();
       ResourceConverter converter = new ResourceConverter(MessageModel.class);
       // To convert raw data into collection
-      JSONAPIDocument<List<MessageModel>> bookDocumentCollection = converter.readDocumentCollection(rawResponse,
-          MessageModel.class);
+      JSONAPIDocument<List<MessageModel>> bookDocumentCollection = converter
+          .readDocumentCollection(rawResponse, MessageModel.class);
       bookCollection = bookDocumentCollection.get();
     } catch (Exception ex) {
       logger.error(ex.getMessage());
     }
     logger.info("find.end");
     return bookCollection;
+  }
+  
+  /**
+   * Get filter
+   * 
+   * @param String p_fieldName
+   * 
+   * @return String
+   */
+  protected String getFilter(String p_fieldName) {
+    MessageModel myMsg = new MessageModel();
+    String param = "";
+    try {
+      param = myMsg.getWSFieldName(p_fieldName);
+    } catch (Exception e) {
+      this.logger.error(e.getMessage());
+    }
+    return param;
   }
 }

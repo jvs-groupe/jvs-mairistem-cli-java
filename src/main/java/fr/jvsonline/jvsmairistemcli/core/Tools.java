@@ -1,6 +1,9 @@
 package fr.jvsonline.jvsmairistemcli.core;
 
 import java.io.InputStream;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -24,7 +27,8 @@ public class Tools {
       ClassLoader cLoader = Tools.class.getClassLoader();
       i = cLoader.getResourceAsStream(p_rsc);
     } catch (Exception e) {
-      System.out.println(e);
+      //System.out.println(e);
+      // @todo
     }
     return i;
   }
@@ -64,5 +68,24 @@ public class Tools {
       ret = "";
     }
     return ret;
+  }
+  
+  /**
+   * Vérify if field is present in object
+   * 
+   * @param String p_object
+   * @param String p_fieldName
+   * 
+   * @return boolean
+   */
+  public static boolean doesObjectContainField(Object p_object, String p_fieldName) {
+    Class<?> objectClass = p_object.getClass();
+    Field[] fields = objectClass.getDeclaredFields();
+    for (Field field : fields) {
+      if (field.getName() == p_fieldName) {
+        return true;
+      }
+    }
+    return false;
   }
 }

@@ -1,14 +1,11 @@
 package fr.jvsonline.jvsmairistemcli.omega.model;
 
-import java.util.Date;
 import com.github.jasminb.jsonapi.annotations.Type;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
-import fr.jvsonline.jvsmairistemcli.jackson.CustomIntegerDeserializer;
+import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 
 /**
  * AdresseDesserteModel
@@ -17,7 +14,7 @@ import fr.jvsonline.jvsmairistemcli.jackson.CustomIntegerDeserializer;
  * @package AdresseDesserte
  */
 @Type("Partner_Pdessadr")
-public class AdresseDesserteModel {
+public class AdresseDesserteModel extends BaseModel {
 
   /**
    * Identifiant de l'adresse de desserte

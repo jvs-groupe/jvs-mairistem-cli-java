@@ -5,7 +5,7 @@ import javax.ws.rs.client.Invocation;
 import javax.ws.rs.core.Response;
 import com.github.jasminb.jsonapi.JSONAPIDocument;
 import com.github.jasminb.jsonapi.ResourceConverter;
-import fr.jvsonline.jvsmairistemcli.core.Loggable;
+import fr.jvsonline.jvsmairistemcli.core.BaseManager;
 import fr.jvsonline.jvsmairistemcli.core.ClientWSInterface;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;
 
@@ -15,14 +15,8 @@ import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;
  * @author jeromeklam
  * @package Enumeration
  */
-public class EnumerationManager extends Loggable {
+public class EnumerationManager extends BaseManager {
 
-  /**
-   * WS client
-   * @var ClientWSInterface
-   */
-  ClientWSInterface client;
-  
   /**
    * Constructor
    */
@@ -39,7 +33,7 @@ public class EnumerationManager extends Loggable {
     logger.info("find.start");
     List<EnumerationModel> myCollection = null;
     try {
-      Invocation.Builder invocationBuilder = this.client.getClient("partner/enum");
+      Invocation.Builder invocationBuilder = this.client.getClient("partner/enum", this.parameters);
       Response response = invocationBuilder.get();
       String strResponse = response.readEntity(String.class);
       byte[] rawResponse = strResponse.getBytes();
@@ -52,5 +46,23 @@ public class EnumerationManager extends Loggable {
     }
     logger.info("find.end");
     return myCollection;
+  }
+  
+  /**
+   * Get filter
+   * 
+   * @param String p_fieldName
+   * 
+   * @return String
+   */
+  protected String getFilter(String p_fieldName) {
+    EnumerationModel myEnum = new EnumerationModel();
+    String param = "";
+    try {
+      param = myEnum.getWSFieldName(p_fieldName);
+    } catch (Exception e) {
+      this.logger.error(e.getMessage());
+    }
+    return param;
   }
 }

@@ -3,11 +3,10 @@ package fr.jvsonline.jvsmairistemcli.omega.model;
 import com.github.jasminb.jsonapi.annotations.Type;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
-import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
-import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeModel;
 
 /**
  * PersonneModel
@@ -16,7 +15,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeModel;
  * @package Personne
  */
 @Type("Partner_Personne")
-public class PersonneModel {
+public class PersonneModel extends BaseModel {
 
   /**
    * Identifiant de la pesonne

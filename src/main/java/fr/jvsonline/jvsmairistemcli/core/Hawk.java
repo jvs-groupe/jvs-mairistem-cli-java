@@ -1,6 +1,8 @@
 package fr.jvsonline.jvsmairistemcli.core;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
+import java.net.URLDecoder;
 import java.util.Base64;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -96,7 +98,13 @@ public class Hawk extends Loggable {
     sb.append(p_uri.getRawPath());
     if (p_uri.getQuery() != null) {
       sb.append('?');
-      sb.append(p_uri.getRawQuery());
+      String std;
+      try {
+        std = URLDecoder.decode(p_uri.getRawQuery(), "UTF-8");
+      } catch (UnsupportedEncodingException e) {
+        std = "";
+      }
+      sb.append(std);
     }
     sb.append('\n');
     sb.append(p_uri.getHost().toLowerCase());
@@ -113,6 +121,7 @@ public class Hawk extends Loggable {
       sb.append(p_dlg);
       sb.append('\n');
     }
+    //System.out.println(sb.toString());
     return sb.toString();
   }
 

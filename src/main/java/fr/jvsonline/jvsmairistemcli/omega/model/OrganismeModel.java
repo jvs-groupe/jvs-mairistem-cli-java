@@ -1,6 +1,7 @@
 package fr.jvsonline.jvsmairistemcli.omega.model;
 
 import com.github.jasminb.jsonapi.annotations.Type;
+import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
@@ -14,7 +15,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * @package Organisme
  */
 @Type("Partner_Organism")
-public class OrganismeModel {
+public class OrganismeModel extends BaseModel {
 
   /**
    * Identifiant de l'organisme

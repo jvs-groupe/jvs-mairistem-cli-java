@@ -1,6 +1,7 @@
 package fr.jvsonline.jvsmairistemcli.omega.model;
 
 import com.github.jasminb.jsonapi.annotations.Type;
+import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @package Enumeration
  */
 @Type("Partner_Ligenum")
-public class LigneEnumerationModel {
+public class LigneEnumerationModel extends BaseModel {
 
   /**
    * Identifiant de la ligne d'énumération

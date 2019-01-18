@@ -6,6 +6,7 @@ import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
 import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeModel;
 
@@ -16,7 +17,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeModel;
  * @package Voie
  */
 @Type("Partner_Voie")
-public class VoieModel {
+public class VoieModel extends BaseModel {
 
   /**
    * Identifiant de l'adresse de desserte

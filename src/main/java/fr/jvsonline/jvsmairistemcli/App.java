@@ -11,6 +11,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationType;
 import fr.jvsonline.jvsmairistemcli.omega.model.LigneEnumerationModel;
 import fr.jvsonline.jvsmairistemcli.omega.Container;
 import fr.jvsonline.jvsmairistemcli.core.JsonApiWS;
+import fr.jvsonline.jvsmairistemcli.core.RequestParameters;
 import fr.jvsonline.jvsmairistemcli.core.Settings;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -83,19 +84,27 @@ public class App {
     
     PointDeConsommationManager pconsoManager = null;
     pconsoManager = new PointDeConsommationManager(wsClient);
+    // Add parameters to find....
+    pconsoManager.flushRequestParameters();
+    pconsoManager.setPage(2);
+    pconsoManager.addRequestParameter("numero", "56");
+    // Go
     List<PointDeConsommationModel> myList = pconsoManager.find();
     if (myList == null) {
       logger.info("Empty result...");
     } else {
       for (PointDeConsommationModel item : myList) {
+        String numero = item.getNumero();
         CompteurModel monCompteur = item.getCompteur();
         String numSerie = "";
         if (monCompteur != null) {
           numSerie = monCompteur.getNumeroSerie();
         }
-        logger.info("Pconso n° " + item.getNumero() + " : " + numSerie);
+        logger.info("Pconso n° " + item.getNumero() + " : " + numero + " [" + numSerie + "]");
       }
     }
+    
+    pconsoManager.flushRequestParameters();
     PointDeConsommationModel myPConso = pconsoManager.getById(921);
     if (myPConso != null) {
       CompteurModel monCompteur921 = myPConso.getCompteur();

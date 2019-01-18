@@ -6,15 +6,15 @@ import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
-import fr.jvsonline.jvsmairistemcli.jackson.CustomIntegerDeserializer;
 
 /**
  * Message
  *
  */
 @Type("Partner_Message")
-public class MessageModel {
+public class MessageModel extends BaseModel {
 
   /**
    * Identifiant du message
