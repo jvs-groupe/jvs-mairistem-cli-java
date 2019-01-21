@@ -16,51 +16,59 @@ public class Settings {
 
   /**
    * Version
+   * 
    * @var String
    */
-  String version = "";
+  protected String        version    = "v1";
 
   /**
    * Artifact Id
+   * 
    * @var String
    */
-  String artifactId = "";
+  protected String        artifactId = "JvsMairistemCli";
 
   /**
    * Group Id
+   * 
    * @var String
    */
-  String groupId = "";
+  protected String        groupId    = "fr.jvsonline.jvsmairistemcli";
 
   /**
    * WS End-Point
+   * 
    * @var String
    */
-  String wsEndpoint = "";
+  protected String        wsEndpoint = "";
 
   /**
    * Application Id
+   * 
    * @var String
    */
-  String wsApiId = "";
+  protected String        wsApiId    = "";
 
   /**
    * Hawk Auth Id
+   * 
    * @var String
    */
-  String wsHawkId = "";
+  protected String        wsHawkId   = "";
 
   /**
    * Hawk Auth Key
+   * 
    * @var String
    */
-  String wsHawkKey = "";
-  
+  protected String        wsHawkKey  = "";
+
   /**
    * Instance
+   * 
    * @var Settings
    */
-  private static Settings instance = null;
+  private static Settings instance   = null;
 
   /**
    * Constructor
@@ -96,7 +104,7 @@ public class Settings {
     }
     return instance;
   }
-  
+
   /**
    * Read config
    * 
@@ -113,10 +121,11 @@ public class Settings {
       if (inputStream != null) {
         properties.load(inputStream);
       } else {
-        throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+        throw new FileNotFoundException(
+            "property file '" + propFileName + "' not found in the classpath");
       }
     } catch (Exception e) {
-      //System.out.println(e);
+      // System.out.println(e);
     }
     this.version = properties.getProperty("version");
     this.artifactId = properties.getProperty("artifactId");
@@ -128,7 +137,10 @@ public class Settings {
   }
 
   /**
+   * Get WS endpoint
+   * 
    * @throws NullPointerException
+   * 
    * @return the wsEndpoint
    */
   public String getWsEndpoint() {
@@ -139,6 +151,20 @@ public class Settings {
   }
 
   /**
+   * Set WS endpoint
+   * 
+   * @param String p_endpoint
+   * 
+   * @return Settings
+   */
+  public Settings setWsEndpoint(String p_endpoint) {
+    this.wsEndpoint = p_endpoint;
+    return this;
+  }
+
+  /**
+   * Get the version
+   * 
    * @return the version
    */
   public String getVersion() {
@@ -149,10 +175,34 @@ public class Settings {
   }
 
   /**
+   * Set version
+   * 
+   * @param String p_version
+   * 
+   * @return Settings
+   */
+  public Settings setVersion(String p_version) {
+    this.version = p_version;
+    return this;
+  }
+
+  /**
    * @return the wsApiId
    */
   public String getWsApiId() {
     return this.wsApiId;
+  }
+
+  /**
+   * Set API Id
+   * 
+   * @param String p_api_id
+   * 
+   * @return Settings
+   */
+  public Settings setWsApiId(String p_api_id) {
+    this.wsApiId = p_api_id;
+    return this;
   }
 
   /**
@@ -163,9 +213,33 @@ public class Settings {
   }
 
   /**
+   * Set HAWK Id
+   * 
+   * @param String p_hawk_id
+   * 
+   * @return Settings
+   */
+  public Settings setWsHawkId(String p_hawk_id) {
+    this.wsHawkId = p_hawk_id;
+    return this;
+  }
+
+  /**
    * @return the wsHawkKey
    */
   public String getWsHawkKey() {
     return this.wsHawkKey;
+  }
+
+  /**
+   * Set WS HAWK Key
+   * 
+   * @param String p_hawk_key
+   * 
+   * @return Settings
+   */
+  public Settings setWsHawkKey(String p_hawk_key) {
+    this.wsHawkKey = p_hawk_key;
+    return this;
   }
 }
