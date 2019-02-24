@@ -6,6 +6,7 @@ import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
+import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
 import fr.jvsonline.jvsmairistemcli.model.AdresseModel;
 
 /**
@@ -15,7 +16,7 @@ import fr.jvsonline.jvsmairistemcli.model.AdresseModel;
  * @package AdresseDesserte
  */
 @Type("Partner_Pdessadr")
-public class AdresseDesserteModel extends BaseModel {
+public class AdresseDesserteModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Identifiant de l'adresse de desserte

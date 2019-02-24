@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
+import fr.jvsonline.jvsmairistemcli.core.PersonneInterface;
+import fr.jvsonline.jvsmairistemcli.core.Tools;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
 
 /**
@@ -16,7 +18,7 @@ import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
  * @package Personne
  */
 @Type("Partner_Personne")
-public class PersonneModel extends BaseModel implements BaseModelInterface {
+public class PersonneModel extends BaseModel implements BaseModelInterface, PersonneInterface {
 
   /**
    * Identifiant de la pesonne
@@ -218,5 +220,11 @@ public class PersonneModel extends BaseModel implements BaseModelInterface {
   public fr.jvsonline.jvsmairistemcli.model.PersonneModel toPersonne() {
     fr.jvsonline.jvsmairistemcli.model.PersonneModel personne = new fr.jvsonline.jvsmairistemcli.model.PersonneModel();
     return personne;
+  }
+
+  @Override
+  public String getNomComplet() {
+    String str = Tools.asString(this.nom, "") + " " + Tools.asString(this.prenom, "");
+    return str.trim();
   }
 }
