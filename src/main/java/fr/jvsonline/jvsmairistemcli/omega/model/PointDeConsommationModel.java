@@ -32,7 +32,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   @Id(IntegerIdHandler.class)
   @JsonProperty("pconso_id")
-  private Integer       id;
+  private Integer              id;
 
   /**
    * Identifiant du point de desserte
@@ -40,7 +40,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * @var Integer
    */
   @JsonProperty("pdess_id")
-  private Integer       id_pointDesserte;
+  private Integer              id_pointDesserte;
 
   /**
    * Identifiant du compteur
@@ -48,7 +48,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * @var Integer
    */
   @JsonProperty("compteur_id")
-  private Integer       id_compteur;
+  private Integer              id_compteur;
 
   /**
    * Numéro de point de consommation
@@ -56,7 +56,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * @var String
    */
   @JsonProperty("numpconso")
-  private String        numero;
+  private String               numero;
 
   /**
    * Identifiant de l'adresse de point de desserte
@@ -64,7 +64,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * @var Integer
    */
   @JsonProperty("pdessadr_id")
-  private Integer       id_adresseDesserte;
+  private Integer              id_adresseDesserte;
 
   /**
    * Type d'habitation
@@ -72,15 +72,15 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * @var String
    */
   @JsonProperty("enum_thab")
-  private String        typeHabitation;
-  
+  private String               typeHabitation;
+
   /**
    * Etage
    * 
    * @var String
    */
   @JsonProperty("etage")
-  private String        etage;
+  private String               etage;
 
   /**
    * Appartement
@@ -88,7 +88,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * @var String
    */
   @JsonProperty("numapt")
-  private String        appartement;
+  private String               appartement;
 
   /**
    * Identifiant de la tournée
@@ -96,7 +96,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * @var Integer
    */
   @JsonProperty("tournee_id")
-  private Integer       id_tournee;
+  private Integer              id_tournee;
 
   /**
    * Actif
@@ -105,7 +105,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   @JsonProperty("actif")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
-  private Boolean       actif;
+  private Boolean              actif;
 
   /**
    * Date de début
@@ -114,7 +114,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   @JsonProperty("datedeb")
   @JsonDeserialize(using = CustomDateDeserializer.class)
-  private Date          dateDebut;
+  private Date                 dateDebut;
 
   /**
    * Date de début
@@ -123,7 +123,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   @JsonProperty("datefin")
   @JsonDeserialize(using = CustomDateDeserializer.class)
-  private Date          dateFin;
+  private Date                 dateFin;
 
   /**
    * Identifiant externe
@@ -131,7 +131,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * @var Integer
    */
   @JsonProperty("ident_externe")
-  private Integer       id_externe;
+  private Integer              id_externe;
 
   /**
    * Compteur
@@ -139,7 +139,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * @var CompteurModel
    */
   @Relationship("compteur")
-  private CompteurModel compteur;
+  private CompteurModel        compteur;
 
   /**
    * Adresse de desserte
@@ -148,15 +148,23 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   @Relationship("pdessadr")
   private AdresseDesserteModel adresseDesserte;
-  
+
   /**
    * Contrat actif
    * 
    * @var ContratModel
    */
   @Relationship("contratactif")
-  private ContratModel contratActif;
-  
+  private ContratModel         contratActif;
+
+  /**
+   * Tournée
+   * 
+   * @var TourneeModel
+   */
+  @Relationship("tournee")
+  private TourneeModel         tournee;
+
   /**
    * Constructor
    */
@@ -255,7 +263,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   public String getTypeHabitation() {
     return this.typeHabitation;
   }
-  
+
   /**
    * Set type d'habitation
    * 
@@ -267,7 +275,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     this.typeHabitation = p_typeHabitation;
     return this;
   }
-  
+
   /**
    * Get etage
    * 
@@ -339,7 +347,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   public CompteurModel getCompteur() {
     return this.compteur;
   }
-  
+
   /**
    * Get adresse de desserte
    * 
@@ -348,17 +356,25 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   public AdresseDesserteModel getAdresseDesserte() {
     return this.adresseDesserte;
   }
-  
+
   /**
    * Get contrat actif
    * 
    * @return ContratModel
    */
-  public ContratModel getContratActif()
-  {
+  public ContratModel getContratActif() {
     return this.contratActif;
   }
-  
+
+  /**
+   * Get tournée
+   * 
+   * @return TourneeModel
+   */
+  public TourneeModel getTournee() {
+    return this.tournee;
+  }
+
   /**
    * Get as Adresse
    * 
@@ -366,27 +382,18 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   public AdresseModel toAdresse() {
     AdresseModel adresse = new AdresseModel();
-    adresse
-      .setAppartement(this.appartement)
-      .setEtage(this.etage)
-    ;
+    adresse.setAppartement(this.appartement).setEtage(this.etage);
     AdresseDesserteModel adresseDesserte = this.getAdresseDesserte();
     if (adresseDesserte != null) {
-      adresse
-        .setNumero(adresseDesserte.getNumeroVoie())
-      ;
+      adresse.setNumero(adresseDesserte.getNumeroVoie());
       VoieModel voie = adresseDesserte.getVoie();
       if (voie != null) {
-        adresse
-          .setTypeVoie(voie.getType())
-          .setNom(voie.getNom())
-        ;
-        OrganismeModel organisme = voie.getOrganisme();
+        adresse.setTypeVoie(voie.getType()).setNom(voie.getNom());
+        OrganismeModel organisme = voie.getCommune();
         if (organisme != null) {
-          adresse
-            .setCodePostal(organisme.getCodePostal())
-            .setVille(organisme.getVille())
-          ;
+          adresse.setCodePostal(organisme.getCodePostal()).setVille(organisme.getVille());
+        } else {
+          System.out.println("no comm");
         }
       }
     }

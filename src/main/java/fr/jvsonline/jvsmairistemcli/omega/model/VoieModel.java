@@ -106,8 +106,8 @@ public class VoieModel extends BaseModel {
    * 
    * @var OrganismeModel
    */
-  @Relationship("organism")
-  private OrganismeModel organisme;
+  @Relationship("commune")
+  private OrganismeModel commune;
   
   /**
    * Constructor
@@ -242,11 +242,11 @@ public class VoieModel extends BaseModel {
   }
   
   /**
-   * Get organisme
+   * Get commune
    * 
    * @return OrganismeModel
    */
-  public OrganismeModel getOrganisme() {
-    return this.organisme;
+  public OrganismeModel getCommune() {
+    return this.commune;
   }
 }

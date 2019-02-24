@@ -6,6 +6,7 @@ import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
+import fr.jvsonline.jvsmairistemcli.model.AdresseModel;
 
 /**
  * AdresseDesserteModel

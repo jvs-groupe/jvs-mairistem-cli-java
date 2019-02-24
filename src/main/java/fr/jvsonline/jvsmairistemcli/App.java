@@ -5,6 +5,7 @@ import fr.jvsonline.jvsmairistemcli.omega.manager.CompteurManager;
 import fr.jvsonline.jvsmairistemcli.omega.manager.EnumerationManager;
 import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.CompteurModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.ContratModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.AdresseDesserteModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationType;
@@ -46,6 +47,9 @@ public class App {
     
     
     
+    
+    logger.info("----------------------------------------------------------");
+    logger.info("   Récupération des codifications...");
     EnumerationManager enumManager = null;
     enumManager = new EnumerationManager(wsClient);
     List<EnumerationModel> myListE = enumManager.find();
@@ -57,12 +61,13 @@ public class App {
       }
     }
     omegaContainer.setEnums(myListE);
+    logger.info("----------------------------------------------------------");
     
     
     
     
-    
-    
+    logger.info("----------------------------------------------------------");
+    logger.info("   Liste des premiers compteurs...");
     CompteurManager cptManager = null;
     cptManager = new CompteurManager(wsClient);
     List<CompteurModel> myListC = cptManager.find();
@@ -77,16 +82,18 @@ public class App {
         logger.info("Compteur n° " + item.getNumeroSerie() + " / " + diametre);
       }
     }
+    logger.info("----------------------------------------------------------");
     
     
     
     
-    
+    logger.info("----------------------------------------------------------");
+    logger.info("   Liste des points de consommation ayant 56 dans le numéro...");
     PointDeConsommationManager pconsoManager = null;
     pconsoManager = new PointDeConsommationManager(wsClient);
     // Add parameters to find....
     pconsoManager.flushRequestParameters();
-    pconsoManager.setPage(2);
+    pconsoManager.setPage(1);
     pconsoManager.addRequestParameter("numero", "56");
     // Go
     List<PointDeConsommationModel> myList = pconsoManager.find();
@@ -103,27 +110,59 @@ public class App {
         logger.info("Pconso n° " + item.getNumero() + " : " + numero + " [" + numSerie + "]");
       }
     }
+    logger.info("----------------------------------------------------------");
     
+    
+    
+    
+    logger.info("----------------------------------------------------------");
+    logger.info("   Liste des points de consommation ayant un occupant prénommé Georges...");
     pconsoManager.flushRequestParameters();
-    PointDeConsommationModel myPConso = pconsoManager.getById(921);
-    if (myPConso != null) {
-      CompteurModel monCompteur921 = myPConso.getCompteur();
-      String numSerie921 = "";
-      if (monCompteur921 != null) {
-        numSerie921 = monCompteur921.getNumeroSerie();
+    pconsoManager.addRequestParameter("contratActif.occupant.prenom", "Georges");
+    List<PointDeConsommationModel> myListN = pconsoManager.find();
+    if (myListN == null) {
+      logger.info("Empty result...");
+    } else {
+      for (PointDeConsommationModel item : myListN) {
+        String numero = item.getNumero();
+        CompteurModel monCompteur = item.getCompteur();
+        String numSerie = "";
+        if (monCompteur != null) {
+          numSerie = monCompteur.getNumeroSerie();
+        }
+        logger.info("Pconso n° " + item.getNumero() + " : " + numero + " [" + numSerie + "]");
+        ContratModel contratActif = item.getContratActif();
+        if (contratActif != null) {
+          logger.info("    * " + contratActif.getOccupant());
+        }
+        logger.info("    * " + item.toAdresse());
       }
-      AdresseDesserteModel monAdresse921 = myPConso.getAdresseDesserte();
+    }
+    logger.info("----------------------------------------------------------");
+    
+    
+    
+    
+    logger.info("----------------------------------------------------------");
+    logger.info("   Point de consommation avec l'ID 99...");
+    pconsoManager.flushRequestParameters();
+    PointDeConsommationModel myPConso = pconsoManager.getById(99);
+    if (myPConso != null) {
+      CompteurModel monCompteur99 = myPConso.getCompteur();
+      String numSerie99 = "";
+      if (monCompteur99 != null) {
+        numSerie99 = monCompteur99.getNumeroSerie();
+      }
+      AdresseDesserteModel monAdresse99 = myPConso.getAdresseDesserte();
       LigneEnumerationModel typeH = omegaContainer.getLigneEnumeration(
           EnumerationType.TYPE_HABITATION,
           myPConso.getTypeHabitation()
       );
-      logger.info(myPConso.toAdresse().toString() + " : " + numSerie921 + " / " + typeH);
+      logger.info(myPConso.toAdresse().toString() + " : " + numSerie99 + " / " + typeH);
     } else {
-      logger.info("Pconso id 921 non trouvé !");
+      logger.info("Pconso id 99 non trouvé !");
     }
-    
-    
-    
+    logger.info("----------------------------------------------------------");
     
     
     

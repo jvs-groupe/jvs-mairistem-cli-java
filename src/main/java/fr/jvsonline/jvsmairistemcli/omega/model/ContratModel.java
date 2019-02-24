@@ -8,6 +8,7 @@ import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
+import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
 
@@ -17,7 +18,7 @@ import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
  * @author jeromeklam
  */
 @Type("Partner_Contrat")
-public class ContratModel extends BaseModel {
+public class ContratModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Identifiant du contrat
@@ -162,5 +163,14 @@ public class ContratModel extends BaseModel {
   public ContratModel setId(Integer p_id) {
     this.id = p_id;
     return this;
+  }
+  
+  /**
+   * Get occupant
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel getOccupant() {
+    return this.occupant;
   }
 }

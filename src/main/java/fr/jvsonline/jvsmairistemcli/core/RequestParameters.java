@@ -86,6 +86,7 @@ public class RequestParameters extends Loggable {
   public boolean setPage(int p_page) {
     this.paginated = true;
     this.offset = (p_page - 1) * RequestParameters.PAGE_LENGTH;
+    this.limit  = RequestParameters.PAGE_LENGTH;
     return true;
   }
 

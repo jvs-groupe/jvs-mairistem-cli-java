@@ -493,13 +493,13 @@ public class AdresseModel {
       ret = ret + " " + this.complementNumero;
     }
     if (this.nom != null) {
-      ret = ret + Tools.asString(this.typeVoie, "") + " " + Tools.asString(this.nom, "");
+      ret = ret + " " + Tools.asString(this.typeVoie, "") + " " + Tools.asString(this.nom, "");
     }
     ret = ret.trim() + "\n";
     if (this.complementNom != null) {
       ret = ret.trim() + this.complementNom + "\n";
     }
-    ret = ret.trim() + 
+    ret = ret.trim() + " " +
       Tools.asString(this.codePostal, "") + " " + 
       Tools.asString(this.ville, "")
     ;
