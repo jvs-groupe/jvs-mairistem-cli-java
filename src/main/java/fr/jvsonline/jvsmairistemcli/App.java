@@ -144,6 +144,34 @@ public class App {
     
     
     logger.info("----------------------------------------------------------");
+    logger.info("   Liste des points de consommation avec une rue oceanite...");
+    pconsoManager.flushRequestParameters();
+    pconsoManager.addRequestParameter("adresseDesserte.voie.nom", "Oceanite");
+    List<PointDeConsommationModel> myListV = pconsoManager.find();
+    if (myListV == null) {
+      logger.info("Empty result...");
+    } else {
+      for (PointDeConsommationModel item : myListV) {
+        String numero = item.getNumero();
+        CompteurModel monCompteur = item.getCompteur();
+        String numSerie = "";
+        if (monCompteur != null) {
+          numSerie = monCompteur.getNumeroSerie();
+        }
+        logger.info("Pconso n° " + item.getNumero() + " : " + numero + " [" + numSerie + "]");
+        ContratModel contratActif = item.getContratActif();
+        if (contratActif != null) {
+          logger.info("    * " + contratActif.getOccupant());
+        }
+        logger.info("    * " + item.toAdresse());
+      }
+    }
+    logger.info("----------------------------------------------------------");
+    
+    
+    
+    
+    logger.info("----------------------------------------------------------");
     logger.info("   Point de consommation avec l'ID 99...");
     pconsoManager.flushRequestParameters();
     PointDeConsommationModel myPConso = pconsoManager.getById(99);

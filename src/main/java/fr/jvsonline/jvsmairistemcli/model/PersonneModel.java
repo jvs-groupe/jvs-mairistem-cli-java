@@ -7,7 +7,7 @@ import fr.jvsonline.jvsmairistemcli.core.Tools;
  * 
  * @author jeromeklam
  */
-public class PersonneModel {
+public class PersonneModel extends AdresseModel {
   
   /**
    * Identifiant de la personne

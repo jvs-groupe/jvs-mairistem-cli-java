@@ -7,6 +7,8 @@ import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import fr.jvsonline.jvsmairistemcli.core.AdresseInterface;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
 import fr.jvsonline.jvsmairistemcli.core.Tools;
@@ -23,7 +25,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.AdresseDesserteModel;
  * @package PointDeConsommation
  */
 @Type("Partner_Pconso")
-public class PointDeConsommationModel extends BaseModel implements BaseModelInterface {
+public class PointDeConsommationModel extends BaseModel implements BaseModelInterface, AdresseInterface {
 
   /**
    * Identifiant du point de consommation
@@ -392,8 +394,6 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
         OrganismeModel organisme = voie.getCommune();
         if (organisme != null) {
           adresse.setCodePostal(organisme.getCodePostal()).setVille(organisme.getVille());
-        } else {
-          System.out.println("no comm");
         }
       }
     }
