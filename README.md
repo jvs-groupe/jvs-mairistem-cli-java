@@ -51,7 +51,49 @@ Ce projet contient différentes parties :
 
 En fonction de l'application utilisée, un ensemble de modèles et services vont être mis à disposition. Ces classes serviront pour les échanges et le contrôle des données. Chaque application mettra également à disposition une documentation complète.
 
-Table des matières :
+Vous trouverez [ici](https://github.com/jvs-groupe/omega-api-doc) la documentation de l'API.
 
-* Utiliser le client jvsmairistemcli
-* [Omega](https://github.com/jvs-groupe/omega-api-doc)
+## Utiliser le client jvsmairistemcli
+
+### Intégration basique
+
+```
+  /**
+   * Initialisation via des "constantes", il est possible d'utiliser un fichier de "properties"
+   * omegaSettings est un Singleton
+   *
+   * @return void
+   */
+  protected void initJvsMairistemCli() {
+    logger.info("----------------------------------------------------------");
+    logger.info("JVS-Mairistem Client settings...");
+    Settings omegaSettings = Settings.getInstance();
+    omegaSettings.setWsEndpoint("https://omegaweb-pp.jvsonline.fr/api/v1");
+    omegaSettings.setWsApiId("dfc7258e09f94ba6e495a08c50d6fd00@partner-kis-jolieville");
+    omegaSettings.setWsHawkId("partner-kis-jolieville");
+    omegaSettings.setWsHawkKey("be58e42b95c303f3a64faf5c70f7d7e7");
+    logger.info("   Version  : " + omegaSettings.getVersion());
+    logger.info("   Endpoint : " + omegaSettings.getWsEndpoint());
+    this.wsClient = new JsonApiWS(omegaSettings);
+    this.omegaContainer = new Container();
+    logger.info("   Récupération des codifications...");
+    EnumerationManager enumManager = null;
+    enumManager = new EnumerationManager(wsClient);
+    List<EnumerationModel> myListE = enumManager.find();
+    if (myListE == null) {
+      logger.info("Empty result...");
+    } else {
+      for (EnumerationModel item : myListE) {
+        logger.info("Enumération " + item.getNom());
+      }
+    }
+    omegaContainer.setEnums(myListE);
+    logger.info("----------------------------------------------------------");
+  }
+```
+
+### Projet exemple
+
+    * Exemple via le projet https://github.com/jvs-groupe/jvs-mairistem-webapp
+
+
