@@ -22,8 +22,6 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Identifiant du contrat
-   * 
-   * @var Integer
    */
   @Id(IntegerIdHandler.class)
   @JsonProperty("contrat_id")
@@ -31,24 +29,18 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Identifiant du point de consommation
-   * 
-   * @var Integer
    */
   @JsonProperty("pconso_id")
   private Integer id_pconso;
   
   /**
    * Numéro de contrat
-   * 
-   * @var String
    */
   @JsonProperty("numcontrat")
   private String  numeroContrat;
 
   /**
    * Contrat actif
-   * 
-   * @var Boolean
    */
   @JsonProperty("actif")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
@@ -56,8 +48,6 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   
   /**
    * Contrat suspendu
-   * 
-   * @var Boolean
    */
   @JsonProperty("suspendu")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
@@ -65,32 +55,24 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   
   /**
    * Type de contrat
-   * 
-   * @var String
    */
   @JsonProperty("enum_tcon")
   private String  typeContrat;
 
   /**
    * Nature de contrat
-   * 
-   * @var String
    */
   @JsonProperty("enum_natcont")
   private String  natureContrat;
   
   /**
    * Sous-type de contrat
-   * 
-   * @var String
    */
   @JsonProperty("enum_stcont")
   private String  sousTypeContrat;
   
   /**
    * Date de début
-   * 
-   * @var Date
    */
   @JsonDeserialize(using = CustomDateDeserializer.class)
   @JsonProperty("datedeb")
@@ -98,8 +80,6 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Date de fin
-   * 
-   * @var Date
    */
   @JsonDeserialize(using = CustomDateDeserializer.class)
   @JsonProperty("datefin")
@@ -107,16 +87,12 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Identifiant de la nature d'abonné
-   * 
-   * @var Integer
    */
   @JsonProperty("natabo_id")
   private Integer id_natureAbonne;
   
   /**
    * Contrat principal
-   * 
-   * @var Boolean
    */
   @JsonProperty("principal")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
@@ -124,16 +100,12 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   
   /**
    * Point de consommation
-   * 
-   * @var PointDeConsommationModel
    */
   @Relationship("pconso")
   private PointDeConsommationModel pointDeConsommation;
   
   /**
    * Occupant
-   * 
-   * @var PersonneModel
    */
   @Relationship("occupant")
   private PersonneModel occupant;
@@ -156,7 +128,7 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   /**
    * Set Identifiant
    * 
-   * @param Integer p_id
+   * @param p_id Identifiant
    * 
    * @return ContratModel
    */

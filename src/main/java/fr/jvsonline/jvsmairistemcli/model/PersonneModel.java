@@ -11,22 +11,16 @@ public class PersonneModel extends AdresseModel {
   
   /**
    * Identifiant de la personne
-   * 
-   * @var Integer
    */
   private Integer id;
   
   /**
    * Nom de la personne
-   * 
-   * @var String
    */
   private String nom;
   
   /**
    * Prénom de la personne
-   * 
-   * @var String
    */
   private String prenom;
   
@@ -48,7 +42,7 @@ public class PersonneModel extends AdresseModel {
   /**
    * Set identifiant
    * 
-   * @param Integer p_id
+   * @param p_id Identifiant
    * 
    * @return PersonneModel
    */
@@ -69,7 +63,7 @@ public class PersonneModel extends AdresseModel {
   /**
    * Set nom
    * 
-   * @param String p_nom
+   * @param p_nom Nom
    * 
    * @return PersonneModel
    */
@@ -90,7 +84,7 @@ public class PersonneModel extends AdresseModel {
   /**
    * Set prénom
    * 
-   * @param String p_prenom
+   * @param p_prenom Prénom
    * 
    * @return PersonneModel
    */
@@ -102,7 +96,7 @@ public class PersonneModel extends AdresseModel {
   /**
    * As string
    * 
-   *  @var String
+   * @return String
    */
   @Override
   public String toString() {

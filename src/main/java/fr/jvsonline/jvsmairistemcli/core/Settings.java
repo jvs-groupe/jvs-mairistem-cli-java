@@ -10,68 +10,53 @@ import fr.jvsonline.jvsmairistemcli.core.Tools;
  * Omega global Settings from omegacli.properties
  * 
  * @author jeromeklam
- * @package Config
  */
 public class Settings {
 
   /**
    * Version
-   * 
-   * @var String
    */
   protected String        version    = "v1";
 
   /**
    * Artifact Id
-   * 
-   * @var String
    */
   protected String        artifactId = "JvsMairistemCli";
 
   /**
    * Group Id
-   * 
-   * @var String
    */
   protected String        groupId    = "fr.jvsonline.jvsmairistemcli";
 
   /**
    * WS End-Point
-   * 
-   * @var String
    */
   protected String        wsEndpoint = "";
 
   /**
    * Application Id
-   * 
-   * @var String
    */
   protected String        wsApiId    = "";
 
   /**
    * Hawk Auth Id
-   * 
-   * @var String
    */
   protected String        wsHawkId   = "";
 
   /**
    * Hawk Auth Key
-   * 
-   * @var String
    */
   protected String        wsHawkKey  = "";
 
   /**
    * Instance
-   * 
-   * @var Settings
    */
   private static Settings instance   = null;
 
   /**
-   * Constructor
+   * Constructor 
+   * 
+   * @param p_config Configuration
    */
   protected Settings(String p_config) {
     if (p_config != null && p_config != "") {
@@ -94,7 +79,7 @@ public class Settings {
   /**
    * Get Instance
    * 
-   * @param String p_config
+   * @param p_config Configuration
    * 
    * @return Settings
    */
@@ -108,9 +93,7 @@ public class Settings {
   /**
    * Read config
    * 
-   * @param String p_config
-   * 
-   * @return void
+   * @param p_config Condiguration
    */
   protected void read(String p_config) {
     InputStream inputStream;
@@ -139,7 +122,7 @@ public class Settings {
   /**
    * Get WS endpoint
    * 
-   * @throws NullPointerException
+   * @throws NullPointerException Si vide
    * 
    * @return the wsEndpoint
    */
@@ -153,7 +136,7 @@ public class Settings {
   /**
    * Set WS endpoint
    * 
-   * @param String p_endpoint
+   * @param p_endpoint Url du service web
    * 
    * @return Settings
    */
@@ -177,7 +160,7 @@ public class Settings {
   /**
    * Set version
    * 
-   * @param String p_version
+   * @param p_version Version
    * 
    * @return Settings
    */
@@ -196,7 +179,7 @@ public class Settings {
   /**
    * Set API Id
    * 
-   * @param String p_api_id
+   * @param p_api_id Id de l'application (broker)
    * 
    * @return Settings
    */
@@ -215,7 +198,7 @@ public class Settings {
   /**
    * Set HAWK Id
    * 
-   * @param String p_hawk_id
+   * @param p_hawk_id Identifiant Hawk
    * 
    * @return Settings
    */
@@ -234,7 +217,7 @@ public class Settings {
   /**
    * Set WS HAWK Key
    * 
-   * @param String p_hawk_key
+   * @param p_hawk_key Clef Hawk (secret)
    * 
    * @return Settings
    */

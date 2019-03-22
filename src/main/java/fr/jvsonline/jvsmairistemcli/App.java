@@ -26,14 +26,13 @@ import org.slf4j.LoggerFactory;
 public class App {
 
   /**
-   * @var Logger
+   * Logger
    */
   protected static final Logger logger = LoggerFactory.getLogger(App.class);
 
   /**
    * 
-   * @param String[] p_args
-   * @throws FileNotFoundException
+   * @param p_args Arguments
    */
   public static void main(String[] p_args) {
     logger.info("----------------------------------------------------------");

@@ -22,15 +22,12 @@ import fr.jvsonline.jvsmairistemcli.omega.model.AdresseDesserteModel;
  * PointDeConsommationModel
  * 
  * @author jeromeklam
- * @package PointDeConsommation
  */
 @Type("Partner_Pconso")
 public class PointDeConsommationModel extends BaseModel implements BaseModelInterface, AdresseInterface {
 
   /**
    * Identifiant du point de consommation
-   * 
-   * @var Integer
    */
   @Id(IntegerIdHandler.class)
   @JsonProperty("pconso_id")
@@ -38,72 +35,54 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
 
   /**
    * Identifiant du point de desserte
-   * 
-   * @var Integer
    */
   @JsonProperty("pdess_id")
   private Integer              id_pointDesserte;
 
   /**
    * Identifiant du compteur
-   * 
-   * @var Integer
    */
   @JsonProperty("compteur_id")
   private Integer              id_compteur;
 
   /**
    * Numéro de point de consommation
-   * 
-   * @var String
    */
   @JsonProperty("numpconso")
   private String               numero;
 
   /**
    * Identifiant de l'adresse de point de desserte
-   * 
-   * @var Integer
    */
   @JsonProperty("pdessadr_id")
   private Integer              id_adresseDesserte;
 
   /**
    * Type d'habitation
-   * 
-   * @var String
    */
   @JsonProperty("enum_thab")
   private String               typeHabitation;
 
   /**
    * Etage
-   * 
-   * @var String
    */
   @JsonProperty("etage")
   private String               etage;
 
   /**
    * Appartement
-   * 
-   * @var String
    */
   @JsonProperty("numapt")
   private String               appartement;
 
   /**
    * Identifiant de la tournée
-   * 
-   * @var Integer
    */
   @JsonProperty("tournee_id")
   private Integer              id_tournee;
 
   /**
    * Actif
-   * 
-   * @var Boolean
    */
   @JsonProperty("actif")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
@@ -111,8 +90,6 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
 
   /**
    * Date de début
-   * 
-   * @var Date
    */
   @JsonProperty("datedeb")
   @JsonDeserialize(using = CustomDateDeserializer.class)
@@ -120,8 +97,6 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
 
   /**
    * Date de début
-   * 
-   * @var Date
    */
   @JsonProperty("datefin")
   @JsonDeserialize(using = CustomDateDeserializer.class)
@@ -129,40 +104,30 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
 
   /**
    * Identifiant externe
-   * 
-   * @var Integer
    */
   @JsonProperty("ident_externe")
   private Integer              id_externe;
 
   /**
    * Compteur
-   * 
-   * @var CompteurModel
    */
   @Relationship("compteur")
   private CompteurModel        compteur;
 
   /**
    * Adresse de desserte
-   * 
-   * @var AdresseDesserteModel
    */
   @Relationship("pdessadr")
   private AdresseDesserteModel adresseDesserte;
 
   /**
    * Contrat actif
-   * 
-   * @var ContratModel
    */
   @Relationship("contratactif")
   private ContratModel         contratActif;
 
   /**
    * Tournée
-   * 
-   * @var TourneeModel
    */
   @Relationship("tournee")
   private TourneeModel         tournee;
@@ -185,7 +150,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   /**
    * Set the identifier
    * 
-   * @param Integer p_id
+   * @param p_id Identifiant
    * 
    * @return PointDeConsommationModel
    */
@@ -206,7 +171,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   /**
    * Set numero
    * 
-   * @param String p_numero
+   * @param p_numero Numéro du point de consommation
    * 
    * @return PointDeConsommationModel
    */
@@ -227,7 +192,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   /**
    * Set identifiant tournée
    * 
-   * @param Integer p_idTournee
+   * @param p_idTournee Identifiant de la tournée
    * 
    * @return PointDeConsommationModel
    */
@@ -248,7 +213,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   /**
    * Set identifiant compteur
    * 
-   * @param Integer p_idCompteur
+   * @param p_idCompteur Identifiant du compteur
    * 
    * @return PointDeConsommationModel
    */
@@ -269,7 +234,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   /**
    * Set type d'habitation
    * 
-   * @param String p_typeHabitation
+   * @param p_typeHabitation Type d'habitation (énumération)
    * 
    * @return PointDeConsommationModel
    */
@@ -290,7 +255,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   /**
    * Set etage
    * 
-   * @param String p_etage
+   * @param p_etage Etage
    * 
    * @return PointDeConsommationModel
    */
@@ -311,7 +276,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   /**
    * Set appartement
    * 
-   * @param String p_appartement
+   * @param p_appartement Appartement
    * 
    * @return PointDeConsommationModel
    */
@@ -332,7 +297,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   /**
    * Set identifiant externe
    * 
-   * @param Integer p_idExterne
+   * @param p_idExterne Identifiant externe
    * 
    * @return PointDeConsommationModel
    */

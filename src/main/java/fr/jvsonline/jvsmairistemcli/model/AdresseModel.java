@@ -11,113 +11,81 @@ public class AdresseModel {
   
   /**
    * Identifiant de l'AdresseModel
-   * 
-   * @var Integer
    */
   private Integer id;
   
   /**
    * Numéro de l'AdresseModel
-   * 
-   * @var Integer
    */
   private Integer numero;
   
   /**
    * Complément du numéro
-   * 
-   * @var String
    */
   private String complementNumero;
   
   /**
    * Etage
-   * 
-   * @var String
    */
   private String etage;
   
   /**
    * Appartement
-   * 
-   * @var String
    */
   private String appartement;
   
   /**
    * Identifiant de la voie
-   * 
-   * @var Integer
    */
   private Integer id_voie;
   
   /**
    * Code de la voie
-   * 
-   * @var String
    */
   private String codeVoie;
   
   /**
    * Type de voie
-   * 
-   * @var String
    */
   private String typeVoie;
   
   /**
    * Nom de la voie
-   * 
-   * @var String
    */
   private String nom;
   
   /**
    * Complément du nom de la voie
-   * 
-   * @var String
    */
   private String complementNom;
   
   /**
    * Identifiant de la ville
-   * 
-   * @var Integer
    */
   private Integer id_ville;
   
   /**
    * Code postal
-   * 
-   * @var String
    */
   private String codePostal;
   
   /**
    * Ville
-   * 
-   * @var String
    */
   private String ville;
   
   /**
    * Identifiant du pays
-   * 
-   * @var Integer
    */
   private Integer id_pays;
   
   /**
    * Code du pays
-   * 
-   * @var String
    */
   private String codePays;
   
   /**
    * Libellé du pays
-   * 
-   * @var String
    */
   private String pays;
   
@@ -139,7 +107,7 @@ public class AdresseModel {
   /**
    * Set id
    *
-   * @param Integer p_id
+   * @param p_id Identifiant
    *
    * @return AdresseModel
    */
@@ -160,7 +128,7 @@ public class AdresseModel {
   /**
    * Set numero
    *
-   * @param Integer p_numero
+   * @param p_numero Numéro
    *
    * @return AdresseModel
    */
@@ -172,7 +140,7 @@ public class AdresseModel {
   /**
    * Set numero
    *
-   * @param String p_numero
+   * @param p_numero Numéro
    *
    * @return AdresseModel
    */
@@ -186,7 +154,7 @@ public class AdresseModel {
   }
   
   /**
-   * Get complementNumero
+   * Get complementNumero Complément du numéro
    *
    * @return String 
    */
@@ -197,7 +165,7 @@ public class AdresseModel {
   /**
    * Set complementNumero
    *
-   * @param String p_complementNumero
+   * @param p_complementNumero Complément du numéro
    *
    * @return AdresseModel
    */
@@ -218,7 +186,7 @@ public class AdresseModel {
   /**
    * Set etage
    *
-   * @param String p_etage
+   * @param p_etage Etage
    *
    * @return AdresseModel
    */
@@ -239,7 +207,7 @@ public class AdresseModel {
   /**
    * Set appartement
    *
-   * @param String p_appartement
+   * @param p_appartement Appartement
    *
    * @return AdresseModel
    */
@@ -260,7 +228,7 @@ public class AdresseModel {
   /**
    * Set id_voie
    *
-   * @param Integer p_id_voie
+   * @param p_id_voie Identifiant de la voie
    *
    * @return AdresseModel
    */
@@ -281,7 +249,7 @@ public class AdresseModel {
   /**
    * Set codeVoie
    *
-   * @param String p_codeVoie
+   * @param p_codeVoie Code de la voie
    *
    * @return AdresseModel
    */
@@ -302,7 +270,7 @@ public class AdresseModel {
   /**
    * Set typeVoie
    *
-   * @param String p_typeVoie
+   * @param p_typeVoie Type de voie
    *
    * @return AdresseModel
    */
@@ -323,7 +291,7 @@ public class AdresseModel {
   /**
    * Set nom
    *
-   * @param String p_nom
+   * @param p_nom Nom 
    *
    * @return AdresseModel
    */
@@ -344,7 +312,7 @@ public class AdresseModel {
   /**
    * Set complementNom
    *
-   * @param String p_complementNom
+   * @param p_complementNom Complément du nom
    *
    * @return AdresseModel
    */
@@ -365,7 +333,7 @@ public class AdresseModel {
   /**
    * Set id_ville
    *
-   * @param Integer p_id_ville
+   * @param p_id_ville Identifiant de la ville
    *
    * @return AdresseModel
    */
@@ -386,7 +354,7 @@ public class AdresseModel {
   /**
    * Set codePostal
    *
-   * @param String p_codePostal
+   * @param p_codePostal Code postal
    *
    * @return AdresseModel
    */
@@ -407,7 +375,7 @@ public class AdresseModel {
   /**
    * Set ville
    *
-   * @param String p_ville
+   * @param p_ville Ville
    *
    * @return AdresseModel
    */
@@ -428,7 +396,7 @@ public class AdresseModel {
   /**
    * Set id_pays
    *
-   * @param Integer p_id_pays
+   * @param p_id_pays Identifiant du pays
    *
    * @return AdresseModel
    */
@@ -449,7 +417,7 @@ public class AdresseModel {
   /**
    * Set codePays
    *
-   * @param String p_codePays
+   * @param p_codePays Code pays
    *
    * @return AdresseModel
    */
@@ -470,7 +438,7 @@ public class AdresseModel {
   /**
    * Set pays
    *
-   * @param String p_pays
+   * @param p_pays Pays
    *
    * @return AdresseModel
    */
@@ -480,8 +448,9 @@ public class AdresseModel {
   }
   
   /**
-   * As string
-   *  @var String
+   * toString
+   * 
+   * @return String
    */
   @Override
   public String toString() {

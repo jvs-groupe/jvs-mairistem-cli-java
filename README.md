@@ -27,6 +27,8 @@ Depuis le conteneur dans le homedir du projet, à l'emplacement du fichier pom.x
 ```
     // Se placer dans le bon répertoire
     cd /opt/java/jvs-mairistem-cli-java
+    // Pour le tty si on n'indique pas la passphrase
+    export GPG_TTY=$(tty)
     // Package
     mvn package
     // Déploiement local

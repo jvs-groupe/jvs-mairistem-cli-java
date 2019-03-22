@@ -12,8 +12,8 @@ public interface ClientWSInterface {
   /**
    * Return an Invocation.Builder
    * 
-   * @param String            p_service
-   * @param RequestParameters p_parameters
+   * @param p_service Service
+   * @param p_parameters Paramètress
    * 
    * @return InputStream
    */

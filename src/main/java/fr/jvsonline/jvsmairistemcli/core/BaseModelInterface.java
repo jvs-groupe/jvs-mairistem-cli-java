@@ -10,7 +10,7 @@ public interface BaseModelInterface {
   /**
    * Return the real filter name
    * 
-   * @param String p_fieldname
+   * @param p_fieldname Nom du champ
    * 
    * @return String
    */

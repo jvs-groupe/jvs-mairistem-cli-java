@@ -13,17 +13,16 @@ import java.util.Date;
  * CustomDateDeserializer
  * 
  * @author jeromeklam
- * @package Json
  */
 public class CustomDateDeserializer extends StdDeserializer<Date> {
   
   /**
-   * @var long
+   * Serial version
    */
   private static final long serialVersionUID = 1L;
   
   /**
-   * @var SimpleDateFormat
+   * SimpleDateFormat
    */
   private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
@@ -37,7 +36,7 @@ public class CustomDateDeserializer extends StdDeserializer<Date> {
   /**
    * Constructor
    * 
-   * @param Class p_c
+   * @param p_c Class
    */
   public CustomDateDeserializer(Class<?> p_c) {
     super(p_c);
@@ -46,8 +45,8 @@ public class CustomDateDeserializer extends StdDeserializer<Date> {
   /**
    * Deserialize
    * 
-   * @param JsonParser             p_jsonParser
-   * @param DeserializationContext p_deserializationContext
+   * @param p_jsonParser json Parser
+   * @param p_deserializationContext Context
    * 
    * @return Date
    */

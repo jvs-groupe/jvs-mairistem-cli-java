@@ -14,13 +14,11 @@ public class Container {
   
   /**
    * Enumérations
-   * @var List<EnumerationModel
    */
   List<EnumerationModel> enums;
   
   /**
    * Enumération 1
-   * @var EnumerationModel
    */
   EnumerationModel primaryEnum = null;
   
@@ -28,13 +26,12 @@ public class Container {
    * Constructor
    */
   public Container() {
-    
   }
 
   /**
    * Set énumérations
    * 
-   * @param List<EnumerationModel> p_enums
+   * @param p_enums Enumérations
    * 
    * @return Container
    */
@@ -52,7 +49,7 @@ public class Container {
   /**
    * Get enums
    * 
-   * @return List<EnumerationModel>
+   * @return List
    */
   public List<EnumerationModel> getEnums() {
     return this.enums;
@@ -61,8 +58,8 @@ public class Container {
   /**
    * Get libellé pour une énumération
    * 
-   * @param EnumerationType p_codeEnumeration
-   * @param String          p_value
+   * @param p_codeEnumeration Code de l'énumération
+   * @param p_value Valeur
    * 
    * @return LigneEnumerationModel
    */

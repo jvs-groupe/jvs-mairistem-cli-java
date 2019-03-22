@@ -15,7 +15,6 @@ import fr.jvsonline.jvsmairistemcli.core.RequestParameters;
  * BaseModel
  * 
  * @author jeromeklam
- * @package WS
  */
 public class BaseModel extends Loggable {
 
@@ -29,7 +28,7 @@ public class BaseModel extends Loggable {
   /**
    * Get filter
    * 
-   * @param String p_fieldName
+   * @param p_fieldName Nom du champ
    * 
    * @return String
    */

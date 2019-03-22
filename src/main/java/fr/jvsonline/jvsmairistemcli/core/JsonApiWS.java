@@ -15,19 +15,18 @@ import fr.jvsonline.jvsmairistemcli.core.ClientWSInterface;
  * JsonApiWS
  * 
  * @author jeromeklam
- * @package WS
  */
 public class JsonApiWS extends Loggable implements ClientWSInterface {
 
   /**
    * Settings
-   * 
-   * @var Settings
    */
   Settings settings;
   
   /**
    * Constructor
+   * 
+   * @param p_settings Préférences
    */
   public JsonApiWS(Settings p_settings) {
     this.settings = p_settings;
@@ -47,8 +46,8 @@ public class JsonApiWS extends Loggable implements ClientWSInterface {
   /**
    * Return an Invocation.Builder
    * 
-   * @param String            p_service
-   * @param RequestParameters p_parameters
+   * @param p_service Service
+   * @param p_parameters Paramètres
    * 
    * @return InputStream
    */

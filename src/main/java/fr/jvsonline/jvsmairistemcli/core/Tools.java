@@ -10,14 +10,13 @@ import java.util.Random;
  * Omega Tools
  * 
  * @author jeromeklam
- * @package Tool
  */
 public class Tools {
 
   /**
    * Return a Resource
    * 
-   * @param String p_rsc
+   * @param p_rsc Resource
    * 
    * @return InputStream
    */
@@ -36,7 +35,7 @@ public class Tools {
   /**
    * Get random String
    * 
-   * @param int p_maxLength
+   * @param p_maxLength Longueur maximale
    * 
    * @return String
    */
@@ -54,8 +53,8 @@ public class Tools {
   /**
    * Get String
    * 
-   * @param String p_prefered
-   * @param String p_default
+   * @param p_prefered Préféré
+   * @param p_default Par défaut
    * 
    * @return String
    */
@@ -71,10 +70,10 @@ public class Tools {
   }
   
   /**
-   * Vérify if field is present in object
+   * Verify if field is present in object
    * 
-   * @param String p_object
-   * @param String p_fieldName
+   * @param p_object Objet
+   * @param p_fieldName Nom du champ
    * 
    * @return boolean
    */

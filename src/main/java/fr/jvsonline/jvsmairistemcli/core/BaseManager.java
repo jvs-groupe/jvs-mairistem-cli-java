@@ -10,21 +10,16 @@ import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
  * BaseManager
  * 
  * @author jeromeklam
- * @package WS
  */
 public abstract class BaseManager extends Loggable {
 
   /**
    * WS client
-   * 
-   * @var ClientWSInterface
    */
   protected ClientWSInterface client;
 
   /**
    * Request parameters
-   * 
-   * @var RequestParameters
    */
   protected RequestParameters parameters;
 
@@ -37,8 +32,6 @@ public abstract class BaseManager extends Loggable {
 
   /**
    * Flush parameters
-   * 
-   * @return void
    */
   public void flushRequestParameters()
   {
@@ -48,8 +41,8 @@ public abstract class BaseManager extends Loggable {
   /**
    * Add request parameter
    * 
-   * @param String p_fieldName
-   * @param String p_value
+   * @param p_fieldName Champ en notation modèle
+   * @param p_value Valeur recherchée
    * 
    * @return boolean
    */
@@ -71,7 +64,7 @@ public abstract class BaseManager extends Loggable {
   /**
    * Set page
    * 
-   * @param int p_page
+   * @param p_page Numéro de page : 1 à
    * 
    * @return boolean
    */
@@ -82,7 +75,7 @@ public abstract class BaseManager extends Loggable {
   /**
    * Get filter
    * 
-   * @param String p_fieldName
+   * @param p_fieldName Nom du champ
    * 
    * @return String
    */

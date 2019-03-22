@@ -15,12 +15,13 @@ import com.github.jasminb.jsonapi.JSONAPIDocument;
  * MessageManager
  * 
  * @author jeromeklam
- * @package Message
  */
 public class MessageManager extends BaseManager {
 
   /**
    * Constructor
+   * 
+   * @param p_client Client WS
    */
   public MessageManager(ClientWSInterface p_client) {
     this.client = p_client;
@@ -29,7 +30,7 @@ public class MessageManager extends BaseManager {
   /**
    * Find
    * 
-   * @retutn List<MessageModel>
+   * @return List
    */
   public List<MessageModel> find() {
     logger.info("find.start");
@@ -56,7 +57,7 @@ public class MessageManager extends BaseManager {
   /**
    * Get filter
    * 
-   * @param String p_fieldName
+   * @param p_fieldName Nom du champ
    * 
    * @return String
    */

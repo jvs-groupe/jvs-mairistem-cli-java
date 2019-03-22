@@ -18,8 +18,6 @@ public class MessageModel extends BaseModel {
 
   /**
    * Identifiant du message
-   * 
-   * @var Integer
    */
   @Id(IntegerIdHandler.class)
   @JsonProperty("message_id")
@@ -27,40 +25,30 @@ public class MessageModel extends BaseModel {
 
   /**
    * Thème
-   * 
-   * @var String
    */
   @JsonProperty("theme")
   private String  theme;
 
   /**
    * Identifiant de l'objet dans le thème
-   * 
-   * @var Integer
    */
   @JsonProperty("any_id")
   private Integer id_objet;
 
   /**
    * Titre
-   * 
-   * @var String
    */
   @JsonProperty("titremsg")
   private String  titre;
 
   /**
    * Contenu
-   * 
-   * @var String
    */
   @JsonProperty("corpsmsg")
   private String  message;
 
   /**
    * Date de début de diffusion
-   * 
-   * @var Date
    */
   @JsonDeserialize(using = CustomDateDeserializer.class)
   @JsonProperty("ddebdiff")
@@ -68,8 +56,6 @@ public class MessageModel extends BaseModel {
 
   /**
    * Date de fin de diffusion
-   * 
-   * @var Date
    */
   @JsonDeserialize(using = CustomDateDeserializer.class)
   @JsonProperty("dfindiff")
@@ -77,16 +63,12 @@ public class MessageModel extends BaseModel {
 
   /**
    * Résumé (256 characters)
-   * 
-   * @var String
    */
   @JsonProperty("resumsg")
   private String  resume;
 
   /**
    * Résumé court (100 characters)
-   * 
-   * @var String
    */
   @JsonProperty("shortmsg")
   private String  resumeCourt;
@@ -109,7 +91,7 @@ public class MessageModel extends BaseModel {
   /**
    * Set Identifiant
    * 
-   * @param Integer p_id
+   * @param p_id Identifiant
    * 
    * @return MessageModel
    */
@@ -130,7 +112,7 @@ public class MessageModel extends BaseModel {
   /**
    * Set theme
    * 
-   * @param String p_theme
+   * @param p_theme Thème
    * 
    * @return MessageModel
    */
@@ -151,7 +133,7 @@ public class MessageModel extends BaseModel {
   /**
    * Set identifiant objet
    * 
-   * @param Integer p_idObjet
+   * @param p_idObjet Identifiant de l'objet
    * 
    * @return MessageModel
    */
@@ -172,7 +154,7 @@ public class MessageModel extends BaseModel {
   /**
    * Set titre
    * 
-   * @param String p_titre
+   * @param p_titre Titre
    * 
    * @return MessageModel
    */
@@ -193,7 +175,7 @@ public class MessageModel extends BaseModel {
   /**
    * Set message
    * 
-   * @param corpsmsg p_message
+   * @param p_message Message
    * 
    * @return MessageModel
    */
@@ -214,7 +196,7 @@ public class MessageModel extends BaseModel {
   /**
    * Set date début de diffusion
    * 
-   * @param Date p_dateDebut
+   * @param p_dateDebut Date de début
    * 
    * @return MessageModel
    */
@@ -235,7 +217,7 @@ public class MessageModel extends BaseModel {
   /**
    * Set date fin de diffusion
    * 
-   * @param Date p_dateFin
+   * @param p_dateFin Date de fin
    * 
    * @return MessageModel
    */
@@ -256,7 +238,7 @@ public class MessageModel extends BaseModel {
   /**
    * Set résumé
    * 
-   * @param String p_resume
+   * @param p_resume Résumé
    * 
    * @return MessageModel
    */
@@ -277,7 +259,7 @@ public class MessageModel extends BaseModel {
   /**
    * Set résumé court
    * 
-   * @param String
+   * @param p_resumeCourt Résumé court
    * 
    * @return MessageModel
    */

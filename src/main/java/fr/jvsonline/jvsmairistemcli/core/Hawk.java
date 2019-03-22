@@ -15,27 +15,24 @@ import fr.jvsonline.jvsmairistemcli.core.Tools;
  * Hawk
  * 
  * @author jeromeklam
- * @package Auth
  */
 public class Hawk extends Loggable {
 
   /**
    * Hawk Id
-   * @var String
    */
   private final String id;
   
   /**
    * Hawk Key
-   * @var String
    */
   private final String key;
 
   /**
    * Constructor
    * 
-   * @param String p_id
-   * @param String p_key
+   * @param p_id Identifiant
+   * @param p_key Clef
    */
   public Hawk(String p_id, String p_key) {
     this.id = p_id;
@@ -45,7 +42,7 @@ public class Hawk extends Loggable {
   /**
    * Obtain the port of an URI
    * 
-   * @param URI p_uri
+   * @param p_uri URI
    * 
    * @return int
    */
@@ -68,15 +65,15 @@ public class Hawk extends Loggable {
   /**
    * Calculate HMAC
    * 
-   * @param AuthType p_authType
-   * @param Long     p_timestamp
-   * @param URI      p_uri
-   * @param String   p_nonce
-   * @param String   p_method
-   * @param String   p_hash
-   * @param String   p_ext
-   * @param String   p_app
-   * @param String   p_dlg
+   * @param p_authType Type d'authentification
+   * @param p_timestamp TS
+   * @param p_uri Uri
+   * @param p_nonce Nonce
+   * @param p_method Method HTTP
+   * @param p_hash Hash
+   * @param p_ext Ext
+   * @param p_app App
+   * @param p_dlg Dig
    * 
    * @return String
    */
@@ -128,9 +125,9 @@ public class Hawk extends Loggable {
   /**
    * Get Full Hawk Header
    * 
-   * @param ClientRequestContext p_requestContext
-   * @param String               p_hash
-   * @param String               p_ext
+   * @param p_requestContext Context
+   * @param p_hash Hash
+   * @param p_ext Ext
    * 
    * @return String
    */
@@ -186,7 +183,7 @@ public class Hawk extends Loggable {
   /**
    * Get Hask Header
    * 
-   * @param ClientRequestContext p_requestContext
+   * @param p_requestContext Contexte
    * 
    * @return String
    */

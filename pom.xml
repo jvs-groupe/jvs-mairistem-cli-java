@@ -6,15 +6,22 @@
 
   <groupId>fr.jvsonline.jvsmairistemcli</groupId>
   <artifactId>JvsMairistemCli</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 
   <name>JvsMairistemCli</name>
+  <description>Client Java pour les services web JVS-Mairistem</description>
   <url>http://jvs-mairistem.fr</url>
 
   <organization>
     <name>JVS Mairistem</name>
     <url>http://jvs-mairistem.fr</url>
   </organization>
+  
+  <scm>
+    <url>https://github.com/jvs-groupe/jvs-mairistem-cli-java</url>
+    <connection>scm:git:git@github.com:jvs-groupe/jvs-mairistem-cli-java.git</connection>
+    <developerConnection>scm:git:git@github.com:jvs-groupe/jvs-mairistem-cli-java.git</developerConnection>
+  </scm>
 
   <licenses>
     <license>
@@ -43,49 +50,49 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
-    <jersey2.version>2.26</jersey2.version>
+    <jersey2.version>[2.11,)</jersey2.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.7.1</version>
+      <version>[2.7.0,)</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>2.7.0</version>
+      <version>[2.7.0,)</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.7.1</version>
+      <version>[2.7.0,)</version>
     </dependency>
     <dependency>
       <groupId>javax.ws.rs</groupId>
       <artifactId>javax.ws.rs-api</artifactId>
-      <version>2.1</version>
+      <version>[2.0,)</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-client</artifactId>
-      <version>2.26</version>
+      <version>[2.11,)</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.inject</groupId>
       <artifactId>jersey-hk2</artifactId>
-      <version>2.26</version>
+      <version>[2.11,)</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.media</groupId>
       <artifactId>jersey-media-jaxb</artifactId>
-      <version>2.26</version>
+      <version>[2.11,)</version>
     </dependency>
     <dependency>
       <groupId>com.github.jasminb</groupId>
       <artifactId>jsonapi-converter</artifactId>
-      <version>0.9</version>
+      <version>[0.9,)</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -95,15 +102,20 @@
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.11.1</version>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+      <version>[2.11.1,)</version>
     </dependency>
   </dependencies>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
 
   <build>
     <resources>
@@ -116,8 +128,59 @@
         </includes>
       </resource>
     </resources>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    
       <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>2.2.1</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.9.1</version>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.sonatype.plugins</groupId>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>1.6.7</version>
+          <extensions>true</extensions>
+          <configuration>
+            <serverId>ossrh</serverId>
+            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.6</version>
+          <executions>
+            <execution>
+              <id>sign-artifacts</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
@@ -158,14 +221,18 @@
           <version>3.0.0</version>
         </plugin>
       </plugins>
-    </pluginManagement>
+ 
   </build>
 
   <profiles>
     <profile>
       <id>development</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <jdk>1.8</jdk>
+      </activation>
       <properties>
-        <ws.endpoint>http://docker.for.mac.localhost:6880/api/v1</ws.endpoint>
+        <ws.endpoint>http://backoffice.jvsonline.fr:6880/api/v1</ws.endpoint>
         <ws.apiId>dfc7258e09f94ba6e495a08c50d6fd00@partner-kis-jolieville</ws.apiId>
         <ws.hawkId>partner-kis-jolieville</ws.hawkId>
         <ws.hawkKey>be58e42b95c303f3a64faf5c70f7d7e7</ws.hawkKey>
@@ -173,10 +240,6 @@
     </profile>
     <profile>
       <id>preproduction</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-        <jdk>1.8</jdk>
-      </activation>
       <properties>
         <ws.endpoint>https://omegaweb-pp.jvsonline.fr/api/v1</ws.endpoint>
         <ws.apiId>dfc7258e09f94ba6e495a08c50d6fd00@partner-kis-jolieville</ws.apiId>

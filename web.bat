@@ -1,0 +1,1 @@
+docker exec -it jvs-mairistem-cli-java_web_1 /bin/bash

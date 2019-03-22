@@ -12,15 +12,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * OrganismeModel
  * 
  * @author jeromeklam
- * @package Organisme
  */
 @Type("Partner_Organism")
 public class OrganismeModel extends BaseModel {
 
   /**
    * Identifiant de l'organisme
-   * 
-   * @var Integer
    */
   @Id(IntegerIdHandler.class)
   @JsonProperty("organism_id")
@@ -28,40 +25,30 @@ public class OrganismeModel extends BaseModel {
 
   /**
    * Type d'organisme
-   * 
-   * @var String
    */
   @JsonProperty("enum_torg")
   private String  type;
 
   /**
    * Nom
-   * 
-   * @var String
    */
   @JsonProperty("nomlorg")
   private String  nom;
 
   /**
    * Code postal
-   * 
-   * @var String
    */
   @JsonProperty("cporg")
   private String  codePostal;
   
   /**
    * Ville
-   * 
-   * @var String
    */
   @JsonProperty("villeorg")
   private String  ville;
   
   /**
    * Actif
-   * 
-   * @var Boolean
    */
   @JsonProperty("actif")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
@@ -85,7 +72,7 @@ public class OrganismeModel extends BaseModel {
   /**
    * Set Id
    * 
-   * @param Integer p_id
+   * @param p_id Identifiant
    * 
    * @return AdresseDesserteModel
    */
@@ -106,7 +93,7 @@ public class OrganismeModel extends BaseModel {
   /**
    * Set nom
    *
-   * @param String p_nom
+   * @param p_nom Nom
    *
    * @return OrganismeModel
    */
@@ -127,7 +114,7 @@ public class OrganismeModel extends BaseModel {
   /**
    * Set codePostal
    *
-   * @param String p_codePostal
+   * @param p_codePostal Code postal
    *
    * @return OrganismeModel
    */
@@ -148,7 +135,7 @@ public class OrganismeModel extends BaseModel {
   /**
    * Set ville
    *
-   * @param String p_ville
+   * @param p_ville Ville
    *
    * @return OrganismeModel
    */

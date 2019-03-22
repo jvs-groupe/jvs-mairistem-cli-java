@@ -13,12 +13,13 @@ import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;
  * EnumerationManager
  * 
  * @author jeromeklam
- * @package Enumeration
  */
 public class EnumerationManager extends BaseManager {
 
   /**
    * Constructor
+   * 
+   * @param p_client Client WS
    */
   public EnumerationManager(ClientWSInterface p_client) {
     this.client = p_client;
@@ -27,7 +28,7 @@ public class EnumerationManager extends BaseManager {
   /**
    * Find Enumération
    * 
-   * @return List<EnumerationModel>
+   * @return List
    */
   public List<EnumerationModel> find() {
     logger.info("find.start");
@@ -51,7 +52,7 @@ public class EnumerationManager extends BaseManager {
   /**
    * Get filter
    * 
-   * @param String p_fieldName
+   * @param p_fieldName Nom du champ
    * 
    * @return String
    */

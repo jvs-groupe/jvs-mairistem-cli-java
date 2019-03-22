@@ -14,12 +14,13 @@ import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;;
  * CompteurManager
  * 
  * @author jeromeklam
- * @package PointDeConsommation
  */
 public class CompteurManager extends BaseManager {
 
   /**
    * Constructor
+   * 
+   * @param p_client Client WS
    */
   public CompteurManager(ClientWSInterface p_client) {
     this.client = p_client;
@@ -28,7 +29,7 @@ public class CompteurManager extends BaseManager {
   /**
    * Find Compteur
    * 
-   * @return List<CompteurModel>
+   * @return List
    */
   public List<CompteurModel> find() {
     logger.info("find.start");
@@ -53,7 +54,7 @@ public class CompteurManager extends BaseManager {
   /**
    * Get filter
    * 
-   * @param String p_fieldName
+   * @param p_fieldName Nom du champ
    * 
    * @return String
    */

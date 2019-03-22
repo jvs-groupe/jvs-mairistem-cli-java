@@ -6,7 +6,6 @@ import java.util.Locale;
  * AuthType
  * 
  * @author jeromeklam
- * @package Auth
  */
 public enum AuthType {
   /**
@@ -24,9 +23,9 @@ public enum AuthType {
   }
 
   /**
-   * @param String authType
+   * @param authType Type d'authentification
    * 
-   * @throws Exception
+   * @throws Exception Erreur hawk
    * 
    * @return AuthType
    */

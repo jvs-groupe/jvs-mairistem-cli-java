@@ -10,12 +10,11 @@ import java.io.IOException;
  * CustomIntegerDeserializer
  * 
  * @author jeromeklam
- * @package Json
  */
 public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
 
   /**
-   * @var long
+   * long
    */
   private static final long serialVersionUID = 1L;
 
@@ -28,7 +27,7 @@ public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
 
   /**
    * Constructor
-   * @param Class p_c
+   * @param p_c Class
    */
   public CustomIntegerDeserializer(Class<?> p_c) {
     super(p_c);
@@ -37,8 +36,8 @@ public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
   /**
    * deserialize
    * 
-   * @param JsonParser             p_jsonParser
-   * @param DeserializationContext p_deserializationContext
+   * @param p_jsonParser json Parser
+   * @param p_deserializationContext Context
    * 
    * @return Integer
    */

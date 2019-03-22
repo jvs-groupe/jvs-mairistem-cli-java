@@ -9,36 +9,27 @@ import fr.jvsonline.jvsmairistemcli.core.Loggable;
  * RequestParameter
  * 
  * @author jeromeklam
- * @package Request
  */
 public class RequestParameter extends Loggable {
   
   /**
    * Standard operators
-   * 
-   * @var String
    */
   protected static final String FIND_EQUAL = "eq";
   protected static final String FIND_LIKE = "like";
   
   /**
    * Parameter name
-   * 
-   * @var String
    */
   protected String name;
   
   /**
    * Operator
-   * 
-   * @var String
    */
   protected String operator;
   
   /**
    * Parameter value
-   * 
-   * @var String
    */
   protected String value;
   
@@ -50,6 +41,10 @@ public class RequestParameter extends Loggable {
   
   /**
    * Constructor
+   * 
+   * @param p_name Nom
+   * @param p_value Valeur
+   * @param p_operator Opérateur
    */
   public RequestParameter(String p_name, String p_value, String p_operator) {
     this.name = p_name;
@@ -60,7 +55,7 @@ public class RequestParameter extends Loggable {
   /**
    * Set name
    * 
-   * @param String p_name
+   * @param p_name Nom
    * 
    * @return RequestParameter
    */

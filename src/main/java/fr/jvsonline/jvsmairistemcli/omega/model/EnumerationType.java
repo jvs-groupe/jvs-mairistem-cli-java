@@ -4,7 +4,6 @@ package fr.jvsonline.jvsmairistemcli.omega.model;
  * EnumerationType
  * 
  * @author jeromeklam
- * @package Enumeration
  */
 public enum EnumerationType {
   /**
@@ -25,14 +24,14 @@ public enum EnumerationType {
   CALIBRE_COMPTEUR("CALIB");
   
   /**
-   * @var String
+   * Code
    */
   private String code;
 
   /**
    * Constructor
    * 
-   * @param String p_code
+   * @param p_code Code
    * 
    * @return void
    */

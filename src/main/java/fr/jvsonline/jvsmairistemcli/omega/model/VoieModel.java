@@ -15,15 +15,12 @@ import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeModel;
  * VoieModel
  * 
  * @author jeromeklam
- * @package Voie
  */
 @Type("Partner_Voie")
 public class VoieModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Identifiant de l'adresse de desserte
-   * 
-   * @var Integer
    */
   @Id(IntegerIdHandler.class)
   @JsonProperty("voie_id")
@@ -31,72 +28,54 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Identifiant de l'organisme
-   * 
-   * @var Integer
    */
   @JsonProperty("organism_id")
   private Integer id_organism;
 
   /**
    * Identifiant du quartier
-   * 
-   * @var Integer
    */
   @JsonProperty("quartier_id")
   private Integer id_quartier;
   
   /**
    * Code de la voie
-   * 
-   * @var String
    */
   @JsonProperty("codevoie")
   private String code;
 
   /**
    * Type de la voie
-   * 
-   * @var String
    */
   @JsonProperty("typevoie")
   private String type;
   
   /**
    * Article de la voie
-   * 
-   * @var String
    */
   @JsonProperty("artvoie")
   private String article;
   
   /**
    * Nom de la voie
-   * 
-   * @var String
    */
   @JsonProperty("nomvoie")
   private String nom;
 
   /**
    * Coordoonées SIG
-   * 
-   * @var String
    */
   @JsonProperty("sigcoord")
   private String coordonnees;
   
   /**
    * Id admin
-   * 
-   * @var String
    */
   @JsonProperty("idadmin")
   private String admin;
   
   /**
    * Voie active
-   * 
-   * @var Boolean
    */
   @JsonProperty("actif")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
@@ -104,8 +83,6 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
   
   /**
    * Organisme
-   * 
-   * @var OrganismeModel
    */
   @Relationship("commune")
   private OrganismeModel commune;
@@ -128,7 +105,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
   /**
    * Set Id
    * 
-   * @param Integer p_id
+   * @param p_id Identifiant
    * 
    * @return VoieModel
    */
@@ -149,7 +126,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
   /**
    * Set identifiant de l'organisme
    * 
-   * @param Integer p_idOrganisme
+   * @param p_idOrganisme Identifiant de l'organisme
    * 
    * @return VoieModel
    */
@@ -170,7 +147,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
   /**
    * Set code
    * 
-   * @param String p_code
+   * @param p_code Code
    * 
    * @return VoieModel
    */
@@ -191,7 +168,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
   /**
    * Set nom
    * 
-   * @param String p_nom
+   * @param p_nom Nom
    * 
    * @return VoieModel
    */
@@ -212,7 +189,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
   /**
    * Set type
    *
-   * @param String p_type
+   * @param p_type Type
    *
    * @return VoieModel
    */
@@ -233,7 +210,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
   /**
    * Set article
    *
-   * @param String p_article
+   * @param p_article Article
    *
    * @return VoieModel
    */

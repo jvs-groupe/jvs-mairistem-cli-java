@@ -10,7 +10,6 @@ import java.io.IOException;
  * CustomBooleanDeserializer
  * 
  * @author jeromeklam
- * @package Json
  */
 public class CustomBooleanDeserializer extends StdDeserializer<Boolean> {
 
@@ -29,7 +28,7 @@ public class CustomBooleanDeserializer extends StdDeserializer<Boolean> {
   /**
    * Constructor
    * 
-   * @param Class p_c
+   * @param p_c Class
    */
   public CustomBooleanDeserializer(Class<?> p_c) {
     super(p_c);
@@ -38,8 +37,8 @@ public class CustomBooleanDeserializer extends StdDeserializer<Boolean> {
   /**
    * Deserialize
    * 
-   * @param JsonParser             p_jsonParser
-   * @param DeserializationContext p_deserializationContext
+   * @param p_jsonParser Json Parser
+   * @param p_deserializationContext Context
    * 
    * @return Boolean
    */

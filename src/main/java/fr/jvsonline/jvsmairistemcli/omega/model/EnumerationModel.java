@@ -15,15 +15,12 @@ import fr.jvsonline.jvsmairistemcli.omega.model.LigneEnumerationModel;
  * EnumerationModel
  * 
  * @author jeromeklam
- * @package Enumeration
  */
 @Type("Partner_Enum")
 public class EnumerationModel extends BaseModel {
 
   /**
    * Identifiant de l'énumération
-   * 
-   * @var Integer
    */
   @Id(IntegerIdHandler.class)
   @JsonProperty("enum_id")
@@ -31,16 +28,12 @@ public class EnumerationModel extends BaseModel {
 
   /**
    * Nom de l'énumération
-   * 
-   * @var String
    */
   @JsonProperty("nomenum")
   private String nom;
 
   /**
    * Libre
-   * 
-   * @var Boolean
    */
   @JsonProperty("libre")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
@@ -48,8 +41,6 @@ public class EnumerationModel extends BaseModel {
   
   /**
    * Lignes
-   * 
-   * @var List<LigneEnumerationModel>
    */
   @Relationship("ligenums")
   private List<LigneEnumerationModel> ligenums;
@@ -72,7 +63,7 @@ public class EnumerationModel extends BaseModel {
   /**
    * Set Id
    * 
-   * @param Integer p_id
+   * @param p_id Identifiant
    * 
    * @return EnumerationModel
    */
@@ -93,7 +84,7 @@ public class EnumerationModel extends BaseModel {
   /**
    * Set nom
    * 
-   * @param String p_nom
+   * @param p_nom Nom
    * 
    * @return EnumerationModel
    */
@@ -114,7 +105,7 @@ public class EnumerationModel extends BaseModel {
   /**
    * Set libre
    * 
-   * @param String p_libre
+   * @param p_libre Libre
    * 
    * @return EnumerationModel
    */
@@ -126,7 +117,7 @@ public class EnumerationModel extends BaseModel {
   /**
    * Get lignes énumérations
    * 
-   * @return List<LigneEnumerationModel>
+   * @return List
    */
   public List<LigneEnumerationModel> getLignes() {
     return this.ligenums;

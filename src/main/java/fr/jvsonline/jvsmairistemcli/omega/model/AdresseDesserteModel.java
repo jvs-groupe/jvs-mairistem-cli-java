@@ -13,15 +13,12 @@ import fr.jvsonline.jvsmairistemcli.model.AdresseModel;
  * AdresseDesserteModel
  * 
  * @author jeromeklam
- * @package AdresseDesserte
  */
 @Type("Partner_Pdessadr")
 public class AdresseDesserteModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Identifiant de l'adresse de desserte
-   * 
-   * @var Integer
    */
   @Id(IntegerIdHandler.class)
   @JsonProperty("pdessadr_id")
@@ -29,32 +26,24 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
 
   /**
    * Identifiant de la voie
-   * 
-   * @var Integer
    */
   @JsonProperty("voie_id")
   private Integer id_voie;
 
   /**
    * Numéro de voie
-   * 
-   * @var String
    */
   @JsonProperty("numvoirie")
   private String numeroVoie;
 
   /**
    * Complément du numéro de voie
-   * 
-   * @var String
    */
   @JsonProperty("cpltnumvoi")
   private String complementNumeroVoie;
   
   /**
    * Voie
-   * 
-   * @var VoieModel
    */
   @Relationship("voie")
   private VoieModel voie;
@@ -77,7 +66,7 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
   /**
    * Set Id
    * 
-   * @param Integer p_id
+   * @param p_id Identifiant
    * 
    * @return AdresseDesserteModel
    */
@@ -98,7 +87,7 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
   /**
    * Set identifiant de la voie
    * 
-   * @param Integer p_idVoie
+   * @param p_idVoie Identifiant de la voie
    * 
    * @return AdresseDesserteModel
    */
@@ -119,7 +108,7 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
   /**
    * Set numéro de voie
    * 
-   * @param String p_numeroVoie
+   * @param p_numeroVoie Numéro de la voie
    * 
    * @return AdresseDesserteModel
    */

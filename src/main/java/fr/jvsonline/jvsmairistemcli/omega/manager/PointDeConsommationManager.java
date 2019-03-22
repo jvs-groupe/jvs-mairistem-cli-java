@@ -21,12 +21,13 @@ import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
  * PointDeConsommationManager
  * 
  * @author jeromeklam
- * @package PointDeConsommation
  */
 public class PointDeConsommationManager extends BaseManager {
 
   /**
    * Constructor
+   * 
+   * @param p_client Client WS
    */
   public PointDeConsommationManager(ClientWSInterface p_client) {
     super();
@@ -36,7 +37,7 @@ public class PointDeConsommationManager extends BaseManager {
   /**
    * Find Point de consommation
    * 
-   * @return List<PointDeConsommationModel>
+   * @return List
    */
   public List<PointDeConsommationModel> find() {
     return this.find(this.getRequestParameters());
@@ -45,9 +46,9 @@ public class PointDeConsommationManager extends BaseManager {
   /**
    * Find Point de consommation
    * 
-   * @param RequestParameters p_parameters
+   * @param p_parameters paramètres
    * 
-   * @return List<PointDeConsommationModel>
+   * @return List
    */
   public List<PointDeConsommationModel> find(RequestParameters p_parameters) {
     logger.info("find.start");
@@ -73,7 +74,7 @@ public class PointDeConsommationManager extends BaseManager {
   /**
    * Get by Id
    * 
-   * @param Integer p_id
+   * @param p_id Identifiant
    * 
    * @return PointDeConsommationModel
    */
@@ -96,7 +97,7 @@ public class PointDeConsommationManager extends BaseManager {
   /**
    * Get filter
    * 
-   * @param String p_fieldName
+   * @param p_fieldName Nom du champ
    * 
    * @return String
    */

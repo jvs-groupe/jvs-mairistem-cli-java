@@ -12,15 +12,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * TourneeModel
  * 
  * @author jeromeklam
- * @package Tournee
  */
 @Type("Partner_Tournee")
 public class TourneeModel extends BaseModel {
 
   /**
    * Identifiant de la tournée
-   * 
-   * @var Integer
    */
   @Id(IntegerIdHandler.class)
   @JsonProperty("tournee_id")
@@ -28,24 +25,18 @@ public class TourneeModel extends BaseModel {
   
   /**
    * Code tournée
-   * 
-   * @var String
    */
   @JsonProperty("codetournee")
   private String code;
   
   /**
    * Libellé tournée
-   * 
-   * @var String
    */
   @JsonProperty("libtournee")
   private String libelle;
   
   /**
    * Identifiant de l'agent
-   * 
-   * @var Integer
    */
   @JsonProperty("agent_id")
   private Integer id_agent;
@@ -68,7 +59,7 @@ public class TourneeModel extends BaseModel {
   /**
    * Set Id
    * 
-   * @param Integer p_id
+   * @param p_id Identifiant
    * 
    * @return TourneeModel
    */
@@ -80,7 +71,7 @@ public class TourneeModel extends BaseModel {
   /**
    * Get code
    * 
-   * @return
+   * @return Code
    */
   public String getCode() {
     return this.code;
@@ -89,7 +80,7 @@ public class TourneeModel extends BaseModel {
   /**
    * Set code
    * 
-   * @param String p_code
+   * @param p_code Code
    * 
    * @return TourneeModel
    */
@@ -110,7 +101,7 @@ public class TourneeModel extends BaseModel {
   /**
    * Set libelle
    * 
-   * @param String p_libelle
+   * @param p_libelle Libellé
    * 
    * @return TourneeModel
    */
@@ -131,7 +122,7 @@ public class TourneeModel extends BaseModel {
   /**
    * Set id egent
    * 
-   * @param Integer p_id_agent
+   * @param p_id_agent Identifiant de l'agent
    * 
    * @return TourneeModel
    */

@@ -12,14 +12,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * CompteurModel
  * 
  * @author jeromeklam
- * @package Compteur
  */
 @Type("Partner_Compteur")
 public class CompteurModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Identifiant du compteur
-   * @var Integer
    */
   @Id(IntegerIdHandler.class)
   @JsonProperty("compteur_id")
@@ -27,28 +25,24 @@ public class CompteurModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Numéro de série
-   * @var String
    */
   @JsonProperty("numserie")
   private String numeroSerie;
   
   /**
    * Marque
-   * @var String
    */
   @JsonProperty("enum_marq")
   private String marque;
   
   /**
    * Diamètre
-   * @var String
    */
   @JsonProperty("enum_diam")
   private String diametre;
   
   /**
    * Calibre
-   * @var String
    */
   @JsonProperty("enum_calib")
   private String calibre;
@@ -71,7 +65,7 @@ public class CompteurModel extends BaseModel implements BaseModelInterface {
   /**
    * Set Id
    * 
-   * @param Integer p_id
+   * @param p_id Identifiant
    * 
    * @return CompteurModel
    */
@@ -92,7 +86,7 @@ public class CompteurModel extends BaseModel implements BaseModelInterface {
   /**
    * Set numéro de série
    * 
-   * @param String p_numeroSerie
+   * @param p_numeroSerie Numéro de série
    * 
    * @return CompteurModel
    */
@@ -113,7 +107,7 @@ public class CompteurModel extends BaseModel implements BaseModelInterface {
   /**
    * Set marque
    * 
-   * @param String p_marque
+   * @param p_marque Marque
    * 
    * @return CompteurModel
    */
@@ -134,7 +128,7 @@ public class CompteurModel extends BaseModel implements BaseModelInterface {
   /**
    * Set diamètre
    * 
-   * @param String p_diametre
+   * @param p_diametre Diamètre
    * 
    * @return CompteurModel
    */
@@ -155,7 +149,7 @@ public class CompteurModel extends BaseModel implements BaseModelInterface {
   /**
    * Set calibre
    * 
-   * @param String p_calibre
+   * @param p_calibre Calibre
    * 
    * @return CompteurModel
    */

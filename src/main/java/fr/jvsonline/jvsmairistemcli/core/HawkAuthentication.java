@@ -11,29 +11,24 @@ import fr.jvsonline.jvsmairistemcli.core.Hawk;
  * HawkAuthentication
  * 
  * @author jeromeklam
- * @package Auth
  */
 public class HawkAuthentication extends Loggable implements ClientRequestFilter {
 
   /**
    * Id
-   * 
-   * @var String
    */
   private final String id;
   
   /**
    * Key
-   * 
-   * @var key
    */
   private final String key;
   
   /**
    * Constructor
    * 
-   * @param String p_id
-   * @param String p_key
+   * @param p_id Identifiant
+   * @param p_key Clef
    */
   public HawkAuthentication(String p_id, String p_key) {
     this.id = p_id;
@@ -43,9 +38,7 @@ public class HawkAuthentication extends Loggable implements ClientRequestFilter 
   /**
    * Filter to add Authorization header
    * 
-   * @param ClientRequestContext p_requestContext
-   * 
-   * @return void
+   * @param p_requestContext Context
    */
   @Override
   public void filter(ClientRequestContext p_requestContext) throws IOException {
