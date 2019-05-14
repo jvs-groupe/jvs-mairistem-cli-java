@@ -193,4 +193,14 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     String str = Tools.asString(this.nom, "") + " " + Tools.asString(this.prenom, "");
     return str.trim();
   }
+  
+  /**
+   * toString
+   * 
+   * @return String
+   */
+  @Override
+  public String toString() {
+    return this.getNomComplet();
+  }
 }

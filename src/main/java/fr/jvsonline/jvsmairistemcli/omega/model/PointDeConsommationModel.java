@@ -133,6 +133,12 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   private TourneeModel         tournee;
 
   /**
+   * Dernier relevé
+   */
+  @Relationship("dernierreleve")
+  private ReleveModel          dernierReleve;
+  
+  /**
    * Constructor
    */
   public PointDeConsommationModel() {
@@ -340,6 +346,15 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   public TourneeModel getTournee() {
     return this.tournee;
+  }
+
+  /**
+   * Get dernier relevé
+   * 
+   * @return ReleveModel
+   */
+  public ReleveModel getDernierReleve() {
+    return this.dernierReleve;
   }
 
   /**

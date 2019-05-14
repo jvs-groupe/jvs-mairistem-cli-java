@@ -6,6 +6,7 @@ import fr.jvsonline.jvsmairistemcli.omega.manager.EnumerationManager;
 import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.CompteurModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.ContratModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.ReleveModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.AdresseDesserteModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationType;
@@ -133,8 +134,16 @@ public class App {
         ContratModel contratActif = item.getContratActif();
         if (contratActif != null) {
           logger.info("    * " + contratActif.getOccupant());
+        } else {
+          logger.info("    * Aucun occupant.");
         }
         logger.info("    * " + item.toAdresse());
+        ReleveModel dernierReleve = item.getDernierReleve();
+        if (dernierReleve != null) {
+          logger.info("    * " + dernierReleve.toString());
+        } else {
+          logger.info("    * Pas de relevé.");
+        }
       }
     }
     logger.info("----------------------------------------------------------");

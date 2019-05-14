@@ -32,7 +32,7 @@ Depuis le conteneur dans le homedir du projet, à l'emplacement du fichier pom.x
     // Package
     mvn package
     // Déploiement local
-    mvn install:install-file -Dfile=JvsMairistemCli-1.0.1.jar -DpomFile=pom.xml
+    mvn install:install-file -Dfile=JvsMairistemCli-1.0.3.jar -DpomFile=pom.xml
     // Compile
     mvn clean compile exec:java -Dexec.mainClass="fr.jvsonline.jvsmairistemcli.App"
 ```

@@ -6,7 +6,7 @@
 
   <groupId>fr.jvsonline.jvsmairistemcli</groupId>
   <artifactId>JvsMairistemCli</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 
   <name>JvsMairistemCli</name>
   <description>Client Java pour les services web JVS-Mairistem</description>
@@ -227,10 +227,6 @@
   <profiles>
     <profile>
       <id>development</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-        <jdk>1.8</jdk>
-      </activation>
       <properties>
         <ws.endpoint>http://backoffice.jvsonline.fr:6880/api/v1</ws.endpoint>
         <ws.apiId>dfc7258e09f94ba6e495a08c50d6fd00@partner-kis-jolieville</ws.apiId>
@@ -239,6 +235,10 @@
       </properties>
     </profile>
     <profile>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <jdk>1.8</jdk>
+      </activation>
       <id>preproduction</id>
       <properties>
         <ws.endpoint>https://omegaweb-pp.jvsonline.fr/api/v1</ws.endpoint>
