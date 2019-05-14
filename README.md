@@ -99,3 +99,11 @@ Vous trouverez [ici](https://github.com/jvs-groupe/omega-api-doc) la documentati
     * Exemple via le projet https://github.com/jvs-groupe/jvs-mairistem-webapp
 
 
+### Deploiement
+
+``` 
+    export GPG_TTY=$(tty)
+    mvn clean deploy
+```
+
+Le mot de passe D..P......!D..F...2019
