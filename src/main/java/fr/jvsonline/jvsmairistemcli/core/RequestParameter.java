@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.jvsonline.jvsmairistemcli.core.Loggable;
+import fr.jvsonline.jvsmairistemcli.core.RequestParameterOperator;
 
 /**
  * RequestParameter
@@ -13,12 +14,6 @@ import fr.jvsonline.jvsmairistemcli.core.Loggable;
 public class RequestParameter extends Loggable {
   
   /**
-   * Standard operators
-   */
-  protected static final String FIND_EQUAL = "eq";
-  protected static final String FIND_LIKE = "like";
-  
-  /**
    * Parameter name
    */
   protected String name;
@@ -26,7 +21,7 @@ public class RequestParameter extends Loggable {
   /**
    * Operator
    */
-  protected String operator;
+  protected RequestParameterOperator operator;
   
   /**
    * Parameter value
@@ -46,7 +41,7 @@ public class RequestParameter extends Loggable {
    * @param p_value Valeur
    * @param p_operator Opérateur
    */
-  public RequestParameter(String p_name, String p_value, String p_operator) {
+  public RequestParameter(String p_name, String p_value, RequestParameterOperator p_operator) {
     this.name = p_name;
     this.value = p_value;
     this.operator = p_operator;
@@ -59,7 +54,7 @@ public class RequestParameter extends Loggable {
    * 
    * @return RequestParameter
    */
-  public RequestParameter setname(String p_name) {
+  public RequestParameter setName(String p_name) {
     this.name = p_name;
     return this;
   }
@@ -85,9 +80,9 @@ public class RequestParameter extends Loggable {
   /**
    * Get operator
    * 
-   * @return String
+   * @return RequestParameterOperator
    */
-  public String getOperator() {
+  public RequestParameterOperator getOperator() {
     return this.operator;
   }
 }

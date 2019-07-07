@@ -4,6 +4,7 @@ import com.github.jasminb.jsonapi.annotations.Type;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
@@ -16,6 +17,7 @@ import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
  * 
  */
 @Type("Partner_Personne")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PersonneModel extends BaseModel implements BaseModelInterface, PersonneInterface {
 
   /**

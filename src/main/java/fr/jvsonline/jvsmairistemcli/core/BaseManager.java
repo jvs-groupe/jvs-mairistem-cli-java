@@ -1,10 +1,10 @@
 package fr.jvsonline.jvsmairistemcli.core;
 
 import java.lang.reflect.Constructor;
-
 import fr.jvsonline.jvsmairistemcli.core.Loggable;
 import fr.jvsonline.jvsmairistemcli.core.RequestParameters;
 import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
+import fr.jvsonline.jvsmairistemcli.core.RequestParameterCondition;
 
 /**
  * BaseManager
@@ -17,7 +17,7 @@ public abstract class BaseManager extends Loggable {
    * WS client
    */
   protected ClientWSInterface client;
-
+  
   /**
    * Request parameters
    */
@@ -30,6 +30,15 @@ public abstract class BaseManager extends Loggable {
     this.flushRequestParameters();
   }
 
+  /**
+   * Set default condition
+   * 
+   * @param condition AND/OR
+   */
+  public void setDefaultCondition(RequestParameterCondition condition) {
+    this.parameters.setDefaultCondition(condition);
+  }
+  
   /**
    * Flush parameters
    */

@@ -68,6 +68,7 @@ public class JsonApiWS extends Loggable implements ClientWSInterface {
       target = target.queryParam("page[offset]", p_parameters.getOffset());
       target = target.queryParam("page[limit]", p_parameters.getLimit());
     }
+    target = target.queryParam("query_andor", p_parameters.getCondition());
     Invocation.Builder invocationBuilder = target.request(JsonApiWS.getMediaType());
     invocationBuilder.header("ApiId", this.settings.getWsApiId());
     logger.info("getJsonApiWS.end");

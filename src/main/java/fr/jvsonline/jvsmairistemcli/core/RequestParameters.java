@@ -3,6 +3,8 @@ package fr.jvsonline.jvsmairistemcli.core;
 import java.util.ArrayList;
 
 import fr.jvsonline.jvsmairistemcli.core.Loggable;
+import fr.jvsonline.jvsmairistemcli.core.RequestParameterCondition;
+import fr.jvsonline.jvsmairistemcli.core.RequestParameterOperator;
 
 /**
  * RequestParameters
@@ -17,12 +19,6 @@ public class RequestParameters extends Loggable {
   protected static final int              PAGE_LENGTH      = 20;
 
   /**
-   * Standard consitions
-   */
-  protected static final String           COND_OR          = "or";
-  protected static final String           COND_AND         = "and";
-
-  /**
    * Start, assumes start is 1.
    */
   protected int                           offset           = 1;
@@ -35,17 +31,17 @@ public class RequestParameters extends Loggable {
   /**
    * Parameters
    */
-  protected ArrayList<RequestParameter> map;
+  protected ArrayList<RequestParameter>   map;
 
   /**
    * Default operator
    */
-  protected String                        default_operator = RequestParameter.FIND_LIKE;
+  protected RequestParameterOperator      default_operator = RequestParameterOperator.LIKE;
 
   /**
    * Default condition
    */
-  protected String                        default_condition = COND_AND;
+  protected RequestParameterCondition     default_condition = RequestParameterCondition.AND;
   
   /**
    * Pagination updated ?
@@ -59,6 +55,24 @@ public class RequestParameters extends Loggable {
     this.map = new ArrayList<RequestParameter>();
   }
 
+  /**
+   * Set default condition AND/OR
+   * 
+   * @param condition AND/OR
+   */
+  public void setDefaultCondition(RequestParameterCondition condition) {
+    this.default_condition = condition;
+  }
+  
+  /**
+   * Get condition
+   * 
+   * @return String
+   */
+  public String getCondition() {
+    return this.default_condition.toString();
+  }
+  
   /**
    * Set offset and limit by page number
    * 

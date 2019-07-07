@@ -19,6 +19,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import fr.jvsonline.jvsmairistemcli.core.RequestParameterCondition;
 
 /**
  * Hello world!
@@ -118,7 +119,9 @@ public class App {
     logger.info("----------------------------------------------------------");
     logger.info("   Liste des points de consommation ayant un occupant prénommé Georges...");
     pconsoManager.flushRequestParameters();
+    pconsoManager.setDefaultCondition(RequestParameterCondition.OR);
     pconsoManager.addRequestParameter("contratActif.occupant.prenom", "Georges");
+    pconsoManager.addRequestParameter("contratActif.occupant.nom", "pino");
     List<PointDeConsommationModel> myListN = pconsoManager.find();
     if (myListN == null) {
       logger.info("Empty result...");

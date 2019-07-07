@@ -1,3 +1,11 @@
+# 1.1.2 : 07/07/2019
+
+* Les propriétés json n'ont indiquées dans le client ne sont plus bloquantes
+* Ajout d'énumérations pour les conditions et opérateurs
+* Ajout du propriétaire et du redevable sur le contrat actif
+* Ajout d'informations sur le point de consommation (ordre de relève, coordonnées SIG, commentaire)
+* Possibilité de faire un or dans les requêtes via setDefaultCondition() sur le manager
+
 # 1.1.1 : 17/05/2019
 
 * Test javax.ws.rs 2.0, jersey 2.11

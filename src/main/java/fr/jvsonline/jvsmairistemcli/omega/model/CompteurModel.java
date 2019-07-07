@@ -3,9 +3,9 @@ package fr.jvsonline.jvsmairistemcli.omega.model;
 import com.github.jasminb.jsonapi.annotations.Type;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
-
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author jeromeklam
  */
 @Type("Partner_Compteur")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CompteurModel extends BaseModel implements BaseModelInterface {
 
   /**

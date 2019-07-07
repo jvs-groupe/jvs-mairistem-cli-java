@@ -5,6 +5,7 @@ import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
@@ -17,6 +18,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeModel;
  * @author jeromeklam
  */
 @Type("Partner_Voie")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class VoieModel extends BaseModel implements BaseModelInterface {
 
   /**

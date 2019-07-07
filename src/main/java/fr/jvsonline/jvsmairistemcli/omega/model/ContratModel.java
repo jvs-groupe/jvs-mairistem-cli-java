@@ -6,6 +6,7 @@ import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
@@ -18,6 +19,7 @@ import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
  * @author jeromeklam
  */
 @Type("Partner_Contrat")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ContratModel extends BaseModel implements BaseModelInterface {
 
   /**
@@ -111,6 +113,18 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   private PersonneModel occupant;
   
   /**
+   * Redevable
+   */
+  @Relationship("redevable")
+  private PersonneModel redevable;
+  
+  /**
+   * Propriétaire
+   */
+  @Relationship("proprietaire")
+  private PersonneModel proprietaire;
+  
+  /**
    * Constructor
    */
   public ContratModel() {
@@ -144,5 +158,23 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
    */
   public PersonneModel getOccupant() {
     return this.occupant;
+  }
+  
+  /**
+   * Get redevable
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel getRedevable() {
+    return this.redevable;
+  }
+  
+  /**
+   * Get propriétaire
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel getProprietaire() {
+    return this.proprietaire;
   }
 }

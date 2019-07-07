@@ -4,6 +4,7 @@ import com.github.jasminb.jsonapi.annotations.Type;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.github.jasminb.jsonapi.annotations.Relationship;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
@@ -15,6 +16,7 @@ import fr.jvsonline.jvsmairistemcli.model.AdresseModel;
  * @author jeromeklam
  */
 @Type("Partner_Pdessadr")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AdresseDesserteModel extends BaseModel implements BaseModelInterface {
 
   /**

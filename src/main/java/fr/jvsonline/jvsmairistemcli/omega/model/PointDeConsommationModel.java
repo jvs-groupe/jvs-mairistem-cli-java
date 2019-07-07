@@ -6,8 +6,8 @@ import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 import fr.jvsonline.jvsmairistemcli.core.AdresseInterface;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
@@ -24,6 +24,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.AdresseDesserteModel;
  * @author jeromeklam
  */
 @Type("Partner_Pconso")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PointDeConsommationModel extends BaseModel implements BaseModelInterface, AdresseInterface {
 
   /**
@@ -102,6 +103,42 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   @JsonDeserialize(using = CustomDateDeserializer.class)
   private Date                 dateFin;
 
+  /**
+   * Ordre de relève
+   */
+  @JsonProperty("noordrlv")
+  private Integer              numeroOrdreReleve;
+  
+  /**
+   * Complément du numéro d'ordre de relève
+   */
+  @JsonProperty("cpltnoordrlv")
+  private Integer              complementNumeroOrdreReleve;
+  
+  /**
+   * Clef de localisation
+   */
+  @JsonProperty("cleloc")
+  private String               clefLocalisation;
+  
+  /**
+   * Coordonnées SIG
+   */
+  @JsonProperty("sigcoord")
+  private String               coordonneeSig;
+  
+  /**
+   * Coordonnées GPS
+   */
+  @JsonProperty("coordgpsdl")
+  private String               coordonneeGps;
+  
+  /**
+   * Commentaire
+   */
+  @JsonProperty("comlib")
+  private String               commentaire;
+  
   /**
    * Identifiant externe
    */
@@ -291,6 +328,132 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     return this;
   }
 
+  /**
+   * Get numéro ordre relève
+   * 
+   * @return Integer
+   */
+  public Integer getNumeroOrdreReleve() {
+    return this.numeroOrdreReleve;
+  }
+  
+  /**
+   * Set numéro ordre relève
+   * 
+   * @param p_numero Numéro
+   * 
+   * @return PointDeConsommationModel
+   */
+  public PointDeConsommationModel setNumeroOrdreReleve(Integer p_numero) {
+    this.numeroOrdreReleve = p_numero;
+    return this;
+  }
+
+  /**
+   * Get complément numéro ordre relève
+   * 
+   * @return Integer
+   */
+  public Integer getComplementNumeroOrdreReleve() {
+    return this.complementNumeroOrdreReleve;
+  }
+  
+  /**
+   * Set complément numéro ordre relève
+   * 
+   * @param p_complement Complément
+   * 
+   * @return PointDeConsommationModel
+   */
+  public PointDeConsommationModel getComplementNumeroOrdreReleve(Integer p_complement) {
+    this.complementNumeroOrdreReleve = p_complement;
+    return this;
+  }
+
+  /**
+   * Get clef de localisation
+   * 
+   * @return String
+   */
+  public String getClefLocalisation() {
+    return this.clefLocalisation;
+  }
+  
+  /**
+   * Set clef de localisation
+   * 
+   * @param p_clef Clef
+   * 
+   * @return PointDeConsommationModel
+   */
+  public PointDeConsommationModel setClefLocalisatio(String p_clef) {
+    this.clefLocalisation = p_clef;
+    return this;
+  }
+  
+  /**
+   * Get coordonnées SIG
+   * 
+   * @return String
+   */
+  public String getCoordonneeSig() {
+    return this.coordonneeSig;
+  }
+  
+  /**
+   * Set coordonnées SIG
+   * 
+   * @param p_coordonnee Coordonnées
+   * 
+   * @return PointDeConsommationModel
+   */
+  public PointDeConsommationModel setCoordonneeSig(String p_coordonnee) {
+    this.coordonneeSig = p_coordonnee;
+    return this;
+  }
+
+  /**
+   * Get coordonnées Gps
+   * 
+   * @return String
+   */
+  public String getCoordonneeGps() {
+    return this.coordonneeGps;
+  }
+  
+  /**
+   * Set coordonnées Gps
+   * 
+   * @param p_coordonnee Coordonnées
+   * 
+   * @return PointDeConsommationModel
+   */
+  public PointDeConsommationModel setCoordonneeGps(String p_coordonnee) {
+    this.coordonneeGps = p_coordonnee;
+    return this;
+  }
+  
+  /**
+   * Get commentaire
+   * 
+   * @return String
+   */
+  public String getCommentaire() {
+    return this.commentaire;
+  }
+  
+  /**
+   * Set commentaire
+   * 
+   * @param p_commentaire String
+   * 
+   * @return PointDeConsommationModel
+   */
+  public PointDeConsommationModel setCommentaire(String p_commentaire) {
+    this.commentaire = p_commentaire;
+    return this;
+  }
+  
   /**
    * Get identifiant externe
    * 
