@@ -112,6 +112,7 @@ public class App {
       for (OrganismeFactureurModel item : myListOfacts) {
         logger.info("Ofact " + item.getNom());
         omegaContainer.setOrganismeFactureur(item);
+        break;
       }
     }
     //omegaContainer.setEnums(myListE);

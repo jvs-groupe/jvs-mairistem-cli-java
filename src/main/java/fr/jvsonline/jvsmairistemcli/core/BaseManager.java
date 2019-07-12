@@ -5,6 +5,7 @@ import fr.jvsonline.jvsmairistemcli.core.Loggable;
 import fr.jvsonline.jvsmairistemcli.core.RequestParameters;
 import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
 import fr.jvsonline.jvsmairistemcli.core.RequestParameterCondition;
+import fr.jvsonline.jvsmairistemcli.core.RequestParameterOperator;
 
 /**
  * BaseManager
@@ -37,6 +38,15 @@ public abstract class BaseManager extends Loggable {
    */
   public void setDefaultCondition(RequestParameterCondition condition) {
     this.parameters.setDefaultCondition(condition);
+  }
+  
+  /**
+   * Set default operator
+   * 
+   * @param operator LIKE, EQUAL, ...
+   */
+  public void setDefaultOperator(RequestParameterOperator operator) {
+    this.parameters.setDefaultOperator(operator);
   }
   
   /**

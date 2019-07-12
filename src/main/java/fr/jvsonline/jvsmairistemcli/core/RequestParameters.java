@@ -65,6 +65,15 @@ public class RequestParameters extends Loggable {
   }
   
   /**
+   * Set default operator EQUAL/LIKE
+   * 
+   * @param operator EQUAL/LIKE
+   */
+  public void setDefaultOperator(RequestParameterOperator operator) {
+    this.default_operator = operator;
+  }
+  
+  /**
    * Get condition
    * 
    * @return String

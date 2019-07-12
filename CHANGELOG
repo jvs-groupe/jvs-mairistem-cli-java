@@ -1,3 +1,17 @@
+# 1.1.3 : 12/07/2019
+
+* function ReleveModel PointDeConsommationModel.getNouveauReleve()
+    * Pour retourner un nouveau relevé sur un point de consommation existant.
+* FactureExterneModel
+    * Pour gérer une facture, avec un organisme factureur, un redevable et des lignes, le tout sur un point de consommation
+* DemandeManager
+    * sendFactureExterne (envoyer une demande de facturation)
+    * updatePersonne (envoyer une demande de modification de personne)
+    * sendReleve (entoyer un nouveau relevé sur un point de consommation)
+* Container
+    * setArticles, getArticles (pour stocker et récupérer les articles)
+    * setOrganismeFactureur, getOrganismeFactureur (pour stocker et récupérer l'organisme factureur)
+
 # 1.1.2 : 07/07/2019
 
 * Les propriétés json n'ont indiquées dans le client ne sont plus bloquantes

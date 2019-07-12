@@ -78,15 +78,25 @@ _Il faut noter qu'un modèle aura toujours la même structure. Un compteur sur u
 ### Le conteneur Omega
 
 Le client met également à disposition un conteneur pour stocker des données techniques qui peuvent être utilisées à divers endroits. Ce conteneur dispose également de méthodes permettant de simplifier la logique d'utilisation de ces données techniques. Il sert principalement à la gestion des énumérations, codifications, ...
+Son but est aussi de mettre les données en cache au besoin.
 
 ```
   // Instance du conteneur
   Container omegaContainer = new Container();
 ```
 
-On injecte les énumérations récupérées ci-dessus pour profiter des méthodes.
+#### Les énumérations
+
+Les [énumérations](https://github.com/jvs-groupe/omega-api-doc#les-%C3%A9num%C3%A9rations) permettent de gérer toutes sortes de codifications, le mieux étant de les sauvegarder dans le conteneur pour éviter des appels répétitifs.
 
 ```
+  // Instance du manager qui permet d'appeler les WS de gestion des énumérations.
+  EnumerationManager enumManager = new EnumerationManager(wsClient);
+  // On demande la page 1 avec une limite de 999
+  enumManager.setPage(1);
+  enumManager.setPageLimit(999);
+  // Recherche
+  List<EnumerationModel> myListE = enumManager.find();
   omegaContainer.setEnums(myListE);
   // On recupère une ligne spécifique d'une énumération, listées dans l'enum EnumerationType
   LigneEnumerationModel diametre = omegaContainer.getLigneEnumeration(
@@ -95,9 +105,89 @@ On injecte les énumérations récupérées ci-dessus pour profiter des méthode
   );
 ```
 
+#### Les articles
+
+Les articles sont nécessaires pour une facturation. En effet ce sont les codes définis par le client et liés à la facturation. Ils disposent d'informations comme un libellé, un prix unitaire, une unité, ...
+
+```
+  // Instance du manager qui permet d'appeler les WS de gestion des articles. 
+  ArticleManager artManager = new ArticleManager(wsClient);
+  // On demande la page 1 avec une limite de 999
+  artManager.setPage(1);
+  artManager.setPageLimit(100);
+  // On ne prend que les actifs, attention en cas de gestion d'affichage d'un historique
+  artManager.addRequestParameter("actif", "1");
+  // Recherche
+  List<ArticleModel> myListArts = artManager.find();
+  omegaContainer.setArticles(myListArts);
+```
+
+#### L'organisme factureur
+
+L'organisme factureur est obligatoire pour préciser pour le compte de qui est émise la facture. Dans beaucoup de cas il n'y en a qu'un.
+
+```
+  // Instance du manager qui permet d'appeler les WS de gestion des organismes factureurs.
+  OrganismeFactureurManager ofactManager = new OrganismeFactureurManager(wsClient);
+  // Critères de recherche
+  ofactManager.setPage(1);
+  ofactManager.setPageLimit(10);
+  // Recherche
+  List<OrganismeFactureurModel> myListOfacts = ofactManager.find();
+  for (OrganismeFactureurModel item : myListOfacts) {
+    omegaContainer.setOrganismeFactureur(item);
+    break;
+  }
+```
+
 ### Rechercher
 
-Pour rechercher avec critères, le manager dispose de certaines méthodes :
+Pour rechercher avec critères, les managers disposent de certaines méthodes.
+
+#### Purger tous les critères
+
+```
+  monManager.flushRequestParameters();
+```
+
+#### Définir la page de départ, les limites
+
+```
+  // 25 éléments maximum, la première page
+  monManager.setPage(1);
+  monManager.setPageLimit(25);
+```
+
+Par défaut la limite de longueur est de 20.
+
+#### Un critère sur un membre
+
+Le critère passé est le nom du membre de la classe gérée par le manager. Les noms des managers et objets gérés sont suffixés soit de Model soit de Manager. Donc pour le manager PersonneManager on peut filtrer à partir de PersonneModel. 
+
+A noter que l'on peut rechercher sur des relations définies dans le modèle. Il suffit de séparer les éléments apr un ".", exemple pour le point de consommation : contratactif.numero
+
+```
+  // numero est un membre de la classe principale gérée par le manager
+  monManager.addRequestParameter("numero", "56");
+````
+
+#### Le mode de recherche
+
+```
+  monManager.setDefaultOperator(RequestParameterOperator.EQUAL);
+```
+
+Par défaut l'opérateur de recherche est "LIKE"
+
+#### Le condition de recherche
+
+```
+  monManager.setDefaultCondition(RequestParameterCondition.OR);
+```
+
+Par défaut la condition de recherche est "AND"
+
+#### Exemples
 
 ```
   // Instance du manager des points de consommation pour la recherche

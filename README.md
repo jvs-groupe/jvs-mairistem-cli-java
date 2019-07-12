@@ -4,9 +4,11 @@ Client Jvs-Mairistem (Java 8)
 
 Client pour les API Jvs-Mairstem pour les partenaires.
 
-Le but de ce projet est d'abstraire la partie technique d'échange de données avec les applications Jvs-Mairistem, en commençant par Omega. Ce projet évoluera avec les modifications d'Omega, il faut donc garder une cohérence entre la version d'Omega et celle du client utilisé, cohérene assurée et vérifié par le client.
+Le but de ce projet est d'abstraire la partie technique d'échange de données avec les applications Jvs-Mairistem, en commençant par Omega. Ce projet évoluera avec les modifications d'Omega, il faut donc garder une cohérence entre la version d'Omega et celle du client utilisé, cohérence assurée et vérifiée par le client.
 
 **Pour le détail des versions, se référer au fichier [CHANGELOG](./CHANGELOG).**
+
+**Pour la documentation, consulter le répertoire [doc](./doc/omega/presentation.md).**
 
 ## Installation
 
@@ -68,3 +70,4 @@ Exemple via le projet https://github.com/jvs-groupe/jvs-mairistem-webapp
     export GPG_TTY=$(tty)
     mvn clean deploy
 ```
+
