@@ -2,7 +2,11 @@ package fr.jvsonline.jvsmairistemcli;
 
 import fr.jvsonline.jvsmairistemcli.omega.manager.PointDeConsommationManager;
 import fr.jvsonline.jvsmairistemcli.omega.manager.CompteurManager;
+import fr.jvsonline.jvsmairistemcli.omega.manager.DemandeManager;
 import fr.jvsonline.jvsmairistemcli.omega.manager.EnumerationManager;
+import fr.jvsonline.jvsmairistemcli.omega.manager.ArticleManager;
+import fr.jvsonline.jvsmairistemcli.omega.manager.DemandeManager;
+import fr.jvsonline.jvsmairistemcli.omega.manager.OrganismeFactureurManager;
 import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.CompteurModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.ContratModel;
@@ -11,12 +15,18 @@ import fr.jvsonline.jvsmairistemcli.omega.model.AdresseDesserteModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationType;
 import fr.jvsonline.jvsmairistemcli.omega.model.LigneEnumerationModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.ArticleModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.DemandeModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeFactureurModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.FactureExterneModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.LigneFactureExterneModel;
 import fr.jvsonline.jvsmairistemcli.omega.Container;
 import fr.jvsonline.jvsmairistemcli.core.JsonApiWS;
 import fr.jvsonline.jvsmairistemcli.core.RequestParameters;
 import fr.jvsonline.jvsmairistemcli.core.Settings;
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import fr.jvsonline.jvsmairistemcli.core.RequestParameterCondition;
@@ -62,6 +72,49 @@ public class App {
       }
     }
     omegaContainer.setEnums(myListE);
+    logger.info("----------------------------------------------------------");
+    
+    
+    
+    
+    logger.info("----------------------------------------------------------");
+    logger.info("   Récupération des articles...");
+    ArticleManager artManager = null;
+    artManager = new ArticleManager(wsClient);
+    artManager.setPage(1);
+    artManager.setPageLimit(100);
+    artManager.addRequestParameter("actif", "1");
+    List<ArticleModel> myListArts = artManager.find();
+    if (myListArts == null) {
+      logger.info("Empty result...");
+    } else {
+      for (ArticleModel item : myListArts) {
+        logger.info("Article " + item.getLibelle() + " : " + item.getPrixUnitaire());
+      }
+    }
+    omegaContainer.setArticles(myListArts);
+    //omegaContainer.setEnums(myListE);
+    logger.info("----------------------------------------------------------");
+    
+    
+    
+    
+    logger.info("----------------------------------------------------------");
+    logger.info("   Récupération des organismes factureurs...");
+    OrganismeFactureurManager ofactManager = null;
+    ofactManager = new OrganismeFactureurManager(wsClient);
+    ofactManager.setPage(1);
+    ofactManager.setPageLimit(100);
+    List<OrganismeFactureurModel> myListOfacts = ofactManager.find();
+    if (myListOfacts == null) {
+      logger.info("Empty result...");
+    } else {
+      for (OrganismeFactureurModel item : myListOfacts) {
+        logger.info("Ofact " + item.getNom());
+        omegaContainer.setOrganismeFactureur(item);
+      }
+    }
+    //omegaContainer.setEnums(myListE);
     logger.info("----------------------------------------------------------");
     
     
@@ -183,9 +236,9 @@ public class App {
     
     
     logger.info("----------------------------------------------------------");
-    logger.info("   Point de consommation avec l'ID 99...");
+    logger.info("   Point de consommation avec l'ID 34...");
     pconsoManager.flushRequestParameters();
-    PointDeConsommationModel myPConso = pconsoManager.getById(99);
+    PointDeConsommationModel myPConso = pconsoManager.getById(34);
     if (myPConso != null) {
       CompteurModel monCompteur99 = myPConso.getCompteur();
       String numSerie99 = "";
@@ -198,8 +251,40 @@ public class App {
           myPConso.getTypeHabitation()
       );
       logger.info(myPConso.toAdresse().toString() + " : " + numSerie99 + " / " + typeH);
+      /**
+       * manager des demandes
+       */
+      DemandeManager reqManager = new DemandeManager(wsClient);
+      // Ajouter un relevé
+      ReleveModel unReleve = myPConso.getNouveauReleve();
+      unReleve.setNouvelIndex(unReleve.getNouvelIndex() + 10);
+      DemandeModel myRequest = reqManager.sendReleve(unReleve);
+      if (myRequest != null) {
+        logger.info("Demande id " + myRequest.getId() + " -- " + myRequest.getStatus());
+      } else {
+        logger.info("Erreur");
+      }
+      // Ajouter une facture externe
+      FactureExterneModel uneFacture = new FactureExterneModel();
+      uneFacture.setPointDeConsommation(myPConso);
+      uneFacture.setOrganismeFactureur(omegaContainer.getOrganismeFactureur());
+      // Une ligne
+      LigneFactureExterneModel uneLigne1 = new LigneFactureExterneModel();
+      uneLigne1.setId(-1);
+      uneLigne1.setCodeArticle("toto");
+      uneLigne1.setQuantite(3f);
+      uneFacture.addLigneFactureExterne(uneLigne1);
+      // Une seconde ligne
+      LigneFactureExterneModel uneLigne2 = new LigneFactureExterneModel();
+      uneLigne2.setId(-2);
+      uneLigne2.setCodeArticle("tutu");
+      uneLigne2.setQuantite(5.6f);
+      uneFacture.addLigneFactureExterne(uneLigne2);
+      reqManager.sendFactureExterne(uneFacture);
+      // Mise à jour des coordonnées d'une personne
+      reqManager.updatePersonne(myPConso.getContratActif().getOccupant());
     } else {
-      logger.info("Pconso id 99 non trouvé !");
+      logger.info("Pconso id 34 non trouvé !");
     }
     logger.info("----------------------------------------------------------");
     

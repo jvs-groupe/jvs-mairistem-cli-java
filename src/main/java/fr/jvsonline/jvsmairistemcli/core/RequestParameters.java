@@ -78,7 +78,7 @@ public class RequestParameters extends Loggable {
    * 
    * @param p_page Numéro de la page
    * 
-   * @return RequestParameters
+   * @return boolean
    */
   public boolean setPage(int p_page) {
     this.paginated = true;
@@ -122,12 +122,12 @@ public class RequestParameters extends Loggable {
    * 
    * @param p_limit Limite
    * 
-   * @return RequestParameters
+   * @return boolean
    */
-  public RequestParameters setLimit(int p_limit) {
+  public boolean setLimit(int p_limit) {
     this.paginated = true;
     this.limit = p_limit;
-    return this;
+    return true;
   }
   
   /**

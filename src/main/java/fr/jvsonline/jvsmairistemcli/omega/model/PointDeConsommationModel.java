@@ -6,6 +6,7 @@ import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.jvsonline.jvsmairistemcli.core.AdresseInterface;
@@ -186,6 +187,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getId() {
     return this.id;
   }
@@ -207,6 +209,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return String
    */
+  @JsonIgnore
   public String getNumero() {
     return this.numero;
   }
@@ -228,6 +231,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getIdTournee() {
     return this.id_tournee;
   }
@@ -249,6 +253,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    *
    * @return Integer
    */
+  @JsonIgnore
   public Integer getIdCompteur() {
     return this.id_compteur;
   }
@@ -270,6 +275,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return String
    */
+  @JsonIgnore
   public String getTypeHabitation() {
     return this.typeHabitation;
   }
@@ -291,6 +297,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return String
    */
+  @JsonIgnore
   public String getEtage() {
     return this.etage;
   }
@@ -312,6 +319,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return String
    */
+  @JsonIgnore
   public String getAppartement() {
     return this.appartement;
   }
@@ -333,6 +341,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getNumeroOrdreReleve() {
     return this.numeroOrdreReleve;
   }
@@ -354,6 +363,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getComplementNumeroOrdreReleve() {
     return this.complementNumeroOrdreReleve;
   }
@@ -365,6 +375,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return PointDeConsommationModel
    */
+  @JsonIgnore
   public PointDeConsommationModel getComplementNumeroOrdreReleve(Integer p_complement) {
     this.complementNumeroOrdreReleve = p_complement;
     return this;
@@ -375,6 +386,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return String
    */
+  @JsonIgnore
   public String getClefLocalisation() {
     return this.clefLocalisation;
   }
@@ -396,6 +408,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return String
    */
+  @JsonIgnore
   public String getCoordonneeSig() {
     return this.coordonneeSig;
   }
@@ -417,6 +430,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return String
    */
+  @JsonIgnore
   public String getCoordonneeGps() {
     return this.coordonneeGps;
   }
@@ -438,6 +452,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return String
    */
+  @JsonIgnore
   public String getCommentaire() {
     return this.commentaire;
   }
@@ -459,6 +474,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getIdExterne() {
     return this.id_externe;
   }
@@ -480,6 +496,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return CompteurModel
    */
+  @JsonIgnore
   public CompteurModel getCompteur() {
     return this.compteur;
   }
@@ -489,6 +506,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return AdresseDesserteModel
    */
+  @JsonIgnore
   public AdresseDesserteModel getAdresseDesserte() {
     return this.adresseDesserte;
   }
@@ -498,6 +516,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return ContratModel
    */
+  @JsonIgnore
   public ContratModel getContratActif() {
     return this.contratActif;
   }
@@ -507,6 +526,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return TourneeModel
    */
+  @JsonIgnore
   public TourneeModel getTournee() {
     return this.tournee;
   }
@@ -516,8 +536,30 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * 
    * @return ReleveModel
    */
+  @JsonIgnore
   public ReleveModel getDernierReleve() {
     return this.dernierReleve;
+  }
+
+  /**
+   * Retourne un nouveau relevé
+   * 
+   * @return ReleveModel
+   */
+  @JsonIgnore
+  public ReleveModel getNouveauReleve() {
+    ReleveModel unReleve = new ReleveModel();
+    unReleve.setId(-1);
+    unReleve.setIdPconso(this.id);
+    unReleve.setIdCompteur(this.id_compteur);
+    if (this.dernierReleve != null) {
+      unReleve.setDateAncienIndex(this.dernierReleve.getDateNouvelIndex());
+      unReleve.setAncienIndex(this.dernierReleve.getNouvelIndex());
+      unReleve.setDateNouvelIndex(new Date());
+      unReleve.setNouvelIndex(this.dernierReleve.getNouvelIndex());
+      unReleve.setCommentaire("Relevé via partenaire");
+    }
+    return unReleve;
   }
 
   /**

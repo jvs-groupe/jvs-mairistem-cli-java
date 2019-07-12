@@ -1,9 +1,11 @@
 package fr.jvsonline.jvsmairistemcli.omega;
 
 import java.util.List;
+import fr.jvsonline.jvsmairistemcli.omega.model.ArticleModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationType;
 import fr.jvsonline.jvsmairistemcli.omega.model.LigneEnumerationModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeFactureurModel;
 
 /**
  * Container
@@ -15,7 +17,17 @@ public class Container {
   /**
    * Enumérations
    */
-  List<EnumerationModel> enums;
+  List<EnumerationModel> enums = null;
+  
+  /**
+   * Articles
+   */
+  List<ArticleModel> articles = null;
+ 
+  /**
+   * Organisme factureur principal
+   */
+  OrganismeFactureurModel organisme_factureur = null;
   
   /**
    * Enumération 1
@@ -28,6 +40,48 @@ public class Container {
   public Container() {
   }
 
+  /**
+   * Affectation des articles
+   * 
+   * @param p_articles Articles
+   * 
+   * @return Container
+   */
+  public Container setArticles(List<ArticleModel> p_articles) {
+    this.articles = p_articles;
+    return this;
+  }
+  
+  /**
+   * Retourne les articles
+   * 
+   * @return List<ArticleModel>
+   */
+  public List<ArticleModel> getArticles() {
+    return this.articles;
+  }
+  
+  /**
+   * Affectation de l'organisme factureur
+   * 
+   * @param p_ofact
+   * 
+   * @return Container
+   */
+  public Container setOrganismeFactureur(OrganismeFactureurModel p_ofact) {
+    this.organisme_factureur = p_ofact;
+    return this;
+  }
+  
+  /**
+   * Retourne l'organisme factureur principal
+   * 
+   * @return OrganismeFactureurModel
+   */
+  public OrganismeFactureurModel getOrganismeFactureur() {
+    return this.organisme_factureur;
+  }
+  
   /**
    * Set énumérations
    * 

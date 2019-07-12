@@ -62,6 +62,9 @@ Exemple via le projet https://github.com/jvs-groupe/jvs-mairistem-webapp
 ## Deploiement
 
 ``` 
+    *Il faut au préalable importer les clefs, elles sont protégées par mot de passe*
+    gpg --import ....gpg (public + secret)
+    
     export GPG_TTY=$(tty)
     mvn clean deploy
 ```

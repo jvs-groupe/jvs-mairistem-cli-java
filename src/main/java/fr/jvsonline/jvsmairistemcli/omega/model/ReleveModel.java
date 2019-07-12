@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -137,6 +138,7 @@ public class ReleveModel extends BaseModel {
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getId() {
     return this.id;
   }
@@ -158,6 +160,7 @@ public class ReleveModel extends BaseModel {
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getIdPconso() {
     return this.id_pconso;
   }
@@ -179,6 +182,7 @@ public class ReleveModel extends BaseModel {
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getIdCompteur() {
     return this.id_compteur;
   }
@@ -200,6 +204,7 @@ public class ReleveModel extends BaseModel {
    * 
    * @return Date
    */
+  @JsonIgnore
   public Date getDateAncienIndex() {
     return this.dateAncienindex;
   }
@@ -221,6 +226,7 @@ public class ReleveModel extends BaseModel {
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getAncienIndex() {
     return this.ancienIndex;
   }
@@ -242,6 +248,7 @@ public class ReleveModel extends BaseModel {
    * 
    * @return Date
    */
+  @JsonIgnore
   public Date getDateNouvelIndex() {
     return this.dateNouvelIndex;
   }
@@ -258,6 +265,12 @@ public class ReleveModel extends BaseModel {
     return this;
   }
   
+  /**
+   * Retourne le nouvel index
+   * 
+   * @return Integer
+   */
+  @JsonIgnore
   public Integer getNouvelIndex() {
     return this.nouvelIndex;
   }
@@ -279,6 +292,7 @@ public class ReleveModel extends BaseModel {
    * 
    * @return String
    */
+  @JsonIgnore
   public String getTypeReleve() {
     return this.typeReleve;
   }
@@ -296,10 +310,23 @@ public class ReleveModel extends BaseModel {
   }
   
   /**
+   * Affectation d'un commentaire
+   * 
+   * @param p_commentaire Commentaire
+   * 
+   * @return ReleveModel
+   */
+  public ReleveModel setCommentaire (String p_commentaire) {
+    this.commentaire = p_commentaire;
+    return this;
+  }
+  
+  /**
    * toString
    * 
    * @return String
    */
+  @JsonIgnore
   @Override
   public String toString() {
     DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");

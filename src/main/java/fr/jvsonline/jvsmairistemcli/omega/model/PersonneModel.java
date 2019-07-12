@@ -4,6 +4,7 @@ import com.github.jasminb.jsonapi.annotations.Type;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
@@ -159,6 +160,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getId() {
     return this.id;
   }
@@ -180,6 +182,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    * 
    * @return fr.jvsonline.jvsmairistemcli.model.PersonneModel
    */
+  @JsonIgnore
   public fr.jvsonline.jvsmairistemcli.model.PersonneModel toPersonne() {
     fr.jvsonline.jvsmairistemcli.model.PersonneModel personne = new fr.jvsonline.jvsmairistemcli.model.PersonneModel();
     return personne;
@@ -190,6 +193,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    * 
    * @return String
    */
+  @JsonIgnore
   @Override
   public String getNomComplet() {
     String str = Tools.asString(this.nom, "") + " " + Tools.asString(this.prenom, "");
@@ -201,6 +205,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    * 
    * @return String
    */
+  @JsonIgnore
   @Override
   public String toString() {
     return this.getNomComplet();

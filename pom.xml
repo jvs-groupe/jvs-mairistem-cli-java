@@ -6,7 +6,7 @@
 
   <groupId>fr.jvsonline.jvsmairistemcli</groupId>
   <artifactId>JvsMairistemCli</artifactId>
-  <version>1.1.2</version>
+  <version>1.1.3</version>
 
   <name>JvsMairistemCli</name>
   <description>Client Java pour les services web JVS-Mairistem</description>
@@ -214,6 +214,10 @@
 
   <profiles>
     <profile>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <jdk>1.8</jdk>
+      </activation>
       <id>development</id>
       <properties>
         <ws.endpoint>http://docker.for.mac.localhost:6880/api/v1</ws.endpoint>
@@ -223,10 +227,6 @@
       </properties>
     </profile>
     <profile>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-        <jdk>1.8</jdk>
-      </activation>
       <id>preproduction</id>
       <properties>
         <ws.endpoint>https://omegaweb-pp.jvsonline.fr/api/v1</ws.endpoint>

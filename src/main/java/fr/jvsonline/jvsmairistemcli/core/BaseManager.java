@@ -82,6 +82,17 @@ public abstract class BaseManager extends Loggable {
   }
   
   /**
+   * Set page limit
+   * 
+   * @param p_limit Limite
+   * 
+   * @return boolean
+   */
+  public boolean setPageLimit(int p_limit) {
+    return this.parameters.setLimit(p_limit);
+  }
+  
+  /**
    * Get filter
    * 
    * @param p_fieldName Nom du champ
