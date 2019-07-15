@@ -152,6 +152,33 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   }
   
   /**
+   * Retourne le numéro de contrat
+   * 
+   * @return String
+   */
+  public String getNumero() {
+    return this.numeroContrat;
+  }
+  
+  /**
+   * Retourne le flag actif su contrat
+   * 
+   * @return Boolean
+   */
+  public Boolean getActif() {
+    return this.actif;
+  }
+  
+  /**
+   * Retourne vrai si le contrat est actif
+   * 
+   * @return Boolean
+   */
+  public Boolean isActif() {
+    return this.actif;
+  }
+  
+  /**
    * Get occupant
    * 
    * @return PersonneModel

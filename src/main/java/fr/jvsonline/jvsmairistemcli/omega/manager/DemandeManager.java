@@ -134,7 +134,7 @@ public class DemandeManager extends BaseManager {
     logger.info("updatePersonne.start");
     DemandeModel request = null;
     try {
-      Invocation.Builder invocationBuilder = this.client.getClient("partner/request/personne",
+      Invocation.Builder invocationBuilder = this.client.getClient("partner/request/personne/" + p_personne.getId(),
           this.parameters);
       ResourceConverter converter = new ResourceConverter(PersonneModel.class, DemandeModel.class);
       byte [] serializedObject = converter.writeObject(p_personne);

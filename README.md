@@ -8,7 +8,7 @@ Le but de ce projet est d'abstraire la partie technique d'échange de données a
 
 **Pour le détail des versions, se référer au fichier [CHANGELOG](./CHANGELOG).**
 
-**Pour la documentation, consulter le répertoire [doc](./doc/omega/presentation.md).**
+**Pour la documentation, consulter le répertoire [doc](./doc/omega/readme.md).**
 
 ## Installation
 

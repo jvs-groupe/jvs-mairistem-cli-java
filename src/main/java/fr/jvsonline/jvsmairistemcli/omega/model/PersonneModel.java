@@ -85,7 +85,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
   /**
    * Pays
    */
-  @JsonProperty("pays")
+  @JsonProperty("enum_paysr")
   private String pays;
   
   /**
@@ -138,13 +138,13 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
   private Boolean actif;
   
   /**
-   * Code tiers
+   * Catégorie de tiers
    */
   @JsonProperty("enum_ctier")
-  private String codeTier;
+  private String categorieTier;
   
   /**
-   * Code tiers
+   * Nature juridique
    */
   @JsonProperty("enum_natju")
   private String natureJuridique;
@@ -175,6 +175,230 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
   public PersonneModel setId(Integer p_id) {
     this.id = p_id;
     return this;
+  }
+  
+  /**
+   * Affectation de la civilité
+   * 
+   * @param p_civilite Civilité
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setCivilite(String p_civilite) {
+    this.civilite = p_civilite;
+    return this;
+  }
+  
+  /**
+   * Retourne la civilité
+   * 
+   * @return String
+   */
+  public String getCivilite() {
+    return this.civilite;
+  }
+  
+  /**
+   * Affectation du nom
+   * 
+   * @param p_nom Nom
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setNom(String p_nom) {
+    this.nom = p_nom;
+    return this;
+  }
+  
+  /**
+   * Retourne le nom
+   * 
+   * @return String
+   */
+  public String getNom() {
+    return this.nom;
+  }
+
+  /**
+   * Affectation du prénom
+   * 
+   * @param p_prenom Prénom
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setPrenom(String p_prenom) {
+    this.prenom = p_prenom;
+    return this;
+  }
+  
+  /**
+   * Retourne le prénom
+   * 
+   * @return String
+   */
+  public String getPrenom() {
+    return this.prenom;
+  }
+  
+  /**
+   * Affectation de la première ligne de l'adresse
+   * 
+   * @param p_adr Adresse
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setAdresse1(String p_adr) {
+    this.adresse1 = p_adr;
+    return this;
+  }
+  
+  
+  /**
+   * Récupération de la première ligne d'adresse
+   * 
+   * @return String
+   */
+  public String getAdresse1() {
+    return this.adresse1;
+  }
+  
+
+  /**
+   * Affectation de la seconde ligne de l'adresse
+   * 
+   * @param p_adr Adresse
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setAdresse2(String p_adr) {
+    this.adresse2 = p_adr;
+    return this;
+  }
+  
+  /**
+   * Récupération de la seconde ligne de l'adresse
+   * 
+   * @return String
+   */
+  public String getAdresse2() {
+    return this.adresse2;
+  }
+  
+  /**
+   * Affectation du code postal
+   * 
+   * @param p_code_postal Code postal
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setCodePostal(String p_code_postal) {
+    this.codePostal = p_code_postal;
+    return this;
+  }
+  
+  /**
+   * Affectation de la ville
+   * 
+   * @param p_ville Ville
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setVille(String p_ville) {
+    this.ville = p_ville;
+    return this;
+  }
+  
+  /**
+   * Retourne la ville
+   * 
+   * @return String
+   */
+  public String getVille() {
+    return this.ville;
+  }
+  
+  /**
+   * Affectation du complément du nom
+   * 
+   * @param p_complement Complément
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setComplementNom(String p_complement) {
+    this.complementNom = p_complement;
+    return this;
+  }
+  
+  /**
+   * Retourne le complément du nom
+   * 
+   * @return String
+   */
+  public String getComplementNom() {
+    return this.complementNom;
+  }
+  
+  /**
+   * Affectation de l'email
+   * 
+   * @param p_email Email
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setEmail(String p_email) {
+    this.email = p_email;
+    return this;
+  }
+  
+  /**
+   * Récupération de l'email
+   * 
+   * @return String
+   */
+  public String getEmail() {
+    return this.email;
+  }
+  
+  /**
+   * Affectation du téléphone
+   * 
+   * @param p_telephone String
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setTelephone(String p_telephone) {
+    this.telephone = p_telephone;
+    return this;
+  }
+  
+  /**
+   * Retourne le téléphone
+   * 
+   * @return String
+   */
+  public String getTelephone() {
+    return this.telephone;
+  }
+  
+  /**
+   * Affectation du numéro de mobile
+   * 
+   * @param p_mobile Mobile
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setTelephoneMobile(String p_mobile) {
+    this.telephoneMobile = p_mobile;
+    return this;
+  }
+  
+  /**
+   * Retourne le numéro de mobile
+   * 
+   * @return String
+   */
+  public String getTelephoneMobile() {
+    return this.telephoneMobile;
   }
   
   /**

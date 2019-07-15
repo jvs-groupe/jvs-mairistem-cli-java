@@ -214,10 +214,6 @@
 
   <profiles>
     <profile>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-        <jdk>1.8</jdk>
-      </activation>
       <id>development</id>
       <properties>
         <ws.endpoint>http://docker.for.mac.localhost:6880/api/v1</ws.endpoint>
@@ -228,6 +224,10 @@
     </profile>
     <profile>
       <id>preproduction</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <jdk>1.8</jdk>
+      </activation>
       <properties>
         <ws.endpoint>https://omegaweb-pp.jvsonline.fr/api/v1</ws.endpoint>
         <ws.apiId>dfc7258e09f94ba6e495a08c50d6fd00@partner-kis-jolieville</ws.apiId>

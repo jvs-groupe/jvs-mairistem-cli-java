@@ -1,4 +1,4 @@
-# Client Omega
+Client Omega
 ---
 
 Nous utiliserons une API au format restful pour communiquer entre le client et le serveur. Un client jersey sera utilisé dans ce projet.
@@ -160,11 +160,11 @@ Pour rechercher avec critères, les managers disposent de certaines méthodes.
 
 Par défaut la limite de longueur est de 20.
 
-#### Un critère sur un membre
+#### Filtrer les résultats
 
 Le critère passé est le nom du membre de la classe gérée par le manager. Les noms des managers et objets gérés sont suffixés soit de Model soit de Manager. Donc pour le manager PersonneManager on peut filtrer à partir de PersonneModel. 
 
-A noter que l'on peut rechercher sur des relations définies dans le modèle. Il suffit de séparer les éléments apr un ".", exemple pour le point de consommation : contratactif.numero
+A noter que l'on peut rechercher sur des relations définies dans le modèle. Il suffit de séparer les éléments par un ".", exemple pour le point de consommation : contratactif.numero
 
 ```
   // numero est un membre de la classe principale gérée par le manager
