@@ -94,7 +94,7 @@ public class FactureExterneModel extends BaseModel {
    * 
    * @param p_idPconso Identifiant
    * 
-   * @return
+   * @return FactureExterneModel
    */
   public FactureExterneModel setIdPconso(Integer p_idPconso) {
     this.id_pconso = p_idPconso;
@@ -116,7 +116,7 @@ public class FactureExterneModel extends BaseModel {
    * 
    * @param p_id_redevable Identifiant
    * 
-   * @return
+   * @return FactureExterneModel
    */
   public FactureExterneModel setIdRedevable(Integer p_id_redevable) {
     this.id_redevable = p_id_redevable;
@@ -138,7 +138,7 @@ public class FactureExterneModel extends BaseModel {
    * 
    * @param p_redevable Redevable
    * 
-   * @return
+   * @return FactureExterneModel
    */
   public FactureExterneModel setRedevable(PersonneModel p_redevable) {
     this.redevable = p_redevable;
@@ -160,7 +160,7 @@ public class FactureExterneModel extends BaseModel {
    * 
    * @param p_ofact Organisme factureur
    * 
-   * @return
+   * @return FactureExterneModel
    */
   public FactureExterneModel setOrganismeFactureur(OrganismeFactureurModel p_ofact) {
     this.ofact = p_ofact;
@@ -182,7 +182,7 @@ public class FactureExterneModel extends BaseModel {
    * 
    * @param p_pconso Point de consommation
    * 
-   * @return
+   * @return FactureExterneModel
    */
   public FactureExterneModel setPointDeConsommation(PointDeConsommationModel p_pconso) {
     this.point_consommation = p_pconso;

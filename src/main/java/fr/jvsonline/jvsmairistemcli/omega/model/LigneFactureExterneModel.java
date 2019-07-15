@@ -55,7 +55,7 @@ public class LigneFactureExterneModel extends BaseModel {
    * 
    * @param p_id Identifiant
    * 
-   * @return
+   * @return LigneFactureExterneModel
    */
   public LigneFactureExterneModel setId(Integer p_id) {
     this.id = p_id;

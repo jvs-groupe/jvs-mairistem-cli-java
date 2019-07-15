@@ -55,7 +55,7 @@ public class Container {
   /**
    * Retourne les articles
    * 
-   * @return List<ArticleModel>
+   * @return List
    */
   public List<ArticleModel> getArticles() {
     return this.articles;
@@ -64,7 +64,7 @@ public class Container {
   /**
    * Affectation de l'organisme factureur
    * 
-   * @param p_ofact
+   * @param p_ofact Organisme factureur
    * 
    * @return Container
    */

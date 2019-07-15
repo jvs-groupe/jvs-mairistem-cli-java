@@ -93,7 +93,7 @@ public class DemandeManager extends BaseManager {
   /**
    * Envoi d'une facture externe
    * 
-   * @param p_reading Relève
+   * @param p_bill Facture externe
    * 
    * @return DemandeModel
    */
