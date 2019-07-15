@@ -176,6 +176,7 @@ public class App {
     pconsoManager.setDefaultCondition(RequestParameterCondition.OR);
     pconsoManager.addRequestParameter("contratActif.occupant.prenom", "Georges");
     pconsoManager.addRequestParameter("contratActif.occupant.nom", "pino");
+    pconsoManager.addRequestParameter("adresseDesserte.voie.commune.nom", "TEST");
     List<PointDeConsommationModel> myListN = pconsoManager.find();
     if (myListN == null) {
       logger.info("Empty result...");

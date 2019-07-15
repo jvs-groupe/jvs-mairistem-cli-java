@@ -5,6 +5,7 @@ import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
@@ -79,8 +80,8 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
   /**
    * Voie active
    */
-  @JsonProperty("actif")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
+  @JsonProperty("actif")
   private Boolean actif;
   
   /**
@@ -100,6 +101,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getId() {
     return this.id;
   }
@@ -121,6 +123,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getIdOrganisme() {
     return this.id_organism;
   }
@@ -142,6 +145,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    * 
    * @return String
    */
+  @JsonIgnore
   public String getCode() {
     return this.code;
   }
@@ -163,6 +167,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    * 
    * @return String
    */
+  @JsonIgnore
   public String getNom() {
     return this.nom;
   }
@@ -184,6 +189,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    *
    * @return String 
    */
+  @JsonIgnore
   public String getType() {
     return this.type;
   }
@@ -205,6 +211,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    *
    * @return String 
    */
+  @JsonIgnore
   public String getArticle() {
     return this.article;
   }
@@ -226,6 +233,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    * 
    * @return OrganismeModel
    */
+  @JsonIgnore
   public OrganismeModel getCommune() {
     return this.commune;
   }

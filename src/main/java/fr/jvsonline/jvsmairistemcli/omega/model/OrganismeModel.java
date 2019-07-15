@@ -2,10 +2,12 @@ package fr.jvsonline.jvsmairistemcli.omega.model;
 
 import com.github.jasminb.jsonapi.annotations.Type;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
+import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
@@ -14,7 +16,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * @author jeromeklam
  */
 @Type("Partner_Organism")
-public class OrganismeModel extends BaseModel {
+public class OrganismeModel extends BaseModel implements BaseModelInterface {
 
   /**
    * Identifiant de l'organisme
@@ -65,6 +67,7 @@ public class OrganismeModel extends BaseModel {
    * 
    * @return Integer
    */
+  @JsonIgnore
   public Integer getId() {
     return this.id;
   }
@@ -86,6 +89,7 @@ public class OrganismeModel extends BaseModel {
    *
    * @return String 
    */
+  @JsonIgnore
   public String getNom() {
     return nom;
   }
@@ -107,6 +111,7 @@ public class OrganismeModel extends BaseModel {
    *
    * @return String 
    */
+  @JsonIgnore
   public String getCodePostal() {
     return codePostal;
   }
@@ -128,6 +133,7 @@ public class OrganismeModel extends BaseModel {
    *
    * @return String 
    */
+  @JsonIgnore
   public String getVille() {
     return ville;
   }
