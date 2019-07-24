@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * 
  * @author jeromeklam
  */
-@Type("Partner_Organism")
+@Type("Partner_OrganismeFactureur")
 public class OrganismeFactureurModel extends OrganismeModel {
   
   /**
