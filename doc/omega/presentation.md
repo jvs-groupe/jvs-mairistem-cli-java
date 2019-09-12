@@ -179,13 +179,31 @@ A noter que l'on peut rechercher sur des relations définies dans le modèle. Il
 
 Par défaut l'opérateur de recherche est "LIKE"
 
-#### Le condition de recherche
+#### La condition de recherche
 
 ```
   monManager.setDefaultCondition(RequestParameterCondition.OR);
 ```
 
 Par défaut la condition de recherche est "AND"
+
+#### Conditions multiples
+
+Il est également possible d'imbriquer les paramètres.
+Pour cela on dispose de l'objet RequestParameters et de la méthode addRequestCondition sur les manager. Pour l'instant seul 1 niveau de profondeur est implémenté.
+
+```
+  RequestParameters cd1 = new RequestParameters();
+  cd1.setDefaultCondition(RequestParameterCondition.OR);
+  cd1.addParameter("contratActif.occupant.prenom", "GE");
+  cd1.addParameter("contratActif.occupant.nom", "LY");
+  RequestParameters cd2 = new RequestParameters();
+  cd2.setDefaultCondition(RequestParameterCondition.AND);
+  cd2.addParameter("adresseDesserte.voie.commune.nom", "JOLIEVILLE");
+  monManager.addRequestCondition(cd1);
+  monManager.addRequestCondition(cd2);
+  monManager.setDefaultCondition(RequestParameterCondition.AND);
+```
 
 #### Exemples
 

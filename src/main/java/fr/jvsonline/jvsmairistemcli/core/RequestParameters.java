@@ -34,6 +34,11 @@ public class RequestParameters extends Loggable {
   protected ArrayList<RequestParameter>   map;
 
   /**
+   * Conditions
+   */
+  protected ArrayList<RequestParameters>  conditions;
+  
+  /**
    * Default operator
    */
   protected RequestParameterOperator      default_operator = RequestParameterOperator.LIKE;
@@ -52,7 +57,8 @@ public class RequestParameters extends Loggable {
    * Constructor
    */
   public RequestParameters() {
-    this.map = new ArrayList<RequestParameter>();
+    this.map        = new ArrayList<RequestParameter>();
+    this.conditions = new ArrayList<RequestParameters>();
   }
 
   /**
@@ -170,5 +176,28 @@ public class RequestParameters extends Loggable {
   public ArrayList<RequestParameter> getParameters()
   {
     return this.map;
+  }
+  
+  /**
+   * Add request condition
+   * 
+   * @param p_condition condition
+   * 
+   * @return boolean
+   */
+  public boolean addRequestCondition(RequestParameters p_condition)
+  {
+    this.conditions.add(p_condition);
+    return true;
+  }
+  
+  /**
+   * Get conditions
+   * 
+   * @return ArrayList<RequestParameters>
+   */
+  public ArrayList<RequestParameters> getConditions()
+  {
+    return this.conditions;
   }
 }

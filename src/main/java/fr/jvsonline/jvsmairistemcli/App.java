@@ -173,10 +173,17 @@ public class App {
     logger.info("----------------------------------------------------------");
     logger.info("   Liste des points de consommation ayant un occupant prénommé Georges...");
     pconsoManager.flushRequestParameters();
-    pconsoManager.setDefaultCondition(RequestParameterCondition.OR);
-    pconsoManager.addRequestParameter("contratActif.occupant.prenom", "Georges");
-    pconsoManager.addRequestParameter("contratActif.occupant.nom", "pino");
-    pconsoManager.addRequestParameter("adresseDesserte.voie.commune.nom", "TEST");
+    
+    RequestParameters cd1 = new RequestParameters();
+    cd1.setDefaultCondition(RequestParameterCondition.OR);
+    cd1.addParameter("contratActif.occupant.prenom", "GE");
+    cd1.addParameter("contratActif.occupant.nom", "LY");
+    RequestParameters cd2 = new RequestParameters();
+    cd2.setDefaultCondition(RequestParameterCondition.AND);
+    cd2.addParameter("adresseDesserte.voie.commune.nom", "JOLIEVILLE");
+    pconsoManager.addRequestCondition(cd1);
+    pconsoManager.addRequestCondition(cd2);
+    pconsoManager.setDefaultCondition(RequestParameterCondition.AND);
     List<PointDeConsommationModel> myListN = pconsoManager.find();
     if (myListN == null) {
       logger.info("Empty result...");

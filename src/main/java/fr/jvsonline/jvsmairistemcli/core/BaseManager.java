@@ -1,6 +1,7 @@
 package fr.jvsonline.jvsmairistemcli.core;
 
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import fr.jvsonline.jvsmairistemcli.core.Loggable;
 import fr.jvsonline.jvsmairistemcli.core.RequestParameters;
 import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
@@ -23,7 +24,7 @@ public abstract class BaseManager extends Loggable {
    * Request parameters
    */
   protected RequestParameters parameters;
-
+  
   /**
    * Constructor
    */
@@ -70,7 +71,7 @@ public abstract class BaseManager extends Loggable {
     String field = this.getFilter(p_fieldName);
     return this.parameters.addParameter(field, p_value);
   }
-
+  
   /**
    * Get base RequestParameters
    * 
@@ -78,6 +79,28 @@ public abstract class BaseManager extends Loggable {
    */
   public RequestParameters getRequestParameters() {
     return this.parameters;
+  }
+  
+  /**
+   * Add request condition
+   * 
+   * @param p_condition condition
+   * 
+   * @return boolean
+   */
+  public boolean addRequestCondition(RequestParameters p_condition)
+  {
+    return this.parameters.addRequestCondition(p_condition);
+  }
+  
+  /**
+   * Get conditions
+   * 
+   * @return ArrayList<RequestParameters>
+   */
+  public ArrayList<RequestParameters> getRequestConditions()
+  {
+    return this.parameters.getConditions();
   }
   
   /**

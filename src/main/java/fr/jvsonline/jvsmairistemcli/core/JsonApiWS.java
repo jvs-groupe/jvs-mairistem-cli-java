@@ -62,7 +62,12 @@ public class JsonApiWS extends Loggable implements ClientWSInterface {
       this.settings.getWsEndpoint()
     ).path(p_service);
     for (RequestParameter param : p_parameters.getParameters()) {
-      target = target.queryParam("filter[" + param.getName() + "][" + param.getOperator() + "]", param.getValue());
+      target = target.queryParam("filter[" + p_parameters.getCondition() + "][" + param.getName() + "][" + param.getOperator() + "]", param.getValue());
+    }
+    for (RequestParameters params : p_parameters.getConditions()) {
+      for (RequestParameter param : params.getParameters()) {
+        target = target.queryParam("filter[" + p_parameters.getCondition() + "][" + params.getCondition() + "][" + param.getName() + "][" + param.getOperator() + "]", param.getValue());
+      }
     }
     if (p_parameters.isPaginated()) {
       target = target.queryParam("page[offset]", p_parameters.getOffset());
