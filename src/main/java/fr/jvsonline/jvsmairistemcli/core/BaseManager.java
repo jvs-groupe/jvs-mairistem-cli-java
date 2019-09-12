@@ -96,7 +96,7 @@ public abstract class BaseManager extends Loggable {
   /**
    * Get conditions
    * 
-   * @return ArrayList<RequestParameters>
+   * @return ArrayList
    */
   public ArrayList<RequestParameters> getRequestConditions()
   {
