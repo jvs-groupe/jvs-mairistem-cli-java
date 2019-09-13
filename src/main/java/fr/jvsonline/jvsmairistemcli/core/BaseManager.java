@@ -53,8 +53,7 @@ public abstract class BaseManager extends Loggable {
   /**
    * Flush parameters
    */
-  public void flushRequestParameters()
-  {
+  public void flushRequestParameters() {
     this.parameters = new RequestParameters();
   }
   
@@ -66,8 +65,7 @@ public abstract class BaseManager extends Loggable {
    * 
    * @return boolean
    */
-  public boolean addRequestParameter(String p_fieldName, String p_value)
-  {
+  public boolean addRequestParameter(String p_fieldName, String p_value) {
     String field = this.getFilter(p_fieldName);
     return this.parameters.addParameter(field, p_value);
   }
@@ -88,8 +86,11 @@ public abstract class BaseManager extends Loggable {
    * 
    * @return boolean
    */
-  public boolean addRequestCondition(RequestParameters p_condition)
-  {
+  public boolean addRequestCondition(RequestParameters p_condition) {
+    for (RequestParameter param : p_condition.getParameters()) {
+      String field = this.getFilter(param.getName());
+      param.setName(field);
+    }
     return this.parameters.addRequestCondition(p_condition);
   }
   
@@ -98,8 +99,7 @@ public abstract class BaseManager extends Loggable {
    * 
    * @return ArrayList
    */
-  public ArrayList<RequestParameters> getRequestConditions()
-  {
+  public ArrayList<RequestParameters> getRequestConditions() {
     return this.parameters.getConditions();
   }
   

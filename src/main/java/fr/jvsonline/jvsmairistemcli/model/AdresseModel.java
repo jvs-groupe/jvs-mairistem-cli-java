@@ -146,7 +146,10 @@ public class AdresseModel {
    */
   public AdresseModel setNumero(String p_numero) {
     if (p_numero != null) {
-      this.numero = Integer.valueOf(p_numero);
+      try {
+        this.numero = Integer.valueOf(p_numero);
+      } catch (Exception ex) {
+      }
     } else {
       this.numero = null;
     }
