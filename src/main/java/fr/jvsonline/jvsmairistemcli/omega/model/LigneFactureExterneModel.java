@@ -29,7 +29,7 @@ public class LigneFactureExterneModel extends BaseModel {
    * Identifiant de la ligne de facture
    */
   @Id(IntegerIdHandler.class)
-  @JsonProperty("ligne_id")
+  @JsonProperty("ligne_facture_id")
   private Integer id;
   
   /**
@@ -41,7 +41,7 @@ public class LigneFactureExterneModel extends BaseModel {
   /**
    * Quantite
    */
-  @JsonProperty("quantite")
+  @JsonProperty("qte")
   private Float quantite;
   
   /**

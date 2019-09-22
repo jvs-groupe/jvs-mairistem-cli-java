@@ -119,12 +119,6 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   private PersonneModel redevable;
   
   /**
-   * Propriétaire
-   */
-  @Relationship("proprietaire")
-  private PersonneModel proprietaire;
-  
-  /**
    * Constructor
    */
   public ContratModel() {
@@ -194,14 +188,5 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
    */
   public PersonneModel getRedevable() {
     return this.redevable;
-  }
-  
-  /**
-   * Get propriétaire
-   * 
-   * @return PersonneModel
-   */
-  public PersonneModel getProprietaire() {
-    return this.proprietaire;
   }
 }

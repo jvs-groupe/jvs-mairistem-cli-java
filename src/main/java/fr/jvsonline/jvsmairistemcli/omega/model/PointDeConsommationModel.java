@@ -78,6 +78,12 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   private String               appartement;
 
   /**
+   * Complément d'adresse
+   */
+  @JsonProperty("cpltadr")
+  private String               complement;
+  
+  /**
    * Identifiant de la tournée
    */
   @JsonProperty("tournee_id")
@@ -175,6 +181,12 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   @Relationship("dernierreleve")
   private ReleveModel          dernierReleve;
+  
+  /**
+   * Propriétaire
+   */
+  @Relationship("proprietaire")
+  private PersonneModel proprietaire;
   
   /**
    * Constructor
@@ -336,6 +348,28 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     return this;
   }
 
+  /**
+   * Get complement
+   * 
+   * @return String
+   */
+  @JsonIgnore
+  public String getComplement() {
+    return this.complement;
+  }
+
+  /**
+   * Set complement
+   * 
+   * @param p_complement Complement
+   * 
+   * @return PointDeConsommationModel
+   */
+  public PointDeConsommationModel setComplement(String p_complement) {
+    this.complement = p_complement;
+    return this;
+  }
+  
   /**
    * Get numéro ordre relève
    * 
@@ -583,5 +617,68 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
       }
     }
     return adresse;
+  }
+  
+  /**
+   * Get propriétaire
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel getProprietaire() {
+    return this.proprietaire;
+  }
+  
+  /**
+   * Get Latitude
+   * 
+   * @return Double
+   */
+  public Double getLatitude() {
+    Double db = 0.0;
+    try {
+      String[] parts = this.coordonneeSig.split("\\|", 3);
+      if (parts.length == 3) {
+        db = Double.parseDouble(parts[0]);
+      }
+    } catch (Exception ex) {
+      System.out.println(ex); 
+    }
+    return db;
+  }
+  
+  /**
+   * Get Longitude
+   * 
+   * @return Double
+   */
+  public Double getLongitude() {
+    Double db = 0.0;
+    try {
+      String[] parts = this.coordonneeSig.split("\\|", 3);
+      if (parts.length == 3) {
+        db = Double.parseDouble(parts[1]);
+      }
+    } catch (Exception ex) {
+      System.out.println(ex); 
+    }
+    return db;
+  }
+  
+  /**
+   * Get Altitude
+   * 
+   * @return Double
+   */
+  public Double getAltitude() {
+    Double db = 0.0;
+    try {
+      String[] parts = this.coordonneeSig.split("\\|", 3);
+      if (parts.length == 3) {
+        db = Double.parseDouble(parts[2]);
+      }
+    } catch (Exception ex) {
+      System.out.println(ex); 
+    }
+    return db;
   }
 }

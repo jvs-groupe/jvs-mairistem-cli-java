@@ -1,4 +1,21 @@
-# 1.1.6 : 12/09/2019
+# 1.1.9 : 22/09/2019
+
+* PointDeConsommation
+    * getLatitude
+    * getLongitude
+    * getAltitude
+* FactureExterne
+    * setRedevable
+    * setDateFacture
+* Correction de quelques échanges de services web
+
+# 1.1.8 : 19/09/2019
+
+* Le proprietaire est disponible depuis le point de consommation
+* Ajout de Getter et Setter sur les personnes
+* Ajout du complément d'adresse sur le point de consommation
+
+# 1.1.7 : 12/09/2019
 
 * Managers : intégration des conditions pour imbriquer les AND, OR en recherche (1 niveau)
 

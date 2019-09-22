@@ -217,6 +217,34 @@ public class App {
     
     
     logger.info("----------------------------------------------------------");
+    logger.info("   Liste des points de consommation avec compteur C43FA...");
+    pconsoManager.flushRequestParameters();
+    pconsoManager.addRequestParameter("compteur.numeroSerie", "C43FA");
+    List<PointDeConsommationModel> myListC2 = pconsoManager.find();
+    if (myListC2 == null) {
+      logger.info("Empty result...");
+    } else {
+      for (PointDeConsommationModel item : myListC2) {
+        String numero = item.getNumero();
+        CompteurModel monCompteur = item.getCompteur();
+        String numSerie = "";
+        if (monCompteur != null) {
+          numSerie = monCompteur.getNumeroSerie();
+        }
+        logger.info("Pconso n° " + item.getNumero() + " : " + numero + " [" + numSerie + "]");
+        ContratModel contratActif = item.getContratActif();
+        if (contratActif != null) {
+          logger.info("    * " + contratActif.getOccupant());
+        }
+        logger.info("    * " + item.toAdresse());
+      }
+    }
+    logger.info("----------------------------------------------------------");
+    
+    
+    
+    
+    logger.info("----------------------------------------------------------");
     logger.info("   Liste des points de consommation avec une rue oceanite...");
     pconsoManager.flushRequestParameters();
     pconsoManager.addRequestParameter("adresseDesserte.voie.nom", "Oceanite");
@@ -245,9 +273,9 @@ public class App {
     
     
     logger.info("----------------------------------------------------------");
-    logger.info("   Point de consommation avec l'ID 34...");
+    logger.info("   Point de consommation avec l'ID 2775...");
     pconsoManager.flushRequestParameters();
-    PointDeConsommationModel myPConso = pconsoManager.getById(34);
+    PointDeConsommationModel myPConso = pconsoManager.getById(2775);
     if (myPConso != null) {
       CompteurModel monCompteur99 = myPConso.getCompteur();
       String numSerie99 = "";
@@ -260,6 +288,8 @@ public class App {
           myPConso.getTypeHabitation()
       );
       logger.info(myPConso.toAdresse().toString() + " : " + numSerie99 + " / " + typeH);
+      logger.info(myPConso.getCoordonneeSig());
+      logger.info(myPConso.getLatitude().toString() + " | " + myPConso.getLongitude().toString());
       /**
        * manager des demandes
        */
@@ -274,8 +304,11 @@ public class App {
         logger.info("Erreur");
       }
       // Ajouter une facture externe
+      Date aujourdhui = new Date(System.currentTimeMillis());
       FactureExterneModel uneFacture = new FactureExterneModel();
+      uneFacture.setDateFacture(aujourdhui);
       uneFacture.setPointDeConsommation(myPConso);
+      uneFacture.setRedevable(myPConso.getProprietaire());
       uneFacture.setOrganismeFactureur(omegaContainer.getOrganismeFactureur());
       // Une ligne
       LigneFactureExterneModel uneLigne1 = new LigneFactureExterneModel();

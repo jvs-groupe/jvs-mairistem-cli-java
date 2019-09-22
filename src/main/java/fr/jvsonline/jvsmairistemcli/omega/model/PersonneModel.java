@@ -141,7 +141,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    * Catégorie de tiers
    */
   @JsonProperty("enum_ctier")
-  private String categorieTier;
+  private String categorieTiers;
   
   /**
    * Nature juridique
@@ -285,6 +285,27 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
   }
   
   /**
+   * Affectation de la troisième ligne de l'adresse
+   * 
+   * @param p_adr Adresse
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setAdresse3(String p_adr) {
+    this.adresse3 = p_adr;
+    return this;
+  }
+  
+  /**
+   * Récupération de la troisième ligne de l'adresse
+   * 
+   * @return String
+   */
+  public String getAdresse3() {
+    return this.adresse3;
+  }
+  
+  /**
    * Affectation du code postal
    * 
    * @param p_code_postal Code postal
@@ -315,6 +336,27 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    */
   public String getVille() {
     return this.ville;
+  }
+  
+  /**
+   * Affectation du pays
+   * 
+   * @param p_pays Pays
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setPays(String p_pays) {
+    this.pays = p_pays;
+    return this;
+  }
+  
+  /**
+   * Retourne le pays
+   * 
+   * @return String
+   */
+  public String getPays() {
+    return this.pays;
   }
   
   /**
@@ -399,6 +441,90 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    */
   public String getTelephoneMobile() {
     return this.telephoneMobile;
+  }
+  
+  /**
+   * Affectation du numéro de fax
+   * 
+   * @param p_fax Fax
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setFax(String p_fax) {
+    this.fax = p_fax;
+    return this;
+  }
+  
+  /**
+   * Retourne le numéro de fax
+   * 
+   * @return String
+   */
+  public String getFax() {
+    return this.fax;
+  }
+  
+  /**
+   * Affectation du numéro de siret
+   * 
+   * @param p_siret Siret
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setSiret(String p_siret) {
+    this.numeroSiret = p_siret;
+    return this;
+  }
+  
+  /**
+   * Retourne le numéro de siret
+   * 
+   * @return String
+   */
+  public String getSiret() {
+    return this.numeroSiret;
+  }
+  
+  /**
+   * Affectation de la catégorie du Tiers
+   * 
+   * @param p_categorie CategorieTiers
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setCategorieTiers(String p_categorie) {
+    this.categorieTiers = p_categorie;
+    return this;
+  }
+  
+  /**
+   * Retourne la catégorie du tiers
+   * 
+   * @return String
+   */
+  public String getCategorieTiers() {
+    return this.categorieTiers;
+  }
+  
+  /**
+   * Affectation de la nature juridique
+   * 
+   * @param p_nature NatureJuridique
+   * 
+   * @return PersonneModel
+   */
+  public PersonneModel setNatureJuridique(String p_nature) {
+    this.natureJuridique = p_nature;
+    return this;
+  }
+  
+  /**
+   * Retourne la nature juridique
+   * 
+   * @return String
+   */
+  public String getNatureJuridique() {
+    return this.natureJuridique;
   }
   
   /**

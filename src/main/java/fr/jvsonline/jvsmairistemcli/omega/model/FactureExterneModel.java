@@ -6,6 +6,7 @@ import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
+import fr.jvsonline.jvsmairistemcli.jackson.CustomDateSerializer;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import java.text.DateFormat;
@@ -14,6 +15,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -49,6 +52,17 @@ public class FactureExterneModel extends BaseModel {
   @Relationship("organisme_factureur")
   private OrganismeFactureurModel ofact;
   
+  /**
+   * Date de facture
+   */
+  @JsonSerialize(using = CustomDateSerializer.class)
+  @JsonDeserialize(using = CustomDateDeserializer.class)
+  @JsonProperty("datefact")
+  private Date dateFacture;
+  
+  /**
+   * Lignes de facture
+   */
   @Relationship("lignes")
   private List<LigneFactureExterneModel> lignes = null;
 
@@ -190,6 +204,27 @@ public class FactureExterneModel extends BaseModel {
       this.id_pconso = this.point_consommation.getId();
     }
     return this;
+  }
+  
+  /**
+   * Affectation de la date de facture
+   * 
+   * @param p_date Date de facture
+   * 
+   * @return FactureExterneModel
+   */
+  public FactureExterneModel setDateFacture(Date p_date) {
+    this.dateFacture = p_date;
+    return this;
+  }
+  
+  /**
+   * Retourne la date de facture
+   * 
+   * @return Date
+   */
+  public Date getDateFacture() {
+    return this.dateFacture;
   }
   
   /**
