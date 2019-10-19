@@ -54,13 +54,37 @@ public class RequestParameters extends Loggable {
   protected boolean paginated = false;
   
   /**
+   * Tableu des includes
+   */
+  protected String[] includes = null;
+  
+  /**
    * Constructor
    */
   public RequestParameters() {
     this.map        = new ArrayList<RequestParameter>();
     this.conditions = new ArrayList<RequestParameters>();
+    this.includes   = new String[0];
   }
 
+  /**
+   * Set includes
+   * 
+   * @param p_includes Includes
+   */
+  public void setIncludes(String[] p_includes) {
+    this.includes = p_includes;
+  }
+  
+  /**
+   * Get includes
+   * 
+   * @return String[]
+   */
+  public String[] getIncludes() {
+    return this.includes;
+  }
+  
   /**
    * Set default condition AND/OR
    * 

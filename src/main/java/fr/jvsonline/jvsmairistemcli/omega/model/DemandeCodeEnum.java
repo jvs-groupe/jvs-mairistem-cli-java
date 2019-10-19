@@ -3,22 +3,18 @@ package fr.jvsonline.jvsmairistemcli.omega.model;
 import java.util.Locale;
 
 /**
- * DemandeStatusEnum
+ * DemandeCodeEnum
  * 
  * @author jeromeklam
  */
-public enum DemandeStatusEnum {
+public enum DemandeCodeEnum {
   
   /**
    * Constantes
    */
-  SAVED ("Enregistrée"),
-  SEND ("Envoyée"),
-  OMEGA ("En traitement"),
-  CLIENT ("Attente client"),
-  CLOSED ("Terminée"),
-  ERROR ("En erreur"),
-  REFUSED ("Refusée");
+  J_FACTURE ("Facture"),
+  J_MAJPER ("Mise à jour personne"),
+  J_RELEVE ("Transmission de relevé");
   
   /**
    * Nom de la propriété
@@ -31,7 +27,7 @@ public enum DemandeStatusEnum {
    * 
    * @param p_name Name
    */
-  DemandeStatusEnum(String p_name) {
+  DemandeCodeEnum(String p_name) {
     this.name = p_name;
   }
   

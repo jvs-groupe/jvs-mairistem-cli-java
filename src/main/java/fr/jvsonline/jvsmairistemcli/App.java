@@ -151,7 +151,7 @@ public class App {
     pconsoManager.setPage(1);
     pconsoManager.addRequestParameter("numero", "56");
     // Go
-    List<PointDeConsommationModel> myList = pconsoManager.find();
+    List<PointDeConsommationModel> myList = pconsoManager.findBasic();
     if (myList == null) {
       logger.info("Empty result...");
     } else {
@@ -220,7 +220,7 @@ public class App {
     logger.info("   Liste des points de consommation avec compteur C43FA...");
     pconsoManager.flushRequestParameters();
     pconsoManager.addRequestParameter("compteur.numeroSerie", "C43FA");
-    List<PointDeConsommationModel> myListC2 = pconsoManager.find();
+    List<PointDeConsommationModel> myListC2 = pconsoManager.findBasic();
     if (myListC2 == null) {
       logger.info("Empty result...");
     } else {
@@ -248,7 +248,7 @@ public class App {
     logger.info("   Liste des points de consommation avec une rue oceanite...");
     pconsoManager.flushRequestParameters();
     pconsoManager.addRequestParameter("adresseDesserte.voie.nom", "Oceanite");
-    List<PointDeConsommationModel> myListV = pconsoManager.find();
+    List<PointDeConsommationModel> myListV = pconsoManager.findBasic();
     if (myListV == null) {
       logger.info("Empty result...");
     } else {
@@ -274,6 +274,10 @@ public class App {
     
     logger.info("----------------------------------------------------------");
     logger.info("   Point de consommation avec l'ID 2775...");
+    /**
+     * manager des demandes
+     */
+    DemandeManager reqManager = new DemandeManager(wsClient);
     pconsoManager.flushRequestParameters();
     PointDeConsommationModel myPConso = pconsoManager.getById(2775);
     if (myPConso != null) {
@@ -290,10 +294,6 @@ public class App {
       logger.info(myPConso.toAdresse().toString() + " : " + numSerie99 + " / " + typeH);
       logger.info(myPConso.getCoordonneeSig());
       logger.info(myPConso.getLatitude().toString() + " | " + myPConso.getLongitude().toString());
-      /**
-       * manager des demandes
-       */
-      DemandeManager reqManager = new DemandeManager(wsClient);
       // Ajouter un relevé
       ReleveModel unReleve = myPConso.getNouveauReleve();
       unReleve.setNouvelIndex(unReleve.getNouvelIndex() + 10);
@@ -322,11 +322,36 @@ public class App {
       uneLigne2.setCodeArticle("tutu");
       uneLigne2.setQuantite(5.6f);
       uneFacture.addLigneFactureExterne(uneLigne2);
-      reqManager.sendFactureExterne(uneFacture);
+      DemandeModel maFac = reqManager.sendFactureExterne(uneFacture);
+      logger.info("Demande n° " + maFac.getId());
       // Mise à jour des coordonnées d'une personne
       reqManager.updatePersonne(myPConso.getContratActif().getOccupant());
     } else {
       logger.info("Pconso id 34 non trouvé !");
+    }
+    logger.info("----------------------------------------------------------");
+    
+    
+    
+    
+    logger.info("----------------------------------------------------------");
+    DemandeModel myDmde = reqManager.getById(175);
+    logger.info("Demande n° " + myDmde.getId() + " / " + myDmde.getCode() + " : " + myDmde.getCode().getLabel());
+    logger.info("----------------------------------------------------------");
+    
+    
+    
+    
+    logger.info("----------------------------------------------------------");
+    reqManager.flushRequestParameters();
+    List<DemandeModel> myListDmde = reqManager.find();
+    if (myListDmde == null) {
+      logger.info("Empty result...");
+    } else {
+      for (DemandeModel item : myListDmde) {
+        Integer id = item.getId();
+        logger.info("Demande n° " + id + " / " + item.getCode() + " : " + item.getCode().getLabel());
+      }
     }
     logger.info("----------------------------------------------------------");
     

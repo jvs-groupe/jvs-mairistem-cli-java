@@ -1,3 +1,14 @@
+# 1.1.14 : 19/10/2019
+
+* PointDeConsommation
+    * findBasic pour ne pas retourner les relevés, factures, ...
+* Demande
+    * Nouveau service web
+    * Nouvelle facture
+    * Mise à jour des coordonnées d'une personne
+    * Envoi d'un relevé
+* Optimisations et corrections de bugs
+
 # 1.1.9 : 22/09/2019
 
 * PointDeConsommation

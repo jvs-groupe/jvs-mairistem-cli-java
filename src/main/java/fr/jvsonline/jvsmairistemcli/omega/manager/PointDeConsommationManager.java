@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.jasminb.jsonapi.JSONAPIDocument;
 import com.github.jasminb.jsonapi.ResourceConverter;
+import com.github.jasminb.jsonapi.DeserializationFeature;
 import fr.jvsonline.jvsmairistemcli.core.BaseManager;
 import fr.jvsonline.jvsmairistemcli.core.ClientWSInterface;
 import fr.jvsonline.jvsmairistemcli.core.RequestParameters;
@@ -60,6 +61,7 @@ public class PointDeConsommationManager extends BaseManager {
       String strResponse = response.readEntity(String.class);
       byte[] rawResponse = strResponse.getBytes();
       ResourceConverter converter = new ResourceConverter(PointDeConsommationModel.class);
+      converter.enableDeserializationOption(DeserializationFeature.ALLOW_UNKNOWN_INCLUSIONS);
       JSONAPIDocument<List<PointDeConsommationModel>> bookDocumentCollection = converter
           .readDocumentCollection(rawResponse, PointDeConsommationModel.class);
       bookCollection = bookDocumentCollection.get();
@@ -71,6 +73,19 @@ public class PointDeConsommationManager extends BaseManager {
     return bookCollection;
   }
 
+  /**
+   * Find Point de consommation
+   * 
+   * @return List
+   */
+  public List<PointDeConsommationModel> findBasic() {
+    logger.info("findBasic.start");
+    String[] includes = {"contratactif", "contratactif.redevable", "contratactif.occupant", "proprietaire", "compteur", "pdessadr", "pdessadr.voie", "pdessadr.voie.commune"};
+    this.parameters.setIncludes(includes);
+    logger.info("findBasic.end");
+    return this.find();
+  }
+  
   /**
    * Get by Id
    * 
@@ -87,6 +102,7 @@ public class PointDeConsommationManager extends BaseManager {
     String strResponse = response.readEntity(String.class);
     byte[] rawResponse = strResponse.getBytes();
     ResourceConverter converter = new ResourceConverter(PointDeConsommationModel.class);
+    converter.enableDeserializationOption(DeserializationFeature.ALLOW_UNKNOWN_INCLUSIONS);
     JSONAPIDocument<PointDeConsommationModel> myDocument = converter.readDocument(rawResponse,
         PointDeConsommationModel.class);
     myModel = myDocument.get();

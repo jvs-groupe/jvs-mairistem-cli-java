@@ -7,6 +7,7 @@ import javax.ws.rs.core.Response;
 import com.github.jasminb.jsonapi.JSONAPIDocument;
 import com.github.jasminb.jsonapi.ResourceConverter;
 import com.github.jasminb.jsonapi.exceptions.ResourceParseException;
+import com.github.jasminb.jsonapi.DeserializationFeature;
 import com.github.jasminb.jsonapi.SerializationFeature;
 import fr.jvsonline.jvsmairistemcli.core.BaseManager;
 import fr.jvsonline.jvsmairistemcli.core.ClientWSInterface;
@@ -48,6 +49,7 @@ public class DemandeManager extends BaseManager {
       String strResponse = response.readEntity(String.class);
       byte[] rawResponse = strResponse.getBytes();
       ResourceConverter converter = new ResourceConverter(DemandeModel.class);
+      converter.enableDeserializationOption(DeserializationFeature.ALLOW_UNKNOWN_INCLUSIONS);
       JSONAPIDocument<List<DemandeModel>> bookDocumentCollection = converter
           .readDocumentCollection(rawResponse, DemandeModel.class);
       bookCollection = bookDocumentCollection.get();
@@ -56,6 +58,30 @@ public class DemandeManager extends BaseManager {
     }
     logger.info("find.end");
     return bookCollection;
+  }
+  
+  /**
+   * Get by Id
+   * 
+   * @param p_id Identifiant
+   * 
+   * @return DemandeModel
+   */
+  public DemandeModel getById(Integer p_id) {
+    logger.info("getById.start");
+    DemandeModel myModel = null;
+    Invocation.Builder invocationBuilder = this.client.getClient("partner/request/" + p_id,
+        this.parameters);
+    Response response = invocationBuilder.get();
+    String strResponse = response.readEntity(String.class);
+    byte[] rawResponse = strResponse.getBytes();
+    ResourceConverter converter = new ResourceConverter(DemandeModel.class);
+    converter.enableDeserializationOption(DeserializationFeature.ALLOW_UNKNOWN_INCLUSIONS);
+    JSONAPIDocument<DemandeModel> myDocument = converter.readDocument(rawResponse,
+        DemandeModel.class);
+    myModel = myDocument.get();
+    logger.info("getById.end");
+    return myModel;
   }
   
   /**
@@ -72,6 +98,7 @@ public class DemandeManager extends BaseManager {
       Invocation.Builder invocationBuilder = this.client.getClient("partner/request/reading",
           this.parameters);
       ResourceConverter converter = new ResourceConverter(ReleveModel.class, DemandeModel.class);
+      converter.enableDeserializationOption(DeserializationFeature.ALLOW_UNKNOWN_INCLUSIONS);
       byte [] serializedObject = converter.writeObject(p_reading);
       String serializedAsString = new String(serializedObject);
       logger.info(serializedAsString);
@@ -104,6 +131,7 @@ public class DemandeManager extends BaseManager {
       Invocation.Builder invocationBuilder = this.client.getClient("partner/request/bill",
           this.parameters);
       ResourceConverter converter = new ResourceConverter(FactureExterneModel.class, PointDeConsommationModel.class, DemandeModel.class);
+      converter.enableDeserializationOption(DeserializationFeature.ALLOW_UNKNOWN_INCLUSIONS);
       converter.enableSerializationOption(SerializationFeature.INCLUDE_RELATIONSHIP_ATTRIBUTES);
       byte [] serializedObject = converter.writeObject(p_bill);
       String serializedAsString = new String(serializedObject);
@@ -137,6 +165,7 @@ public class DemandeManager extends BaseManager {
       Invocation.Builder invocationBuilder = this.client.getClient("partner/request/personne/" + p_personne.getId(),
           this.parameters);
       ResourceConverter converter = new ResourceConverter(PersonneModel.class, DemandeModel.class);
+      converter.enableDeserializationOption(DeserializationFeature.ALLOW_UNKNOWN_INCLUSIONS);
       byte [] serializedObject = converter.writeObject(p_personne);
       String serializedAsString = new String(serializedObject);
       logger.info(serializedAsString);
