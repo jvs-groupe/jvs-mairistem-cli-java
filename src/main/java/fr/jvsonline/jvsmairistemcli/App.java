@@ -23,6 +23,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.LigneFactureExterneModel;
 import fr.jvsonline.jvsmairistemcli.omega.Container;
 import fr.jvsonline.jvsmairistemcli.core.JsonApiWS;
 import fr.jvsonline.jvsmairistemcli.core.RequestParameters;
+import fr.jvsonline.jvsmairistemcli.core.RequestParameterOperator;
 import fr.jvsonline.jvsmairistemcli.core.Settings;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -89,7 +90,7 @@ public class App {
       logger.info("Empty result...");
     } else {
       for (ArticleModel item : myListArts) {
-        logger.info("Article " + item.getLibelle() + " : " + item.getPrixUnitaire());
+        logger.info("Article " +  item.getCode() + " == " + item.getLibelle() + " : " + item.getPrixUnitaire());
       }
     }
     omegaContainer.setArticles(myListArts);
@@ -171,9 +172,34 @@ public class App {
     
     
     logger.info("----------------------------------------------------------");
+    logger.info("   Liste des points de consommation dans une liste...");
+    // Add parameters to find....
+    pconsoManager.flushRequestParameters();
+    pconsoManager.setPage(1);
+    pconsoManager.addRequestParameter("numero", "4656,3156", RequestParameterOperator.IN);
+    // Go
+    List<PointDeConsommationModel> myListIN = pconsoManager.findBasic();
+    if (myListIN == null) {
+      logger.info("Empty result...");
+    } else {
+      for (PointDeConsommationModel item : myListIN) {
+        String numero = item.getNumero();
+        CompteurModel monCompteur3 = item.getCompteur();
+        String numSerie = "";
+        if (monCompteur3 != null) {
+          numSerie = monCompteur3.getNumeroSerie();
+        }
+        logger.info("Pconso n° " + item.getNumero() + " : " + numero + " [" + numSerie + "]");
+      }
+    }
+    logger.info("----------------------------------------------------------");
+    
+    
+    
+    
+    logger.info("----------------------------------------------------------");
     logger.info("   Liste des points de consommation ayant un occupant prénommé Georges...");
     pconsoManager.flushRequestParameters();
-    
     RequestParameters cd1 = new RequestParameters();
     cd1.setDefaultCondition(RequestParameterCondition.OR);
     cd1.addParameter("contratActif.occupant.prenom", "GE");
@@ -313,13 +339,13 @@ public class App {
       // Une ligne
       LigneFactureExterneModel uneLigne1 = new LigneFactureExterneModel();
       uneLigne1.setId(-1);
-      uneLigne1.setCodeArticle("toto");
+      uneLigne1.setCodeArticle("A3");
       uneLigne1.setQuantite(3f);
       uneFacture.addLigneFactureExterne(uneLigne1);
       // Une seconde ligne
       LigneFactureExterneModel uneLigne2 = new LigneFactureExterneModel();
       uneLigne2.setId(-2);
-      uneLigne2.setCodeArticle("tutu");
+      uneLigne2.setCodeArticle("340");
       uneLigne2.setQuantite(5.6f);
       uneFacture.addLigneFactureExterne(uneLigne2);
       DemandeModel maFac = reqManager.sendFactureExterne(uneFacture);
@@ -335,7 +361,7 @@ public class App {
     
     
     logger.info("----------------------------------------------------------");
-    DemandeModel myDmde = reqManager.getById(175);
+    DemandeModel myDmde = reqManager.getById(1001);
     logger.info("Demande n° " + myDmde.getId() + " / " + myDmde.getCode() + " : " + myDmde.getCode().getLabel());
     logger.info("----------------------------------------------------------");
     

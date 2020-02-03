@@ -168,8 +168,8 @@ public class RequestParameters extends Loggable {
     this.limit = p_limit;
     return true;
   }
-  
-  /**
+
+  /*
    * Add parameter
    * 
    * @param p_name Nom
@@ -179,6 +179,21 @@ public class RequestParameters extends Loggable {
    */
   public boolean addParameter(String p_name, String p_value) {
     RequestParameter param = new RequestParameter(p_name, p_value, this.default_operator);
+    this.map.add(param);
+    return true;
+  }
+  
+  /**
+   * Add parameter
+   * 
+   * @param p_name Nom
+   * @param p_value Valeur
+   * @param p_oper RequestParameterOperator
+   * 
+   * @return boolean
+   */
+  public boolean addParameter(String p_name, String p_value, RequestParameterOperator p_oper) {
+    RequestParameter param = new RequestParameter(p_name, p_value, p_oper);
     this.map.add(param);
     return true;
   }

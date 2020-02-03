@@ -56,7 +56,7 @@ public abstract class BaseManager extends Loggable {
   public void flushRequestParameters() {
     this.parameters = new RequestParameters();
   }
-  
+
   /**
    * Add request parameter
    * 
@@ -68,6 +68,20 @@ public abstract class BaseManager extends Loggable {
   public boolean addRequestParameter(String p_fieldName, String p_value) {
     String field = this.getFilter(p_fieldName);
     return this.parameters.addParameter(field, p_value);
+  }
+  
+  /**
+   * Add request parameter
+   * 
+   * @param p_fieldName Champ en notation modèle
+   * @param p_value Valeur recherchée
+   * @param p_oper RequestParameterOperator opérateur
+   * 
+   * @return boolean
+   */
+  public boolean addRequestParameter(String p_fieldName, String p_value, RequestParameterOperator p_oper) {
+    String field = this.getFilter(p_fieldName);
+    return this.parameters.addParameter(field, p_value, p_oper);
   }
   
   /**

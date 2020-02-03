@@ -13,7 +13,8 @@ public enum RequestParameterOperator {
    * Constantes
    */
   EQUAL ("eq"),
-  LIKE ("like");
+  LIKE ("like"),
+  IN ("in");
   
   /**
    * Nom de la propriété
