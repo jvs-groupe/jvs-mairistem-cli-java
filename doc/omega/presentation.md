@@ -171,6 +171,14 @@ A noter que l'on peut rechercher sur des relations définies dans le modèle. Il
   monManager.addRequestParameter("numero", "56");
 ````
 
+Le troisième paramètre de la méthode addRequestParameter est optionnel et correspond par défaut à l'opérateur par défaut. Il peut-être surchargé avec les valeurs de l'énumaration :
+
+* RequestParameterOperator.IN       (liste de valeurs séparées par ,)
+* RequestParameterOperator.EQUAL    Egalité stricte
+* RequestParameterOperator.LIKE     Contient la chaine
+
+D'autres opérateurs sont en cours de finalisation
+
 #### Le mode de recherche
 
 ```
