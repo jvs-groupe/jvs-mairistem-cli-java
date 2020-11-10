@@ -2,6 +2,7 @@ package fr.jvsonline.jvsmairistemcli.omega.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 import com.github.jasminb.jsonapi.annotations.Type;
 import com.github.jasminb.jsonapi.annotations.Id;
@@ -697,6 +698,9 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * @return Contrats
    */
   public List<ContratModel> getContrats() {
+    if (this.contrats == null) {
+      this.contrats = new ArrayList<ContratModel>();
+    }
     return this.contrats;
   }
 }

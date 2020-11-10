@@ -105,7 +105,7 @@ public class ConsommeModel extends BaseModel {
    * Consommation facturée 
    */
   @JsonProperty("comsofact")
-  private String consommationFacturee;
+  private Integer consommationFacturee;
   
   /**
    * Constructor
@@ -253,6 +253,87 @@ public class ConsommeModel extends BaseModel {
   public ConsommeModel setTypeReleve(String p_type_releve) {
     this.typeReleve = p_type_releve;
     return this;
+  }
+  
+  /**
+   * Retourne vrai si la consommation ets à facturer
+   * 
+   * @return Boolean
+   */
+  public Boolean getAfacturer() {
+    return this.aFacturer;
+  }
+  
+  /**
+   * Retourne vrai si la consommation est à facturer
+   * 
+   * @return Boolean
+   */
+  public Boolean isAFacturer() {
+    return this.aFacturer;
+  }
+  
+  /**
+   * Retourne vrai si c'est un forfait
+   * 
+   * @return Boolean
+   */
+  public Boolean getForfait() {
+    return this.forfait;
+  }
+  
+  /**
+   * Retourne vrai si c'est un forfait
+   * 
+   * @return Boolean
+   */
+  public Boolean isForfait() {
+    return this.forfait;
+  }
+  
+  /**
+   * Retourne vrai si facturé
+   * 
+   * @return Boolean
+   */
+  public Boolean getFacture() {
+    return this.facture;
+  }
+  
+  /**
+   * Retourne vrai si facturé
+   * 
+   * @return Boolean
+   */
+  public Boolean isFacture() {
+    return this.facture;
+  }
+  
+  /**
+   * Retourne le consommation relevée
+   * 
+   * @return Integer
+   */
+  public Integer getConsommationRelevee() {
+    return this.consommationReleve;
+  }
+  
+  /**
+   * Retourne la consommation facturée
+   * 
+   * @return Integer
+   */
+  public Integer getConsommationFacturee() {
+    return this.consommationFacturee;
+  }
+  
+  /**
+   * Retourne le budget
+   * 
+   * @return String
+   */
+  public String getBudget() {
+    return this.budget;
   }
   
   /**
