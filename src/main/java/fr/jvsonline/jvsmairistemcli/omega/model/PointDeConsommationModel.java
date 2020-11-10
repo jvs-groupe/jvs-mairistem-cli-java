@@ -1,6 +1,8 @@
 package fr.jvsonline.jvsmairistemcli.omega.model;
 
 import java.util.Date;
+import java.util.List;
+
 import com.github.jasminb.jsonapi.annotations.Type;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.annotations.Relationship;
@@ -17,6 +19,7 @@ import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
 import fr.jvsonline.jvsmairistemcli.model.AdresseModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.CompteurModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.ContratModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.AdresseDesserteModel;
 
 /**
@@ -187,6 +190,12 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   @Relationship("proprietaire")
   private PersonneModel proprietaire;
+  
+  /**
+   * Contrats
+   */
+  @Relationship("contrats")
+  private List<ContratModel> contrats = null;
   
   /**
    * Constructor
@@ -680,5 +689,14 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
       System.out.println(ex); 
     }
     return db;
+  }
+  
+  /**
+   * Retourne la liste des contrats
+   * 
+   * @return Contrats
+   */
+  public List<ContratModel> getContrats() {
+    return this.contrats;
   }
 }

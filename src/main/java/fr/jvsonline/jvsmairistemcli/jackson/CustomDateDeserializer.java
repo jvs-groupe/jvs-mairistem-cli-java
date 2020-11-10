@@ -24,7 +24,7 @@ public class CustomDateDeserializer extends StdDeserializer<Date> {
   /**
    * SimpleDateFormat
    */
-  private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+  private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
   /**
    * Constructor

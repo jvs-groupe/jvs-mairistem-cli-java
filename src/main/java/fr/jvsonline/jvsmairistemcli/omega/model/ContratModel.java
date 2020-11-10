@@ -1,6 +1,9 @@
 package fr.jvsonline.jvsmairistemcli.omega.model;
 
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
+
 import com.github.jasminb.jsonapi.annotations.Type;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.annotations.Relationship;
@@ -12,6 +15,8 @@ import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
+import fr.jvsonline.jvsmairistemcli.omega.model.ConsommeModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.NatureAbonneModel;
 
 /**
  * Contrats
@@ -54,6 +59,31 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   @JsonProperty("suspendu")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
   private Boolean suspendu;
+  
+  /**
+   * Contrat à facturer
+   */
+  @JsonProperty("facturer")
+  @JsonDeserialize(using = CustomBooleanDeserializer.class)
+  private Boolean facturer;
+  
+  /**
+   * Abo1
+   */
+  @JsonProperty("abo1")
+  private Integer abo1;
+  
+  /**
+   * Abo2
+   */
+  @JsonProperty("abo2")
+  private Integer abo2;
+  
+  /**
+   * Nombre
+   */
+  @JsonProperty("nombre")
+  private Integer nombre;
   
   /**
    * Type de contrat
@@ -119,6 +149,18 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   private PersonneModel redevable;
   
   /**
+   * Nature d'abonné
+   */
+  @Relationship("natabo")
+  private NatureAbonneModel natabo;
+  
+  /**
+   * Consommes
+   */
+  @Relationship("consommes")
+  private List<ConsommeModel> consommes = null;
+  
+  /**
    * Constructor
    */
   public ContratModel() {
@@ -173,6 +215,51 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   }
   
   /**
+   * Retourne vrai si le contrat est à facturer
+   * 
+   * @return Boolean
+   */
+  public Boolean getAFacturer() {
+    return this.facturer;
+  }
+  
+  /**
+   * Retourne vrai si le contrat est à facturer
+   * 
+   * @return Boolean
+   */
+  public Boolean isAFacturer() {
+    return this.facturer;
+  }
+  
+  /**
+   * Retourne la valeur de groupe1
+   * 
+   * @return Integer
+   */
+  public Integer getGroupe1() {
+    return this.abo1;
+  }
+  
+  /**
+   * Retourne la valeur de groupe 2
+   * 
+   * @return Integer
+   */
+  public Integer getGroupe2() {
+    return this.abo2;
+  }
+  
+  /**
+   * Retourne la valeur de nombre
+   * 
+   * @return Integer
+   */
+  public Integer getNombre() {
+    return this.nombre;
+  }
+  
+  /**
    * Get occupant
    * 
    * @return PersonneModel
@@ -188,5 +275,26 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
    */
   public PersonneModel getRedevable() {
     return this.redevable;
+  }
+  
+  /**
+   * Retourne la nature d'abonné
+   * 
+   * @return NatureAbonneModel
+   */
+  public NatureAbonneModel getNatureAbonne() {
+    return this.natabo;
+  }
+  
+  /**
+   * Retourne les consommations
+   * 
+   * @return Consommes
+   */
+  public List<ConsommeModel> getConsommes() {
+    if (this.consommes == null) {
+      this.consommes = new ArrayList<ConsommeModel>();
+    }
+    return this.consommes;
   }
 }

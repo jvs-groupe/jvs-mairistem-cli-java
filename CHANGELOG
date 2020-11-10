@@ -1,3 +1,14 @@
+# 1.2.0 : 10/11/2020
+
+* Ajout de nouveaux champs
+    * Groupe1, groupe2, nombe sur le contrat
+    * Numéro de module, type de compteur, infos radio sur le compteur
+* Ajout de nouveaux éléments
+    * Nature d'abonné sur le contrat
+    * Consommes sur le contrat
+    * Contrats sur le point de consommation
+* Possibilité de changer les léméntes à retourne via le manager des points de consommation
+
 # 1.1.16 : 03/02/2019
 
 * Parameter IN for requests

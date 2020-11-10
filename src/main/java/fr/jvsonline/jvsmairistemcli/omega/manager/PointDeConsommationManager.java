@@ -79,13 +79,24 @@ public class PointDeConsommationManager extends BaseManager {
    * @return List
    */
   public List<PointDeConsommationModel> findBasic() {
+    String[] includes = {"contratactif", "tournee", "contratactif.natabo", "contratactif.redevable", "contratactif.occupant", "proprietaire", "compteur", "pdessadr", "pdessadr.voie", "pdessadr.voie.commune", "dernierreleve"};
+    return this.findBasic(includes);
+  }
+  
+  /**
+   * Find Point de consommation
+   * 
+   * @param p_includes Includes
+   * 
+   * @return List
+   */
+  public List<PointDeConsommationModel> findBasic(String[] p_includes) {
     logger.info("findBasic.start");
-    String[] includes = {"contratactif", "contratactif.redevable", "contratactif.occupant", "proprietaire", "compteur", "pdessadr", "pdessadr.voie", "pdessadr.voie.commune"};
-    this.parameters.setIncludes(includes);
+    this.parameters.setIncludes(p_includes);
     logger.info("findBasic.end");
     return this.find();
   }
-  
+
   /**
    * Get by Id
    * 
@@ -94,7 +105,21 @@ public class PointDeConsommationManager extends BaseManager {
    * @return PointDeConsommationModel
    */
   public PointDeConsommationModel getById(Integer p_id) {
+    String[] includes = {"contrats", "contrats.natabo", "tournee", "contrats.redevable", "contrats.occupant", "contrats.consommes", "proprietaire", "compteur", "pdessadr", "pdessadr.voie", "pdessadr.voie.commune", "dernierreleve"};
+    return this.getById(p_id, includes);
+  }
+
+  /**
+   * Get by Id
+   * 
+   * @param p_id Identifiant
+   * @param p_includes Includes
+   * 
+   * @return PointDeConsommationModel
+   */
+  public PointDeConsommationModel getById(Integer p_id, String[] p_includes) {
     logger.info("getById.start");
+    this.parameters.setIncludes(p_includes);
     PointDeConsommationModel myModel = null;
     Invocation.Builder invocationBuilder = this.client.getClient("partner/pconso/" + p_id,
         this.parameters);
