@@ -230,9 +230,9 @@
       <id>preproduction</id>
       <properties>
         <ws.endpoint>https://omegaweb-pp.jvsonline.fr/api/v1</ws.endpoint>
-        <ws.apiId>02a34f4fed43e1f55a9d7a42bf00a1e3@partner-kis-lodevois</ws.apiId>
+        <ws.apiId>****@partner-kis-lodevois</ws.apiId>
         <ws.hawkId>partner-kis-lodevois</ws.hawkId>
-        <ws.hawkKey>be58e42b95c303f3a64faf5c70f7d7e7</ws.hawkKey>
+        <ws.hawkKey>****</ws.hawkKey>
       </properties>
     </profile>
   </profiles>
