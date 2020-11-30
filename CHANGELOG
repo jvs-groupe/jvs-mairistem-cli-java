@@ -1,3 +1,15 @@
+# 1.2.3 : 30/11/2020
+
+* Ajout du type d'énumration CIV (civilité des personnes)
+* Nouvelles méthodes sur le contrat
+    * getDerniereConsommationRelevee
+    * getDerniereConsommationFacturee
+* Nouvelles méthodes sur le point de consommation
+    * getConsommationDernierReleve
+    * getIndexDernierReleve
+* Nouvelle méthode sur le relevé
+    * getConsommationRelevee
+
 # 1.2.0 : 10/11/2020
 
 * Ajout de nouveaux champs

@@ -297,4 +297,28 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
     }
     return this.consommes;
   }
+  
+  /**
+   * Retourne la dernière consommation relevée
+   * 
+   * @return Integer
+   */
+  public Integer getDerniereConsommationRelevee() {
+    if (this.consommes.size() > 0) {
+      return this.consommes.get(0).getConsommationRelevee();
+    }
+    return 0;
+  }
+  
+  /**
+   * Retourne la dernière consommation facturée
+   * 
+   * @return Integer
+   */
+  public Integer getDerniereConsommationFacturee() {
+    if (this.consommes.size() > 0) {
+      return this.consommes.get(0).getConsommationFacturee();
+    }
+    return 0;
+  }
 }

@@ -333,4 +333,13 @@ public class ReleveModel extends BaseModel {
     String converted = formatter.format(this.dateNouvelIndex);
     return "Index " + this.nouvelIndex.toString() + " du " + converted;
   }
+  
+  /**
+   * Retourne la consommation relevée
+   * 
+   * @return Integer
+   */
+  public Integer getConsommationRelevee() {
+    return this.consommationReleve;
+  }
 }

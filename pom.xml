@@ -6,7 +6,7 @@
 
   <groupId>fr.jvsonline.jvsmairistemcli</groupId>
   <artifactId>JvsMairistemCli</artifactId>
-  <version>1.2.2</version>
+  <version>1.2.3</version>
 
   <name>JvsMairistemCli</name>
   <description>Client Java pour les services web JVS-Mairistem</description>

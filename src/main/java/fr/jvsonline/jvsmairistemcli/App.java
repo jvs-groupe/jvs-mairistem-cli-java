@@ -18,6 +18,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.LigneEnumerationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.ArticleModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.DemandeModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeFactureurModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.PersonneModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.FactureExterneModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.LigneFactureExterneModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.NatureAbonneModel;
@@ -200,11 +201,16 @@ public class App {
           logger.info("    * Contrats : " + myLocalPConso.getContrats().size());
           for (ContratModel myContrat : myLocalPConso.getContrats()) {
             NatureAbonneModel myNature = myContrat.getNatureAbonne();
+            PersonneModel myOccupant = myContrat.getOccupant();
             String nature = "";
             if (myNature != null) {
               nature = myNature.getLibelle();
             }
+            LigneEnumerationModel monEnum = omegaContainer.getLigneEnumeration(EnumerationType.CIVILITE, myOccupant.getCivilite());
             logger.info("      * n° " + myContrat.getNumero() + " -- " + nature + " [" + myContrat.getConsommes().size() + "]");
+            logger.info("          * " + monEnum.getLibelle()  + " " + myOccupant.getNomComplet());
+            logger.info("          * dernière consommation (relevée) : " + myContrat.getDerniereConsommationRelevee());
+            logger.info("          * consommation du dernier relevé : " + myLocalPConso.getDernierReleve().getConsommationRelevee());
           }
         }
       }

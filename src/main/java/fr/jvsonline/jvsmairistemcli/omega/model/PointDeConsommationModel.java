@@ -703,4 +703,28 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     }
     return this.contrats;
   }
-}
+  
+  /**
+   * Retourne la consommation du dernier relevé
+   * 
+   * @return Integer
+   */
+  public Integer getConsommationDernierReleve() {
+    if (this.dernierReleve != null) {
+      return this.dernierReleve.getConsommationRelevee();
+    }
+    return 0;
+  }
+  
+  /**
+   * Retourne l'index du dernier relevé
+   * 
+   * @return Integer
+   */
+  public Integer getIndexDernierReleve() {
+    if (this.dernierReleve != null) {
+      return this.dernierReleve.getNouvelIndex();
+    }
+    return 0;
+  }
+ }

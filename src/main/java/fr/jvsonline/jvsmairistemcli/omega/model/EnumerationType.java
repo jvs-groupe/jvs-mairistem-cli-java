@@ -21,8 +21,11 @@ public enum EnumerationType {
   /**
    * Calibre compteur
    */
-  CALIBRE_COMPTEUR("CALIB");
-  
+  CALIBRE_COMPTEUR("CALIB"),
+  /**
+   * Civilité
+   */
+  CIVILITE("CIV");
   /**
    * Code
    */
