@@ -1,6 +1,6 @@
 # 1.2.3 : 30/11/2020
 
-* Ajout du type d'énumration CIV (civilité des personnes)
+* Ajout du type d'énumération CIV (civilité des personnes)
 * Nouvelles méthodes sur le contrat
     * getDerniereConsommationRelevee
     * getDerniereConsommationFacturee
