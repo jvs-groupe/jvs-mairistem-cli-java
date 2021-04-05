@@ -321,7 +321,10 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   @JsonIgnore
   public String getEtage() {
-    return this.etage;
+    if (this.etage != null) {
+      return this.etage;
+    }
+    return "";
   }
 
   /**
@@ -343,7 +346,10 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   @JsonIgnore
   public String getAppartement() {
-    return this.appartement;
+    if (this.appartement != null) {
+      return this.appartement;
+    }
+    return "";
   }
 
   /**
@@ -726,5 +732,70 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
       return this.dernierReleve.getNouvelIndex();
     }
     return 0;
+  }
+  
+  /**
+   * Get numero voie
+   * 
+   * @return String
+   */
+  public String getNumeroVoie() {
+    AdresseDesserteModel adr = this.getAdresseDesserte();
+    if (adr != null) {
+      return adr.getNumeroVoie();
+    }
+    return "";
+  }
+  
+  /**
+   * Get nom voie
+   * 
+   * @return String
+   */
+  public String getNomVoie() {
+    AdresseDesserteModel adr = this.getAdresseDesserte();
+    if (adr != null) {
+      return adr.getNomVoie();
+    }
+    return "";
+  }
+  
+  /**
+   * Get complement numero voie
+   * 
+   * @return String
+   */
+  public String getComplementNumeroVoie() {
+    AdresseDesserteModel adr = this.getAdresseDesserte();
+    if (adr != null) {
+      return adr.getComplementNumeroVoie();
+    }
+    return "";
+  }
+  
+  /**
+   * Get code postal ville
+   * 
+   * @return String
+   */
+  public String getCodePostalVille() {
+    AdresseDesserteModel adr = this.getAdresseDesserte();
+    if (adr != null) {
+      return adr.getCodePostalVille();
+    }
+    return "";
+  }
+  
+  /**
+   * Get nom ville
+   * 
+   * @return String
+   */
+  public String GetNomVille() {
+    AdresseDesserteModel adr = this.getAdresseDesserte();
+    if (adr != null) {
+      return adr.getNomVille();
+    }
+    return "";
   }
  }

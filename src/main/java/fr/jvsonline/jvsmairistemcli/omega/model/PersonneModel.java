@@ -12,6 +12,7 @@ import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
 import fr.jvsonline.jvsmairistemcli.core.PersonneInterface;
 import fr.jvsonline.jvsmairistemcli.core.Tools;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
+import fr.jvsonline.jvsmairistemcli.omega.Container;
 
 /**
  * PersonneModel
@@ -178,26 +179,42 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
   }
   
   /**
-   * Affectation de la civilité
+   * Affectation du code de la civilité
    * 
    * @param p_civilite Civilité
    * 
    * @return PersonneModel
    */
-  public PersonneModel setCivilite(String p_civilite) {
+  public PersonneModel setCodeCivilite(String p_civilite) {
     this.civilite = p_civilite;
     return this;
   }
-  
+
   /**
-   * Retourne la civilité
+   * Retourne le code de la civilite
+   * 
+   * @return String
+   */
+  public String getCodeCivilite() {
+    if (this.civilite != null) {
+      return this.civilite;
+    }
+    return "";
+  }
+
+  /**
+   * Retourne le libellé de la civilité
    * 
    * @return String
    */
   public String getCivilite() {
-    return this.civilite;
+    if (this.civilite != null) {
+      Container omegaContainer = Container.getInstance();
+      return omegaContainer.getLibelleCivilite(this.civilite);
+    }
+    return "";
   }
-  
+
   /**
    * Affectation du nom
    * 
@@ -209,14 +226,17 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.nom = p_nom;
     return this;
   }
-  
+
   /**
    * Retourne le nom
    * 
    * @return String
    */
   public String getNom() {
-    return this.nom;
+    if (this.nom != null) {
+      return this.nom;
+    }
+    return "";
   }
 
   /**
@@ -237,7 +257,10 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    * @return String
    */
   public String getPrenom() {
-    return this.prenom;
+    if (this.prenom != null) {
+      return this.prenom;
+    }
+    return "";
   }
   
   /**
@@ -259,7 +282,10 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    * @return String
    */
   public String getAdresse1() {
-    return this.adresse1;
+    if (this.adresse1 != null) {
+      return this.adresse1;
+    }
+    return "";
   }
   
 
@@ -281,7 +307,10 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    * @return String
    */
   public String getAdresse2() {
-    return this.adresse2;
+    if (this.adresse2 != null) {
+      return this.adresse2;
+    }
+    return "";
   }
   
   /**
@@ -302,7 +331,10 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    * @return String
    */
   public String getAdresse3() {
-    return this.adresse3;
+    if (this.adresse3 != null) {
+      return this.adresse3;
+    }
+    return "";
   }
   
   /**
@@ -316,7 +348,19 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.codePostal = p_code_postal;
     return this;
   }
-  
+
+  /**
+   * Retourne le code postal
+   * 
+   * @return String
+   */
+  public String getCodePostal() {
+    if (this.codePostal != null) {
+      return this.codePostal;
+    }
+    return "";
+  }
+
   /**
    * Affectation de la ville
    * 
@@ -335,7 +379,10 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    * @return String
    */
   public String getVille() {
-    return this.ville;
+    if (this.ville != null) {
+      return this.ville;
+    }
+    return "";
   }
   
   /**
@@ -349,16 +396,19 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.pays = p_pays;
     return this;
   }
-  
+
   /**
    * Retourne le pays
    * 
    * @return String
    */
   public String getPays() {
-    return this.pays;
+    if (this.pays != null) {
+      return this.pays;
+    }
+    return "";
   }
-  
+
   /**
    * Affectation du complément du nom
    * 
@@ -370,16 +420,19 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.complementNom = p_complement;
     return this;
   }
-  
+
   /**
    * Retourne le complément du nom
    * 
    * @return String
    */
   public String getComplementNom() {
-    return this.complementNom;
+    if (this.complementNom != null) {
+      return this.complementNom;
+    }
+    return "";
   }
-  
+
   /**
    * Affectation de l'email
    * 
@@ -391,16 +444,19 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.email = p_email;
     return this;
   }
-  
+
   /**
    * Récupération de l'email
    * 
    * @return String
    */
   public String getEmail() {
-    return this.email;
+    if (this.email != null) {
+      return this.email;
+    }
+    return "";
   }
-  
+
   /**
    * Affectation du téléphone
    * 
@@ -412,16 +468,19 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.telephone = p_telephone;
     return this;
   }
-  
+
   /**
    * Retourne le téléphone
    * 
    * @return String
    */
   public String getTelephone() {
-    return this.telephone;
+    if (this.telephone != null) {
+      return this.telephone;
+    }
+    return "";
   }
-  
+
   /**
    * Affectation du numéro de mobile
    * 
@@ -433,16 +492,19 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.telephoneMobile = p_mobile;
     return this;
   }
-  
+
   /**
    * Retourne le numéro de mobile
    * 
    * @return String
    */
   public String getTelephoneMobile() {
-    return this.telephoneMobile;
+    if (this.telephoneMobile != null) {
+      return this.telephoneMobile;
+    }
+    return "";
   }
-  
+
   /**
    * Affectation du numéro de fax
    * 
@@ -454,16 +516,19 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.fax = p_fax;
     return this;
   }
-  
+
   /**
    * Retourne le numéro de fax
    * 
    * @return String
    */
   public String getFax() {
-    return this.fax;
+    if (this.fax != null) {
+      return this.fax;
+    }
+    return "";
   }
-  
+
   /**
    * Affectation du numéro de siret
    * 
@@ -475,16 +540,19 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.numeroSiret = p_siret;
     return this;
   }
-  
+
   /**
    * Retourne le numéro de siret
    * 
    * @return String
    */
   public String getSiret() {
-    return this.numeroSiret;
+    if (this.numeroSiret != null) {
+      return this.numeroSiret;
+    }
+    return "";
   }
-  
+
   /**
    * Affectation de la catégorie du Tiers
    * 
@@ -496,16 +564,32 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.categorieTiers = p_categorie;
     return this;
   }
-  
+
   /**
    * Retourne la catégorie du tiers
    * 
    * @return String
    */
   public String getCategorieTiers() {
-    return this.categorieTiers;
+    if (this.categorieTiers != null) {
+      Container omegaContainer = Container.getInstance();
+      return omegaContainer.getLibelleCategorieTiers(this.categorieTiers);
+    }
+    return "";
   }
   
+  /**
+   * Retourne le code catégorie de Tiers
+   * 
+   * @return String
+   */
+  public String getCodeCategorieTiers() {
+    if (this.categorieTiers != null) {
+      return this.categorieTiers;
+    }
+    return "";
+  }
+
   /**
    * Affectation de la nature juridique
    * 
@@ -517,16 +601,32 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.natureJuridique = p_nature;
     return this;
   }
-  
+
   /**
    * Retourne la nature juridique
    * 
    * @return String
    */
   public String getNatureJuridique() {
-    return this.natureJuridique;
+    if (this.natureJuridique != null) {
+      Container omegaContainer = Container.getInstance();
+      return omegaContainer.getLibelleNatureJuridique(this.natureJuridique);
+    }
+    return "";
   }
-  
+
+  /**
+   * Retourne le code natude juridique
+   * 
+   * @return String
+   */
+  public String getCodeNatureJuridique() {
+    if (this.natureJuridique != null) {
+      return this.natureJuridique;
+    }
+    return "";
+  }
+
   /**
    * Convert to Person
    * 
@@ -546,10 +646,11 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
   @JsonIgnore
   @Override
   public String getNomComplet() {
-    String str = Tools.asString(this.nom, "") + " " + Tools.asString(this.prenom, "");
+    String civilite = this.getCivilite();
+    String str = civilite + " " + Tools.asString(this.nom, "") + " " + Tools.asString(this.prenom, "");
     return str.trim();
   }
-  
+
   /**
    * toString
    * 

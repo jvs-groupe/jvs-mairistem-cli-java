@@ -138,6 +138,7 @@ public class DemandeManager extends BaseManager {
       logger.info(serializedAsString);
       Response response = invocationBuilder.post(Entity.json(serializedAsString));
       String strResponse = response.readEntity(String.class);
+      logger.info(strResponse);
       byte[] rawResponse = strResponse.getBytes();
       JSONAPIDocument<DemandeModel> bookDocument = converter
           .readDocument(rawResponse, DemandeModel.class);

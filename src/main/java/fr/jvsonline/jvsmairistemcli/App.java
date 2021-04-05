@@ -5,6 +5,7 @@ import fr.jvsonline.jvsmairistemcli.omega.manager.CompteurManager;
 import fr.jvsonline.jvsmairistemcli.omega.manager.DemandeManager;
 import fr.jvsonline.jvsmairistemcli.omega.manager.EnumerationManager;
 import fr.jvsonline.jvsmairistemcli.omega.manager.ArticleManager;
+import fr.jvsonline.jvsmairistemcli.omega.manager.CodificationManager;
 import fr.jvsonline.jvsmairistemcli.omega.manager.DemandeManager;
 import fr.jvsonline.jvsmairistemcli.omega.manager.OrganismeFactureurManager;
 import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
@@ -16,6 +17,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationType;
 import fr.jvsonline.jvsmairistemcli.omega.model.LigneEnumerationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.ArticleModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.CodificationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.DemandeModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeFactureurModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.PersonneModel;
@@ -23,6 +25,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.FactureExterneModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.LigneFactureExterneModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.NatureAbonneModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.TourneeModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.VoieModel;
 import fr.jvsonline.jvsmairistemcli.omega.Container;
 import fr.jvsonline.jvsmairistemcli.core.JsonApiWS;
 import fr.jvsonline.jvsmairistemcli.core.RequestParameters;
@@ -54,8 +57,8 @@ public class App {
    * @param p_args Arguments
    */
   public static void main(String[] p_args) {
-    //String[] tests = new String[]{"ARTICLE", "OFACT", "CPT_FIRST", "CPT_NUM", "PCONSO_NUM", "PCONSO_LIST", "PCONSO_GEORGES", "PCONSO_2775", "PCONSO_RUE", "PCONSO_CPT", "DEMANDE_ID", "DEMANDE"};
-    String[] tests = new String[]{"PCONSO_NUM"};
+    //String[] tests = new String[]{"ARTICLE", "OFACT", "CPT_FIRST", "CPT_NUM", "PCONSO_NUM", "PCONSO_LIST", "PCONSO_GEORGES", "PCONSO_2789", "PCONSO_RUE", "PCONSO_CPT", "DEMANDE_ID", "DEMANDE"};
+    String[] tests = new String[]{"PCONSO_GEORGES"}; //ARTICLE","OFACT","PCONSO_2789","DEMANDE"};
     
     logger.info("----------------------------------------------------------");
     logger.info("Read settings...");
@@ -64,73 +67,15 @@ public class App {
     logger.info("   Endpoint : " + omegaSettings.getWsEndpoint());
     logger.info("----------------------------------------------------------");
     JsonApiWS wsClient = new JsonApiWS(omegaSettings);
-    Container omegaContainer = new Container();
+    Container omegaContainer = Container.getInstance();
+    // Appels des services web de bse pour initialiser le composant
+    omegaContainer.init(wsClient);
     
-    
-    EnumerationManager enumManager = new EnumerationManager(wsClient);
+    // Chargement des données dans le singleton
     PointDeConsommationManager pconsoManager = new PointDeConsommationManager(wsClient);
-    ArticleManager artManager = new ArticleManager(wsClient);
-    OrganismeFactureurManager ofactManager = new OrganismeFactureurManager(wsClient);
     CompteurManager cptManager = new CompteurManager(wsClient);
     DemandeManager reqManager = new DemandeManager(wsClient);
     
-    
-    logger.info("----------------------------------------------------------");
-    logger.info("   Récupération des codifications...");
-    List<EnumerationModel> myListE = enumManager.find();
-    if (myListE == null) {
-      logger.info("Empty result...");
-    } else {
-      for (EnumerationModel item : myListE) {
-        logger.info("Enumération " + item.getNom());
-      }
-    }
-    omegaContainer.setEnums(myListE);
-    logger.info("----------------------------------------------------------");
-    
-    
-    
-    
-    if (Arrays.asList(tests).contains("ARTICLE")) {
-      logger.info("----------------------------------------------------------");
-      logger.info("   Récupération des articles...");
-      artManager.setPage(1);
-      artManager.setPageLimit(100);
-      artManager.addRequestParameter("actif", "1");
-      List<ArticleModel> myListArts = artManager.find();
-      if (myListArts == null) {
-        logger.info("Empty result...");
-      } else {
-        for (ArticleModel item : myListArts) {
-          logger.info("Article " +  item.getCode() + " == " + item.getLibelle() + " : " + item.getPrixUnitaire());
-        }
-      }
-      omegaContainer.setArticles(myListArts);
-      //omegaContainer.setEnums(myListE);
-      logger.info("----------------------------------------------------------");
-    }
-    
-    
-    
-    
-    if (Arrays.asList(tests).contains("OFACT")) {
-      logger.info("----------------------------------------------------------");
-      logger.info("   Récupération des organismes factureurs...");
-      ofactManager.setPage(1);
-      ofactManager.setPageLimit(100);
-      List<OrganismeFactureurModel> myListOfacts = ofactManager.find();
-      if (myListOfacts == null) {
-        logger.info("Empty result...");
-      } else {
-        for (OrganismeFactureurModel item : myListOfacts) {
-          logger.info("Ofact " + item.getNom());
-          omegaContainer.setOrganismeFactureur(item);
-          break;
-        }
-      }
-      //omegaContainer.setEnums(myListE);
-      logger.info("----------------------------------------------------------");
-    }
     
     
     
@@ -208,9 +153,11 @@ public class App {
             }
             LigneEnumerationModel monEnum = omegaContainer.getLigneEnumeration(EnumerationType.CIVILITE, myOccupant.getCivilite());
             logger.info("      * n° " + myContrat.getNumero() + " -- " + nature + " [" + myContrat.getConsommes().size() + "]");
-            logger.info("          * " + monEnum.getLibelle()  + " " + myOccupant.getNomComplet());
+            if (myOccupant != null && monEnum != null) {
+                logger.info("          * " + monEnum.getLibelle()  + " " + myOccupant.getNomComplet());
+            }
             logger.info("          * dernière consommation (relevée) : " + myContrat.getDerniereConsommationRelevee());
-            logger.info("          * consommation du dernier relevé : " + myLocalPConso.getDernierReleve().getConsommationRelevee());
+            //logger.info("          * consommation du dernier relevé : " + myLocalPConso.getDernierReleve().getConsommationRelevee());
           }
         }
       }
@@ -250,17 +197,12 @@ public class App {
     
     if (Arrays.asList(tests).contains("PCONSO_GEORGES")) {
       logger.info("----------------------------------------------------------");
-      logger.info("   Liste des points de consommation ayant un occupant prénommé Georges...");
+      logger.info("   Liste des points de consommation ayant un propriétaire prénommé Georges...");
       pconsoManager.flushRequestParameters();
       RequestParameters cd1 = new RequestParameters();
       cd1.setDefaultCondition(RequestParameterCondition.OR);
-      cd1.addParameter("contratActif.occupant.prenom", "GE");
-      cd1.addParameter("contratActif.occupant.nom", "LY");
-      RequestParameters cd2 = new RequestParameters();
-      cd2.setDefaultCondition(RequestParameterCondition.AND);
-      cd2.addParameter("adresseDesserte.voie.commune.nom", "JOLIEVILLE");
+      cd1.addParameter("proprietaire.prenom", "GEORGES");
       pconsoManager.addRequestCondition(cd1);
-      pconsoManager.addRequestCondition(cd2);
       pconsoManager.setDefaultCondition(RequestParameterCondition.AND);
       List<PointDeConsommationModel> myListN = pconsoManager.find();
       if (myListN == null) {
@@ -329,7 +271,7 @@ public class App {
       logger.info("----------------------------------------------------------");
       logger.info("   Liste des points de consommation avec une rue principale...");
       pconsoManager.flushRequestParameters();
-      pconsoManager.addRequestParameter("adresseDesserte.voie.nom", "Principale");
+      pconsoManager.addRequestParameter("adresseDesserte.voie.nom", "GAUL");
       List<PointDeConsommationModel> myListV = pconsoManager.findBasic();
       if (myListV == null) {
         logger.info("Empty result...");
@@ -344,8 +286,32 @@ public class App {
           logger.info("Pconso n° " + item.getNumero() + " : " + numero + " [" + numSerie + "]");
           ContratModel contratActif = item.getContratActif();
           if (contratActif != null) {
-            logger.info("    * " + contratActif.getOccupant());
+            logger.info("    * Occupant : " + contratActif.getOccupant());
           }
+          PersonneModel proprio = item.getProprietaire();
+          if (proprio != null) {
+            logger.info("    * Propriétaire : " + proprio);
+            logger.info("    *                " + proprio.getComplementNom());
+            logger.info("    *         adr:   " + proprio.getAdresse1());
+            logger.info("    *                " + proprio.getAdresse2());
+            logger.info("    *                " + proprio.getAdresse3());
+            logger.info("    *                " + proprio.getCodePostal());
+            logger.info("    *                " + proprio.getVille());
+            logger.info("    *         tel:   " + proprio.getTelephone());
+            logger.info("    *         mob:   " + proprio.getTelephoneMobile());
+            logger.info("    *         email: " + proprio.getEmail());
+            logger.info("    *         natuj: " + proprio.getNatureJuridique());
+            logger.info("    *         ctier: " + proprio.getCategorieTiers());
+            logger.info("    *         siret: " + proprio.getSiret());
+          }
+          AdresseDesserteModel adr = item.getAdresseDesserte();
+          logger.info("    * Etage : " + item.getEtage());
+          logger.info("    * Appartement : " + item.getAppartement());
+          logger.info("    * N° voie : " + item.getNumeroVoie());
+          logger.info("    * Cplt n° voie : " + item.getComplementNumeroVoie());
+          logger.info("    * Nom voie : " + item.getNomVoie());
+          logger.info("    * Code postal : " + item.getCodePostalVille());
+          logger.info("    * Ville : " + item.GetNomVille());
           logger.info("    * " + item.toAdresse());
         }
       }
@@ -355,14 +321,14 @@ public class App {
     
     
     
-    if (Arrays.asList(tests).contains("PCONSO_2775")) {
+    if (Arrays.asList(tests).contains("PCONSO_2789")) {
       logger.info("----------------------------------------------------------");
-      logger.info("   Point de consommation avec l'ID 2775...");
+      logger.info("   Point de consommation avec l'ID 2789...");
       /**
        * manager des demandes
        */
       pconsoManager.flushRequestParameters();
-      PointDeConsommationModel myPConso = pconsoManager.getById(2775);
+      PointDeConsommationModel myPConso = pconsoManager.getById(16424);
       if (myPConso != null) {
         CompteurModel monCompteur99 = myPConso.getCompteur();
         String numSerie99 = "";
@@ -408,9 +374,9 @@ public class App {
         DemandeModel maFac = reqManager.sendFactureExterne(uneFacture);
         logger.info("Demande n° " + maFac.getId());
         // Mise à jour des coordonnées d'une personne
-        reqManager.updatePersonne(myPConso.getContratActif().getOccupant());
+        reqManager.updatePersonne(myPConso.getProprietaire());
       } else {
-        logger.info("Pconso id 34 non trouvé !");
+        logger.info("Pconso id 2789 non trouvé !");
       }
       logger.info("----------------------------------------------------------");
     }

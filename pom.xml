@@ -6,7 +6,7 @@
 
   <groupId>fr.jvsonline.jvsmairistemcli</groupId>
   <artifactId>JvsMairistemCli</artifactId>
-  <version>1.2.3</version>
+  <version>1.3.0</version>
 
   <name>JvsMairistemCli</name>
   <description>Client Java pour les services web JVS-Mairistem</description>
@@ -214,25 +214,16 @@
 
   <profiles>
     <profile>
-      <id>development</id>
       <activation>
         <activeByDefault>true</activeByDefault>
         <jdk>1.8</jdk>
       </activation>
-      <properties>
-        <ws.endpoint>http://host.docker.internal:6880/api/v1</ws.endpoint>
-        <ws.apiId>dfc7258e09f94ba6e495a08c50d6fd00@partner-kis-jolieville</ws.apiId>
-        <ws.hawkId>partner-kis-jolieville</ws.hawkId>
-        <ws.hawkKey>be58e42b95c303f3a64faf5c70f7d7e7</ws.hawkKey>
-      </properties>
-    </profile>
-    <profile>
-      <id>preproduction</id>
+      <id>development</id>
       <properties>
         <ws.endpoint>https://omegaweb-pp.jvsonline.fr/api/v1</ws.endpoint>
-        <ws.apiId>****@partner-kis-lodevois</ws.apiId>
+        <ws.apiId>xxx@partner-kis-lodevois</ws.apiId>
         <ws.hawkId>partner-kis-lodevois</ws.hawkId>
-        <ws.hawkKey>****</ws.hawkKey>
+        <ws.hawkKey>xxx</ws.hawkKey>
       </properties>
     </profile>
   </profiles>

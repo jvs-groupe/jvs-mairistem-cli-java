@@ -8,55 +8,55 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * LigneEnumerationModel
+ * LigneCodificationModel
  * 
  * @author jeromeklam
  */
-@Type("Partner_Ligenum")
+@Type("Partner_Listeval")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LigneEnumerationModel extends BaseModel {
+public class LigneCodificationModel extends BaseModel {
 
   /**
-   * Identifiant de la ligne d'énumération
+   * Identifiant de la ligne de codification
    */
   @Id(IntegerIdHandler.class)
-  @JsonProperty("ligenum_id")
+  @JsonProperty("listeval_id")
   private Integer id;
-  
+
   /**
-   * Identifiant de l'énumération
+   * Identifiant de la codification
    */
-  @JsonProperty("enum_id")
-  private Integer id_enum;
+  @JsonProperty("listedef_id")
+  private Integer id_codif;
+
+  /**
+   * Code de la codification
+   */
+  @JsonProperty("codeliste")
+  private String codeListe;
 
   /**
    * Code
    */
-  @JsonProperty("codeenum")
+  @JsonProperty("codeval")
   private String code;
 
   /**
    * Libellé
    */
-  @JsonProperty("liblenum")
+  @JsonProperty("liblong")
   private String libelle;
-  
+
   /**
    * Libellé court
    */
-  @JsonProperty("libcenum")
+  @JsonProperty("libcourt")
   private String libelleCourt;
-  
-  /**
-   * Code lié
-   */
-  @JsonProperty("codelie")
-  private String codeLie;
-  
+
   /**
    * Constructor
    */
-  public LigneEnumerationModel() {
+  public LigneCodificationModel() {
   }
 
   /**
@@ -73,9 +73,9 @@ public class LigneEnumerationModel extends BaseModel {
    * 
    * @param p_id Identifiant
    * 
-   * @return LigneEnumerationModel
+   * @return LigneCodificationModel
    */
-  public LigneEnumerationModel setId(Integer p_id) {
+  public LigneCodificationModel setId(Integer p_id) {
     this.id = p_id;
     return this;
   }
@@ -94,13 +94,13 @@ public class LigneEnumerationModel extends BaseModel {
    * 
    * @param p_libelle Libellé
    * 
-   * @return LigneEnumerationModel
+   * @return LigneCodificationModel
    */
-  public LigneEnumerationModel setLibelle(String p_libelle) {
+  public LigneCodificationModel setLibelle(String p_libelle) {
     this.libelle = p_libelle;
     return this;
   }
-  
+
   /**
    * Get code
    * 
@@ -109,19 +109,40 @@ public class LigneEnumerationModel extends BaseModel {
   public String getCode() {
     return this.code;
   }
-  
+
   /**
    * Set code
    * 
    * @param p_code Code
    * 
-   * @return LigneEnumerationModel
+   * @return LigneCodificationModel
    */
-  public LigneEnumerationModel setCode(String p_code) {
+  public LigneCodificationModel setCode(String p_code) {
     this.code = p_code;
     return this;
   }
-  
+
+  /**
+   * Retourne le code de la liste
+   * 
+   * @return String
+   */
+  public String getCodeListe() {
+    return this.codeListe;
+  }
+
+  /**
+   * Affectation du code liste
+   * 
+   * @param p_code Code de la liste
+   * 
+   * @return LigneCodificationModel
+   */
+  public LigneCodificationModel setCodeListe(String p_code) {
+    this.codeListe = p_code;
+    return this;
+  }
+
   /**
    * Get libellé court
    * 
@@ -130,19 +151,19 @@ public class LigneEnumerationModel extends BaseModel {
   public String getLibelleCourt() {
     return this.libelleCourt;
   }
-  
+
   /**
    * Set libellé court
    * 
    * @param p_libelleCourt Libellé court
    * 
-   * @return LigneEnumerationModel
+   * @return LigneCodificationModel
    */
-  public LigneEnumerationModel setLibelleCourt(String p_libelleCourt) {
+  public LigneCodificationModel setLibelleCourt(String p_libelleCourt) {
     this.libelleCourt = p_libelleCourt;
     return this;
   }
-  
+
   /**
    * To string
    * 

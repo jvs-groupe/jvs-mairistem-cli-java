@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
 import fr.jvsonline.jvsmairistemcli.model.AdresseModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeModel;
 
 /**
  * AdresseDesserteModel
@@ -99,16 +100,19 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
   }
   
   /**
-   * Get numéro de voie
+   * Get numero de voie
    * 
    * @return String
    */
   public String getNumeroVoie() {
-    return this.numeroVoie;
+    if (this.numeroVoie != null) {
+      return this.numeroVoie;
+    }
+    return "";
   }
   
   /**
-   * Set numéro de voie
+   * Set numero de voie
    * 
    * @param p_numeroVoie Numéro de la voie
    * 
@@ -126,5 +130,71 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
    */
   public VoieModel getVoie() {
     return this.voie;
+  }
+  
+  /**
+   * Get complement numero
+   * 
+   * @return String
+   */
+  public String getComplementNumeroVoie() {
+    if (this.complementNumeroVoie!= null) {
+      return this.complementNumeroVoie;
+    }
+    return "";
+  }
+  
+  /**
+   * Get nom voie
+   * 
+   * @return String
+   */
+  public String getNomVoie() {
+    if (this.voie != null) {
+      return this.voie.getNom();
+    }
+    return "";
+  }
+  
+  /**
+   * Get code voie
+   * 
+   * @return String
+   */
+  public String getCodeVoie() {
+    if (this.voie != null) {
+      return this.voie.getNom();
+    }
+    return "";
+  }
+  
+  /**
+   * Get code postal
+   * 
+   * @return String
+   */
+  public String getCodePostalVille() {
+    if (this.voie != null) {
+      OrganismeModel commune = this.voie.getCommune();
+      if (commune != null) {
+        return commune.getCodePostal();
+      }
+    }
+    return "";
+  }
+  
+  /**
+   * Get nom ville
+   * 
+   * @return String
+   */
+  public String getNomVille() {
+    if (this.voie != null) {
+      OrganismeModel commune = this.voie.getCommune();
+      if (commune != null) {
+        return commune.getNom();
+      }
+    }
+    return "";
   }
 }
