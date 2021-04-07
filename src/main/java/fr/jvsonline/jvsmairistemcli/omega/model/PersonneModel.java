@@ -28,31 +28,31 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
   @Id(IntegerIdHandler.class)
   @JsonProperty("personne_id")
   private Integer id;
-  
+
   /**
    * Civilité
    */
   @JsonProperty("enum_civ")
   private String civilite;
-  
+
   /**
    * Nom
    */
   @JsonProperty("nompers")
   private String nom;
-  
+
   /**
    * Prénom
    */
   @JsonProperty("prenpers")
   private String prenom;
-  
+
   /**
    * Complément du nom
    */
   @JsonProperty("cpltnom")
   private String complementNom;
-  
+
   /**
    * Ligne adresse 1
    */
@@ -64,7 +64,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    */
   @JsonProperty("adrpers2")
   private String adresse2;
-  
+
   /**
    * Ligne adresse 3
    */
@@ -76,7 +76,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    */
   @JsonProperty("cppers")
   private String codePostal;
-  
+
   /**
    * Ville
    */
@@ -88,7 +88,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    */
   @JsonProperty("enum_paysr")
   private String pays;
-  
+
   /**
    * Téléphone
    */
@@ -100,56 +100,56 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    */
   @JsonProperty("fax")
   private String fax;
-  
+
   /**
    * Mail
    */
   @JsonProperty("mail")
   private String email;
-  
+
   /**
    * Numéro de TVA
    */
   @JsonProperty("numtva")
   private String numeroTva;
-  
+
   /**
    * Téléphone mobile
    */
   @JsonProperty("telmobile")
   private String telephoneMobile;
-  
+
   /**
    * Téléphone
    */
   @JsonProperty("teltravail")
   private String telephoneTravail;
-  
+
   /**
    * Numéro de SIRET
    */
   @JsonProperty("numerosiret")
   private String numeroSiret;
-  
+
   /**
    * Voie actif
    */
   @JsonProperty("actif")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
   private Boolean actif;
-  
+
   /**
    * Catégorie de tiers
    */
   @JsonProperty("enum_ctier")
   private String categorieTiers;
-  
+
   /**
    * Nature juridique
    */
   @JsonProperty("enum_natju")
   private String natureJuridique;
-  
+
   /**
    * Constructor
    */
@@ -177,7 +177,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.id = p_id;
     return this;
   }
-  
+
   /**
    * Affectation du code de la civilité
    * 
@@ -250,7 +250,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.prenom = p_prenom;
     return this;
   }
-  
+
   /**
    * Retourne le prénom
    * 
@@ -262,7 +262,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     }
     return "";
   }
-  
+
   /**
    * Affectation de la première ligne de l'adresse
    * 
@@ -274,8 +274,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.adresse1 = p_adr;
     return this;
   }
-  
-  
+
   /**
    * Récupération de la première ligne d'adresse
    * 
@@ -287,7 +286,6 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     }
     return "";
   }
-  
 
   /**
    * Affectation de la seconde ligne de l'adresse
@@ -300,7 +298,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.adresse2 = p_adr;
     return this;
   }
-  
+
   /**
    * Récupération de la seconde ligne de l'adresse
    * 
@@ -312,7 +310,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     }
     return "";
   }
-  
+
   /**
    * Affectation de la troisième ligne de l'adresse
    * 
@@ -324,7 +322,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.adresse3 = p_adr;
     return this;
   }
-  
+
   /**
    * Récupération de la troisième ligne de l'adresse
    * 
@@ -336,7 +334,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     }
     return "";
   }
-  
+
   /**
    * Affectation du code postal
    * 
@@ -372,7 +370,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     this.ville = p_ville;
     return this;
   }
-  
+
   /**
    * Retourne la ville
    * 
@@ -384,7 +382,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     }
     return "";
   }
-  
+
   /**
    * Affectation du pays
    * 
@@ -577,7 +575,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
     }
     return "";
   }
-  
+
   /**
    * Retourne le code catégorie de Tiers
    * 
@@ -635,6 +633,9 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
   @JsonIgnore
   public fr.jvsonline.jvsmairistemcli.model.PersonneModel toPersonne() {
     fr.jvsonline.jvsmairistemcli.model.PersonneModel personne = new fr.jvsonline.jvsmairistemcli.model.PersonneModel();
+    personne.setCivilite(this.getCivilite()).setNom(this.nom).setPrenom(this.prenom);
+    personne.setFullAdresse(this.adresse1, this.adresse2, this.adresse3);
+    personne.setCodePostal(this.codePostal).setVille(this.ville).setPays(this.pays);
     return personne;
   }
 

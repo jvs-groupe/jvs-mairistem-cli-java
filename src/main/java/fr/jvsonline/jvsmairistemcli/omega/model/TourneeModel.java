@@ -24,25 +24,25 @@ public class TourneeModel extends BaseModel {
   @Id(IntegerIdHandler.class)
   @JsonProperty("tournee_id")
   private Integer id;
-  
+
   /**
    * Code tournée
    */
   @JsonProperty("codetournee")
   private String code;
-  
+
   /**
    * Libellé tournée
    */
   @JsonProperty("libtournee")
   private String libelle;
-  
+
   /**
    * Identifiant de l'agent
    */
   @JsonProperty("agent_id")
   private Integer id_agent;
-  
+
   /**
    * Constructor
    */
@@ -69,7 +69,7 @@ public class TourneeModel extends BaseModel {
     this.id = p_id;
     return this;
   }
-  
+
   /**
    * Get code
    * 
@@ -78,7 +78,7 @@ public class TourneeModel extends BaseModel {
   public String getCode() {
     return this.code;
   }
-  
+
   /**
    * Set code
    * 
@@ -90,7 +90,7 @@ public class TourneeModel extends BaseModel {
     this.code = p_code;
     return this;
   }
-  
+
   /**
    * Get libelle
    * 
@@ -99,7 +99,7 @@ public class TourneeModel extends BaseModel {
   public String getLibelle() {
     return this.libelle;
   }
-  
+
   /**
    * Set libelle
    * 
@@ -111,7 +111,7 @@ public class TourneeModel extends BaseModel {
     this.libelle = p_libelle;
     return this;
   }
-  
+
   /**
    * Get identifiant agent
    * 
@@ -120,7 +120,7 @@ public class TourneeModel extends BaseModel {
   public Integer getIdAgent() {
     return this.id_agent;
   }
-  
+
   /**
    * Set id egent
    * 

@@ -1,5 +1,8 @@
 package fr.jvsonline.jvsmairistemcli.model;
 
+import java.util.Arrays;
+import java.util.List;
+
 import fr.jvsonline.jvsmairistemcli.core.Tools;
 
 /**
@@ -33,42 +36,47 @@ public class AdresseModel {
    * Appartement
    */
   private String appartement;
-  
+
   /**
    * Identifiant de la voie
    */
   private Integer id_voie;
-  
+
   /**
    * Code de la voie
    */
   private String codeVoie;
-  
+
+  /**
+   * Article de la voie
+   */
+  private String articleVoie;
+
   /**
    * Type de voie
    */
   private String typeVoie;
-  
+
   /**
    * Nom de la voie
    */
-  private String nom;
-  
+  private String nomVoie;
+
   /**
    * Complément du nom de la voie
    */
   private String complementNom;
-  
+
   /**
    * Identifiant de la ville
    */
   private Integer id_ville;
-  
+
   /**
    * Code postal
    */
   private String codePostal;
-  
+
   /**
    * Ville
    */
@@ -121,8 +129,11 @@ public class AdresseModel {
    *
    * @return Integer 
    */
-  public Integer getNumero() {
-    return numero;
+  public String getNumero() {
+    if (numero != null) {
+      return numero.toString();
+    }
+    return "";
   }
 
   /**
@@ -162,7 +173,10 @@ public class AdresseModel {
    * @return String 
    */
   public String getComplementNumero() {
-    return complementNumero;
+    if (this.complementNumero != null) {
+      return complementNumero;
+    }
+    return "";
   }
 
   /**
@@ -183,7 +197,10 @@ public class AdresseModel {
    * @return String 
    */
   public String getEtage() {
-    return etage;
+    if (this.etage != null) {
+      return this.etage;
+    }
+    return "";
   }
 
   /**
@@ -204,7 +221,10 @@ public class AdresseModel {
    * @return String 
    */
   public String getAppartement() {
-    return appartement;
+    if (this.appartement != null) {
+      return this.appartement;
+    }
+    return "";
   }
 
   /**
@@ -246,7 +266,10 @@ public class AdresseModel {
    * @return String 
    */
   public String getCodeVoie() {
-    return codeVoie;
+    if (this.codeVoie != null) {
+      return this.codeVoie;
+    }
+    return "";
   }
 
   /**
@@ -267,7 +290,10 @@ public class AdresseModel {
    * @return String 
    */
   public String getTypeVoie() {
-    return typeVoie;
+    if (this.typeVoie != null) {
+      return this.typeVoie;
+    }
+    return "";
   }
 
   /**
@@ -283,12 +309,39 @@ public class AdresseModel {
   }
 
   /**
+   * Retourne l'article de la voie
+   * 
+   * @return String
+   */
+  public String getArticleVoie() {
+    if (this.articleVoie != null) {
+      return this.articleVoie;
+    }
+    return "";
+  }
+
+  /**
+   * Affectation de l'article de la voie
+   * 
+   * @param p_article Article
+   * 
+   * @return AdresseModel
+   */
+  public AdresseModel setArticleVoie(String p_article) {
+    this.articleVoie = p_article;
+    return this;
+  }
+
+  /**
    * Get nom
    *
    * @return String 
    */
-  public String getNom() {
-    return nom;
+  public String getNomVoie() {
+    if (this.nomVoie != null) {
+      return nomVoie;
+    }
+    return "";
   }
 
   /**
@@ -298,8 +351,8 @@ public class AdresseModel {
    *
    * @return AdresseModel
    */
-  public AdresseModel setNom(String p_nom) {
-    this.nom = p_nom;
+  public AdresseModel setNomVoie(String p_nom) {
+    this.nomVoie = p_nom;
     return this;
   }
 
@@ -309,7 +362,10 @@ public class AdresseModel {
    * @return String 
    */
   public String getComplementNom() {
-    return complementNom;
+    if (this.complementNom != null) {
+      return this.complementNom;
+    }
+    return "";
   }
 
   /**
@@ -351,7 +407,10 @@ public class AdresseModel {
    * @return String 
    */
   public String getCodePostal() {
-    return codePostal;
+    if (this.codePostal != null) {
+      return this.codePostal;
+    }
+    return "";
   }
 
   /**
@@ -372,7 +431,10 @@ public class AdresseModel {
    * @return String 
    */
   public String getVille() {
-    return ville;
+    if (this.ville != null) {
+      return ville;
+    }
+    return "";
   }
 
   /**
@@ -414,7 +476,10 @@ public class AdresseModel {
    * @return String 
    */
   public String getCodePays() {
-    return codePays;
+    if (this.codePays != null) {
+      return this.codePays;
+    }
+    return "";
   }
 
   /**
@@ -435,7 +500,10 @@ public class AdresseModel {
    * @return String 
    */
   public String getPays() {
-    return pays;
+    if (this.pays != null) {
+      return this.pays;
+    }
+    return "";
   }
 
   /**
@@ -449,7 +517,65 @@ public class AdresseModel {
     this.pays = p_pays;
     return this;
   }
-  
+
+  /**
+   * Set from full address
+   * 
+   * @param p_adr1 Ligne 1
+   * @param p_adr2 Ligne 2
+   * @param p_adr3 Ligne 3
+   * 
+   * @return AdresseModel
+   */
+  public AdresseModel setFullAdresse(String p_adr1, String p_adr2, String p_adr3) {
+    String[] wordsType = new String[]{"CHEMIN","IMPASSE","VOIE","QUAI","RUE","ROUTE","BOULEVARD","AVENUE","ALLEE","AV","BLD","BLVD","IMP","QUARTIER","PLACE","IMP.","BLVD.","DOMAINE","SQUARE","ALLEES","ANCIEN","ANCIENNE","CHEMINS","ROUTES","VIEUX","BD","HAMEAU","CITE","RESIDENCE","RUELLE","PL","RTE"};
+    List<String> listType = Arrays.asList(wordsType);
+    String[] wordsArticle = new String[]{"DE","LE","LES","LA","DU","L'","DES","D'","AU","AUX"};
+    List<String> listArticle = Arrays.asList(wordsArticle);
+    String work = p_adr1.toUpperCase();
+    String[] words = work.split("[\\s\\t]+");
+    Boolean added = false;
+    this.articleVoie = "";
+    this.typeVoie = "";
+    this.nomVoie = "";
+    for(String s : words) {
+      added = false;
+      if (listType.contains(s)) {
+        if (this.typeVoie == "" && this.nomVoie == "") {
+          this.typeVoie += " " + s;
+          added = true;
+        }
+      } else {
+        if (listArticle.contains(s)) {
+          if (this.nomVoie == "") {
+            this.articleVoie += " " + s;
+            added = true;
+          }
+        } else {
+          if (this.typeVoie == "" && this.nomVoie == "") {
+            try {
+              // Ugly way
+              int i = Integer.parseInt(s);
+              this.numero = i;
+              added = true;
+            } catch (NumberFormatException e) {
+              
+            }
+            added = true;
+          }
+        }
+      }
+      if (!added) {
+        this.nomVoie += " " + s;
+      }
+    }
+    this.articleVoie = this.articleVoie.trim();
+    this.typeVoie = this.typeVoie.trim();
+    this.nomVoie = this.nomVoie.trim();
+    this.complementNom = p_adr2;
+    return this;
+  }
+
   /**
    * toString
    * 
@@ -464,8 +590,8 @@ public class AdresseModel {
     if (this.complementNumero != null) {
       ret = ret + " " + this.complementNumero;
     }
-    if (this.nom != null) {
-      ret = ret + " " + Tools.asString(this.typeVoie, "") + " " + Tools.asString(this.nom, "");
+    if (this.nomVoie != null) {
+      ret = ret + " " + Tools.asString(this.typeVoie, "") + " " + Tools.asString(this.nomVoie, "");
     }
     ret = ret.trim() + "\n";
     if (this.complementNom != null) {

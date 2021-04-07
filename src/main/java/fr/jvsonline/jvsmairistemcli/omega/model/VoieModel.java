@@ -40,7 +40,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    */
   @JsonProperty("quartier_id")
   private Integer id_quartier;
-  
+
   /**
    * Code de la voie
    */
@@ -52,13 +52,13 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    */
   @JsonProperty("typevoie")
   private String type;
-  
+
   /**
    * Article de la voie
    */
   @JsonProperty("artvoie")
   private String article;
-  
+
   /**
    * Nom de la voie
    */
@@ -70,26 +70,26 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    */
   @JsonProperty("sigcoord")
   private String coordonnees;
-  
+
   /**
    * Id admin
    */
   @JsonProperty("idadmin")
   private String admin;
-  
+
   /**
    * Voie active
    */
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
   @JsonProperty("actif")
   private Boolean actif;
-  
+
   /**
    * Organisme
    */
   @Relationship("commune")
   private OrganismeModel commune;
-  
+
   /**
    * Constructor
    */
@@ -139,7 +139,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
     this.id_organism = p_idOrganisme;
     return this;
   }
-  
+
   /**
    * Get code
    * 
@@ -147,9 +147,12 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    */
   @JsonIgnore
   public String getCode() {
-    return this.code;
+    if (this.code != null) {
+      return this.code;
+    }
+    return "";
   }
-  
+
   /**
    * Set code
    * 
@@ -161,7 +164,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
     this.code = p_code;
     return this;
   }
-  
+
   /**
    * Get nom
    * 
@@ -169,9 +172,12 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
    */
   @JsonIgnore
   public String getNom() {
-    return this.nom;
+    if (this.nom != null) {
+      return this.nom;
+    }
+    return "";
   }
-  
+
   /**
    * Set nom
    * 
@@ -187,11 +193,14 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
   /**
    * Get type
    *
-   * @return String 
+   * @return String
    */
   @JsonIgnore
   public String getType() {
-    return this.type;
+    if (this.type != null) {
+      return this.type;
+    }
+    return "";
   }
 
   /**
@@ -209,11 +218,14 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
   /**
    * Get article
    *
-   * @return String 
+   * @return String
    */
   @JsonIgnore
   public String getArticle() {
-    return this.article;
+    if (this.article != null) {
+      return this.article;
+    }
+    return "";
   }
 
   /**
@@ -227,7 +239,7 @@ public class VoieModel extends BaseModel implements BaseModelInterface {
     this.article = p_article;
     return this;
   }
-  
+
   /**
    * Get commune
    * 

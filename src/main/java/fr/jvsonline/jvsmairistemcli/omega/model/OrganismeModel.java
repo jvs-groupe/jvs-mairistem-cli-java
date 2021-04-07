@@ -91,7 +91,10 @@ public class OrganismeModel extends BaseModel implements BaseModelInterface {
    */
   @JsonIgnore
   public String getNom() {
-    return nom;
+    if (this.nom != null) {
+      return this.nom;
+    }
+    return "";
   }
 
   /**
@@ -113,7 +116,10 @@ public class OrganismeModel extends BaseModel implements BaseModelInterface {
    */
   @JsonIgnore
   public String getCodePostal() {
-    return codePostal;
+    if (this.codePostal != null) {
+      return this.codePostal;
+    }
+    return "";
   }
 
   /**
@@ -135,7 +141,10 @@ public class OrganismeModel extends BaseModel implements BaseModelInterface {
    */
   @JsonIgnore
   public String getVille() {
-    return ville;
+    if (this.ville != null) {
+      return this.ville;
+    }
+    return "";
   }
 
   /**

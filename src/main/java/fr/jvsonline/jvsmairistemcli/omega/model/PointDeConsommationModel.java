@@ -37,130 +37,130 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   @Id(IntegerIdHandler.class)
   @JsonProperty("pconso_id")
-  private Integer              id;
+  private Integer id;
 
   /**
    * Identifiant du point de desserte
    */
   @JsonProperty("pdess_id")
-  private Integer              id_pointDesserte;
+  private Integer id_pointDesserte;
 
   /**
    * Identifiant du compteur
    */
   @JsonProperty("compteur_id")
-  private Integer              id_compteur;
+  private Integer id_compteur;
 
   /**
    * Numéro de point de consommation
    */
   @JsonProperty("numpconso")
-  private String               numero;
+  private String numero;
 
   /**
    * Identifiant de l'adresse de point de desserte
    */
   @JsonProperty("pdessadr_id")
-  private Integer              id_adresseDesserte;
+  private Integer id_adresseDesserte;
 
   /**
    * Type d'habitation
    */
   @JsonProperty("enum_thab")
-  private String               typeHabitation;
+  private String typeHabitation;
 
   /**
    * Etage
    */
   @JsonProperty("etage")
-  private String               etage;
+  private String etage;
 
   /**
    * Appartement
    */
   @JsonProperty("numapt")
-  private String               appartement;
+  private String appartement;
 
   /**
    * Complément d'adresse
    */
   @JsonProperty("cpltadr")
-  private String               complement;
-  
+  private String complement;
+
   /**
    * Identifiant de la tournée
    */
   @JsonProperty("tournee_id")
-  private Integer              id_tournee;
+  private Integer id_tournee;
 
   /**
    * Actif
    */
   @JsonProperty("actif")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
-  private Boolean              actif;
+  private Boolean actif;
 
   /**
    * Date de début
    */
   @JsonProperty("datedeb")
   @JsonDeserialize(using = CustomDateDeserializer.class)
-  private Date                 dateDebut;
+  private Date dateDebut;
 
   /**
    * Date de début
    */
   @JsonProperty("datefin")
   @JsonDeserialize(using = CustomDateDeserializer.class)
-  private Date                 dateFin;
+  private Date dateFin;
 
   /**
    * Ordre de relève
    */
   @JsonProperty("noordrlv")
-  private Integer              numeroOrdreReleve;
-  
+  private Integer numeroOrdreReleve;
+
   /**
    * Complément du numéro d'ordre de relève
    */
   @JsonProperty("cpltnoordrlv")
-  private Integer              complementNumeroOrdreReleve;
-  
+  private Integer complementNumeroOrdreReleve;
+
   /**
    * Clef de localisation
    */
   @JsonProperty("cleloc")
-  private String               clefLocalisation;
-  
+  private String clefLocalisation;
+
   /**
    * Coordonnées SIG
    */
   @JsonProperty("sigcoord")
-  private String               coordonneeSig;
-  
+  private String coordonneeSig;
+
   /**
    * Coordonnées GPS
    */
   @JsonProperty("coordgpsdl")
-  private String               coordonneeGps;
-  
+  private String coordonneeGps;
+
   /**
    * Commentaire
    */
   @JsonProperty("comlib")
-  private String               commentaire;
-  
+  private String commentaire;
+
   /**
    * Identifiant externe
    */
   @JsonProperty("ident_externe")
-  private Integer              id_externe;
+  private Integer id_externe;
 
   /**
    * Compteur
    */
   @Relationship("compteur")
-  private CompteurModel        compteur;
+  private CompteurModel compteur;
 
   /**
    * Adresse de desserte
@@ -172,32 +172,32 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    * Contrat actif
    */
   @Relationship("contratactif")
-  private ContratModel         contratActif;
+  private ContratModel contratActif;
 
   /**
    * Tournée
    */
   @Relationship("tournee")
-  private TourneeModel         tournee;
+  private TourneeModel tournee;
 
   /**
    * Dernier relevé
    */
   @Relationship("dernierreleve")
-  private ReleveModel          dernierReleve;
-  
+  private ReleveModel dernierReleve;
+
   /**
    * Propriétaire
    */
   @Relationship("proprietaire")
   private PersonneModel proprietaire;
-  
+
   /**
    * Contrats
    */
   @Relationship("contrats")
   private List<ContratModel> contrats = null;
-  
+
   /**
    * Constructor
    */
@@ -385,7 +385,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     this.complement = p_complement;
     return this;
   }
-  
+
   /**
    * Get numéro ordre relève
    * 
@@ -395,7 +395,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   public Integer getNumeroOrdreReleve() {
     return this.numeroOrdreReleve;
   }
-  
+
   /**
    * Set numéro ordre relève
    * 
@@ -417,7 +417,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   public Integer getComplementNumeroOrdreReleve() {
     return this.complementNumeroOrdreReleve;
   }
-  
+
   /**
    * Set complément numéro ordre relève
    * 
@@ -440,7 +440,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   public String getClefLocalisation() {
     return this.clefLocalisation;
   }
-  
+
   /**
    * Set clef de localisation
    * 
@@ -452,7 +452,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     this.clefLocalisation = p_clef;
     return this;
   }
-  
+
   /**
    * Get coordonnées SIG
    * 
@@ -462,7 +462,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   public String getCoordonneeSig() {
     return this.coordonneeSig;
   }
-  
+
   /**
    * Set coordonnées SIG
    * 
@@ -484,7 +484,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   public String getCoordonneeGps() {
     return this.coordonneeGps;
   }
-  
+
   /**
    * Set coordonnées Gps
    * 
@@ -496,7 +496,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     this.coordonneeGps = p_coordonnee;
     return this;
   }
-  
+
   /**
    * Get commentaire
    * 
@@ -506,7 +506,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   public String getCommentaire() {
     return this.commentaire;
   }
-  
+
   /**
    * Set commentaire
    * 
@@ -518,7 +518,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     this.commentaire = p_commentaire;
     return this;
   }
-  
+
   /**
    * Get identifiant externe
    * 
@@ -619,13 +619,18 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
    */
   public AdresseModel toAdresse() {
     AdresseModel adresse = new AdresseModel();
-    adresse.setAppartement(this.appartement).setEtage(this.etage);
+    if (this.appartement != null) {
+      adresse.setAppartement(this.appartement);
+    }
+    if (this.etage != null) {
+      adresse.setEtage(this.etage);
+    }
     AdresseDesserteModel adresseDesserte = this.getAdresseDesserte();
     if (adresseDesserte != null) {
       adresse.setNumero(adresseDesserte.getNumeroVoie());
       VoieModel voie = adresseDesserte.getVoie();
       if (voie != null) {
-        adresse.setTypeVoie(voie.getType()).setNom(voie.getNom());
+        adresse.setTypeVoie(voie.getType()).setArticleVoie(voie.getArticle()).setNomVoie(voie.getNom());
         OrganismeModel organisme = voie.getCommune();
         if (organisme != null) {
           adresse.setCodePostal(organisme.getCodePostal()).setVille(organisme.getVille());
@@ -634,7 +639,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     }
     return adresse;
   }
-  
+
   /**
    * Get propriétaire
    * 
@@ -643,7 +648,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   public PersonneModel getProprietaire() {
     return this.proprietaire;
   }
-  
+
   /**
    * Get Latitude
    * 
@@ -657,11 +662,11 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
         db = Double.parseDouble(parts[0]);
       }
     } catch (Exception ex) {
-      System.out.println(ex); 
+      System.out.println(ex);
     }
     return db;
   }
-  
+
   /**
    * Get Longitude
    * 
@@ -675,11 +680,11 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
         db = Double.parseDouble(parts[1]);
       }
     } catch (Exception ex) {
-      System.out.println(ex); 
+      System.out.println(ex);
     }
     return db;
   }
-  
+
   /**
    * Get Altitude
    * 
@@ -693,11 +698,11 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
         db = Double.parseDouble(parts[2]);
       }
     } catch (Exception ex) {
-      System.out.println(ex); 
+      System.out.println(ex);
     }
     return db;
   }
-  
+
   /**
    * Retourne la liste des contrats
    * 
@@ -709,7 +714,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     }
     return this.contrats;
   }
-  
+
   /**
    * Retourne la consommation du dernier relevé
    * 
@@ -721,7 +726,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     }
     return 0;
   }
-  
+
   /**
    * Retourne l'index du dernier relevé
    * 
@@ -733,7 +738,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     }
     return 0;
   }
-  
+
   /**
    * Get numero voie
    * 
@@ -746,7 +751,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     }
     return "";
   }
-  
+
   /**
    * Get nom voie
    * 
@@ -759,7 +764,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     }
     return "";
   }
-  
+
   /**
    * Get complement numero voie
    * 
@@ -772,7 +777,7 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     }
     return "";
   }
-  
+
   /**
    * Get code postal ville
    * 
@@ -785,17 +790,17 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     }
     return "";
   }
-  
+
   /**
    * Get nom ville
    * 
    * @return String
    */
-  public String GetNomVille() {
+  public String getNomVille() {
     AdresseDesserteModel adr = this.getAdresseDesserte();
     if (adr != null) {
       return adr.getNomVille();
     }
     return "";
   }
- }
+}

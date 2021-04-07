@@ -8,28 +8,33 @@ import fr.jvsonline.jvsmairistemcli.core.Tools;
  * @author jeromeklam
  */
 public class PersonneModel extends AdresseModel {
-  
+
   /**
    * Identifiant de la personne
    */
   private Integer id;
-  
+
+  /**
+   * Civilité de la personne
+   */
+  private String civilite;
+
   /**
    * Nom de la personne
    */
   private String nom;
-  
+
   /**
    * Prénom de la personne
    */
   private String prenom;
-  
+
   /**
    * Coonstructor
    */
   public PersonneModel() {
   }
-  
+
   /**
    * Get identifiant
    * 
@@ -38,7 +43,7 @@ public class PersonneModel extends AdresseModel {
   public Integer getId() {
     return this.id;
   }
-  
+
   /**
    * Set identifiant
    * 
@@ -50,16 +55,36 @@ public class PersonneModel extends AdresseModel {
     this.id = p_id;
     return this;
   }
-  
+
+  /**
+   * Get civilité
+   * 
+   * @return String
+   */
+  public String getCivilite() {
+    if (this.civilite != null) {
+      return this.civilite;
+    }
+    return "";
+  }
+
+  public PersonneModel setCivilite(String p_civilite) {
+    this.civilite = p_civilite;
+    return this;
+  }
+
   /**
    * Get nom
    * 
    * @return String
    */
   public String getNom() {
-    return this.nom;
+    if (this.nom != null) {
+      return this.nom;
+    }
+    return "";
   }
-  
+
   /**
    * Set nom
    * 
@@ -71,16 +96,19 @@ public class PersonneModel extends AdresseModel {
     this.nom = p_nom;
     return this;
   }
-  
+
   /**
    * Get prénom
    * 
    * @return String
    */
   public String getPrenom() {
-    return this.prenom;
+    if (this.prenom != null) {
+      return this.prenom;
+    }
+    return "";
   }
-  
+
   /**
    * Set prénom
    * 
@@ -92,7 +120,7 @@ public class PersonneModel extends AdresseModel {
     this.prenom = p_prenom;
     return this;
   }
-  
+
   /**
    * As string
    * 
@@ -100,6 +128,7 @@ public class PersonneModel extends AdresseModel {
    */
   @Override
   public String toString() {
-    return Tools.asString(this.nom, "") + " " + Tools.asString(this.prenom, "");
+    String str = Tools.asString(this.civilite, "") + " " + Tools.asString(this.nom, "") + " " + Tools.asString(this.prenom, "");
+    return str.trim();
   }
 }

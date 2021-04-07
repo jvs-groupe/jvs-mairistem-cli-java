@@ -44,13 +44,13 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
    */
   @JsonProperty("cpltnumvoi")
   private String complementNumeroVoie;
-  
+
   /**
    * Voie
    */
   @Relationship("voie")
   private VoieModel voie;
-  
+
   /**
    * Constructor
    */
@@ -98,7 +98,7 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
     this.id_voie = p_idVoie;
     return this;
   }
-  
+
   /**
    * Get numero de voie
    * 
@@ -110,7 +110,7 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
     }
     return "";
   }
-  
+
   /**
    * Set numero de voie
    * 
@@ -122,7 +122,7 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
     this.numeroVoie = p_numeroVoie;
     return this;
   }
-  
+
   /**
    * Get voie
    * 
@@ -131,7 +131,7 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
   public VoieModel getVoie() {
     return this.voie;
   }
-  
+
   /**
    * Get complement numero
    * 
@@ -143,7 +143,7 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
     }
     return "";
   }
-  
+
   /**
    * Get nom voie
    * 
@@ -155,7 +155,7 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
     }
     return "";
   }
-  
+
   /**
    * Get code voie
    * 
@@ -167,7 +167,7 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
     }
     return "";
   }
-  
+
   /**
    * Get code postal
    * 
@@ -182,7 +182,7 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
     }
     return "";
   }
-  
+
   /**
    * Get nom ville
    * 

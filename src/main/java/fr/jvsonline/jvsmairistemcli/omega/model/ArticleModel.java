@@ -28,56 +28,56 @@ public class ArticleModel extends BaseModel {
   @Id(IntegerIdHandler.class)
   @JsonProperty("article_id")
   private Integer id;
-  
+
   /**
    * Code article
    */
   @JsonProperty("codeart")
   private String code;
-  
+
   /**
    * Libellé de l'article
    */
   @JsonProperty("libart")
   private String libelle;
-  
+
   /**
    * Désignation de l'article
    */
   @JsonProperty("design")
   private String description;
-  
+
   /**
    * Prix unitaire de l'article
    */
   @JsonProperty("pu")
   private Float prix_unitaire = 0f;
-  
+
   /**
    * Unité de l'article
    */
   @JsonProperty("enum_unite")
   private String unite;
-  
+
   /**
    * Code TVA l'article
    */
   @JsonProperty("enum_tva")
   private String code_tva;
-  
+
   /**
    * Code tri l'article
    */
   @JsonProperty("codetri")
   private String tri;
-  
+
   /**
    * Actif
    */
   @JsonProperty("actif")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
   private Boolean actif;
-  
+
   /**
    * Constructor
    */
@@ -104,7 +104,7 @@ public class ArticleModel extends BaseModel {
     this.id = p_id;
     return this;
   }
-  
+
   /**
    * Get code
    * 
@@ -113,7 +113,7 @@ public class ArticleModel extends BaseModel {
   public String getCode() {
     return this.code;
   }
-  
+
   /**
    * Set code
    * 
@@ -125,7 +125,7 @@ public class ArticleModel extends BaseModel {
     this.code = p_code;
     return this;
   }
-  
+
   /**
    * Get Libellé
    * 
@@ -134,7 +134,7 @@ public class ArticleModel extends BaseModel {
   public String getLibelle() {
     return this.libelle;
   }
-  
+
   /**
    * Set code
    * 
@@ -146,7 +146,7 @@ public class ArticleModel extends BaseModel {
     this.libelle = p_libelle;
     return this;
   }
-  
+
   /**
    * Get prix unitaire
    * 
@@ -155,7 +155,7 @@ public class ArticleModel extends BaseModel {
   public Float getPrixUnitaire() {
     return this.prix_unitaire;
   }
-  
+
   /**
    * Set prix unitaire
    * 
@@ -167,7 +167,7 @@ public class ArticleModel extends BaseModel {
     this.prix_unitaire = p_pu;
     return this;
   }
-  
+
   /**
    * Get unite
    * 
@@ -176,7 +176,7 @@ public class ArticleModel extends BaseModel {
   public String getUnite() {
     return this.unite;
   }
-  
+
   /**
    * Set unite
    * 
@@ -188,7 +188,7 @@ public class ArticleModel extends BaseModel {
     this.unite = p_unite;
     return this;
   }
-  
+
   /**
    * Get code tva
    * 
@@ -197,7 +197,7 @@ public class ArticleModel extends BaseModel {
   public String getCodeTva() {
     return this.code_tva;
   }
-  
+
   /**
    * Set cde tva
    * 
@@ -209,7 +209,7 @@ public class ArticleModel extends BaseModel {
     this.code_tva = p_code_tva;
     return this;
   }
-  
+
   /**
    * Get tri
    * 
@@ -218,7 +218,7 @@ public class ArticleModel extends BaseModel {
   public String getTri() {
     return this.tri;
   }
-  
+
   /**
    * Set tri
    * 
@@ -230,7 +230,7 @@ public class ArticleModel extends BaseModel {
     this.tri = p_tri;
     return this;
   }
-  
+
   /**
    * Get actif
    * 
@@ -239,7 +239,7 @@ public class ArticleModel extends BaseModel {
   public Boolean getActif() {
     return this.actif;
   }
-  
+
   /**
    * Set actif
    * 

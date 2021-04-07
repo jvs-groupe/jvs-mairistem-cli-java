@@ -57,9 +57,11 @@ public class App {
    * @param p_args Arguments
    */
   public static void main(String[] p_args) {
-    //String[] tests = new String[]{"ARTICLE", "OFACT", "CPT_FIRST", "CPT_NUM", "PCONSO_NUM", "PCONSO_LIST", "PCONSO_GEORGES", "PCONSO_2789", "PCONSO_RUE", "PCONSO_CPT", "DEMANDE_ID", "DEMANDE"};
-    String[] tests = new String[]{"PCONSO_GEORGES"}; //ARTICLE","OFACT","PCONSO_2789","DEMANDE"};
-    
+    // String[] tests = new String[]{"ARTICLE", "OFACT", "CPT_FIRST", "CPT_NUM",
+    // "PCONSO_NUM", "PCONSO_LIST", "PCONSO_GEORGES", "PCONSO_2789", "PCONSO_RUE",
+    // "PCONSO_CPT", "DEMANDE_ID", "DEMANDE"};
+    String[] tests = new String[] { "PCONSO_RUE" }; // ARTICLE","OFACT","PCONSO_2789","DEMANDE"};
+
     logger.info("----------------------------------------------------------");
     logger.info("Read settings...");
     Settings omegaSettings = Settings.getInstance("jvsmairistemcli.properties");
@@ -68,18 +70,14 @@ public class App {
     logger.info("----------------------------------------------------------");
     JsonApiWS wsClient = new JsonApiWS(omegaSettings);
     Container omegaContainer = Container.getInstance();
-    // Appels des services web de bse pour initialiser le composant
+    // Appels des services web de base pour initialiser le composant
     omegaContainer.init(wsClient);
-    
+
     // Chargement des données dans le singleton
     PointDeConsommationManager pconsoManager = new PointDeConsommationManager(wsClient);
     CompteurManager cptManager = new CompteurManager(wsClient);
     DemandeManager reqManager = new DemandeManager(wsClient);
-    
-    
-    
-    
-    
+
     if (Arrays.asList(tests).contains("CPT_FIRST")) {
       logger.info("----------------------------------------------------------");
       logger.info("   Liste des premiers compteurs...");
@@ -88,19 +86,14 @@ public class App {
         logger.info("Empty result...");
       } else {
         for (CompteurModel item : myListC) {
-          LigneEnumerationModel diametre = omegaContainer.getLigneEnumeration(
-              EnumerationType.DIAMETRE_COMPTEUR,
-              item.getDiametre()
-          );
+          LigneEnumerationModel diametre = omegaContainer.getLigneEnumeration(EnumerationType.DIAMETRE_COMPTEUR,
+              item.getDiametre());
           logger.info("Compteur n° " + item.getNumeroSerie() + " / " + diametre);
         }
       }
       logger.info("----------------------------------------------------------");
     }
-    
-    
-    
-    
+
     if (Arrays.asList(tests).contains("PCONSO_NUM")) {
       logger.info("----------------------------------------------------------");
       logger.info("   Liste des points de consommation ayant 696 dans le numéro...");
@@ -151,22 +144,22 @@ public class App {
             if (myNature != null) {
               nature = myNature.getLibelle();
             }
-            LigneEnumerationModel monEnum = omegaContainer.getLigneEnumeration(EnumerationType.CIVILITE, myOccupant.getCivilite());
-            logger.info("      * n° " + myContrat.getNumero() + " -- " + nature + " [" + myContrat.getConsommes().size() + "]");
+            LigneEnumerationModel monEnum = omegaContainer.getLigneEnumeration(EnumerationType.CIVILITE,
+                myOccupant.getCivilite());
+            logger.info(
+                "      * n° " + myContrat.getNumero() + " -- " + nature + " [" + myContrat.getConsommes().size() + "]");
             if (myOccupant != null && monEnum != null) {
-                logger.info("          * " + monEnum.getLibelle()  + " " + myOccupant.getNomComplet());
+              logger.info("          * " + monEnum.getLibelle() + " " + myOccupant.getNomComplet());
             }
             logger.info("          * dernière consommation (relevée) : " + myContrat.getDerniereConsommationRelevee());
-            //logger.info("          * consommation du dernier relevé : " + myLocalPConso.getDernierReleve().getConsommationRelevee());
+            // logger.info(" * consommation du dernier relevé : " +
+            // myLocalPConso.getDernierReleve().getConsommationRelevee());
           }
         }
       }
       logger.info("----------------------------------------------------------");
     }
-    
-    
-    
-    
+
     if (Arrays.asList(tests).contains("PCONSO_LIST")) {
       logger.info("----------------------------------------------------------");
       logger.info("   Liste des points de consommation dans une liste...");
@@ -191,10 +184,7 @@ public class App {
       }
       logger.info("----------------------------------------------------------");
     }
-    
-    
-    
-    
+
     if (Arrays.asList(tests).contains("PCONSO_GEORGES")) {
       logger.info("----------------------------------------------------------");
       logger.info("   Liste des points de consommation ayant un propriétaire prénommé Georges...");
@@ -233,10 +223,7 @@ public class App {
       }
       logger.info("----------------------------------------------------------");
     }
-    
-    
-    
-    
+
     if (Arrays.asList(tests).contains("PCONSO_CPT")) {
       logger.info("----------------------------------------------------------");
       logger.info("   Liste des points de consommation avec compteur 123...");
@@ -263,10 +250,7 @@ public class App {
       }
       logger.info("----------------------------------------------------------");
     }
-    
-    
-    
-    
+
     if (Arrays.asList(tests).contains("PCONSO_RUE")) {
       logger.info("----------------------------------------------------------");
       logger.info("   Liste des points de consommation avec une rue principale...");
@@ -290,13 +274,14 @@ public class App {
           }
           PersonneModel proprio = item.getProprietaire();
           if (proprio != null) {
-            logger.info("    * Propriétaire : " + proprio);
+            logger.info("    * Propriétaire : " + proprio.toPersonne());
             logger.info("    *                " + proprio.getComplementNom());
             logger.info("    *         adr:   " + proprio.getAdresse1());
             logger.info("    *                " + proprio.getAdresse2());
             logger.info("    *                " + proprio.getAdresse3());
             logger.info("    *                " + proprio.getCodePostal());
             logger.info("    *                " + proprio.getVille());
+            logger.info("    *                " + proprio.getPays());
             logger.info("    *         tel:   " + proprio.getTelephone());
             logger.info("    *         mob:   " + proprio.getTelephoneMobile());
             logger.info("    *         email: " + proprio.getEmail());
@@ -311,16 +296,13 @@ public class App {
           logger.info("    * Cplt n° voie : " + item.getComplementNumeroVoie());
           logger.info("    * Nom voie : " + item.getNomVoie());
           logger.info("    * Code postal : " + item.getCodePostalVille());
-          logger.info("    * Ville : " + item.GetNomVille());
+          logger.info("    * Ville : " + item.getNomVille());
           logger.info("    * " + item.toAdresse());
         }
       }
       logger.info("----------------------------------------------------------");
     }
-    
-    
-    
-    
+
     if (Arrays.asList(tests).contains("PCONSO_2789")) {
       logger.info("----------------------------------------------------------");
       logger.info("   Point de consommation avec l'ID 2789...");
@@ -336,10 +318,8 @@ public class App {
           numSerie99 = monCompteur99.getNumeroSerie();
         }
         AdresseDesserteModel monAdresse99 = myPConso.getAdresseDesserte();
-        LigneEnumerationModel typeH = omegaContainer.getLigneEnumeration(
-            EnumerationType.TYPE_HABITATION,
-            myPConso.getTypeHabitation()
-        );
+        LigneEnumerationModel typeH = omegaContainer.getLigneEnumeration(EnumerationType.TYPE_HABITATION,
+            myPConso.getTypeHabitation());
         logger.info(myPConso.toAdresse().toString() + " : " + numSerie99 + " / " + typeH);
         logger.info(myPConso.getCoordonneeSig());
         logger.info(myPConso.getLatitude().toString() + " | " + myPConso.getLongitude().toString());
@@ -380,20 +360,14 @@ public class App {
       }
       logger.info("----------------------------------------------------------");
     }
-    
-    
-    
-    
+
     if (Arrays.asList(tests).contains("DEMANDE_ID")) {
       logger.info("----------------------------------------------------------");
       DemandeModel myDmde = reqManager.getById(1001);
       logger.info("Demande n° " + myDmde.getId() + " / " + myDmde.getCode() + " : " + myDmde.getCode().getLabel());
       logger.info("----------------------------------------------------------");
     }
-    
-    
-    
-    
+
     if (Arrays.asList(tests).contains("DEMANDE")) {
       logger.info("----------------------------------------------------------");
       reqManager.flushRequestParameters();
@@ -408,10 +382,7 @@ public class App {
       }
       logger.info("----------------------------------------------------------");
     }
-    
-    
-    
-    
+
     logger.info("----------------------------------------------------------");
     logger.info("That's All Folks...");
     logger.info("----------------------------------------------------------");
