@@ -7,600 +7,608 @@ import fr.jvsonline.jvsmairistemcli.core.Tools;
 
 /**
  * AdresseModel
- * 
- * @author jeromeklam
  */
 public class AdresseModel {
-  
-  /**
-   * Identifiant de l'AdresseModel
-   */
-  private Integer id;
-  
-  /**
-   * Numéro de l'AdresseModel
-   */
-  private Integer numero;
-  
-  /**
-   * Complément du numéro
-   */
-  private String complementNumero;
-  
-  /**
-   * Etage
-   */
-  private String etage;
-  
-  /**
-   * Appartement
-   */
-  private String appartement;
 
-  /**
-   * Identifiant de la voie
-   */
-  private Integer id_voie;
+	/**
+	 * Identifiant de l'adresse
+	 */
+	private Integer id;
 
-  /**
-   * Code de la voie
-   */
-  private String codeVoie;
+	/**
+	 * Numéro de l'adresse
+	 */
+	private Integer numero;
 
-  /**
-   * Article de la voie
-   */
-  private String articleVoie;
+	/**
+	 * Complément du numéro
+	 */
+	private String complement_numero;
 
-  /**
-   * Type de voie
-   */
-  private String typeVoie;
+	/**
+	 * Etage
+	 */
+	private String etage;
 
-  /**
-   * Nom de la voie
-   */
-  private String nomVoie;
+	/**
+	 * Appartement
+	 */
+	private String appartement;
 
-  /**
-   * Complément du nom de la voie
-   */
-  private String complementNom;
+	/**
+	 * Identifiant de la voie
+	 */
+	private Integer id_voie;
 
-  /**
-   * Identifiant de la ville
-   */
-  private Integer id_ville;
+	/**
+	 * Code de la voie
+	 */
+	private String code_voie;
 
-  /**
-   * Code postal
-   */
-  private String codePostal;
+	/**
+	 * Article de la voie
+	 */
+	private String article_voie;
 
-  /**
-   * Ville
-   */
-  private String ville;
-  
-  /**
-   * Identifiant du pays
-   */
-  private Integer id_pays;
-  
-  /**
-   * Code du pays
-   */
-  private String codePays;
-  
-  /**
-   * Libellé du pays
-   */
-  private String pays;
-  
-  /**
-   * Constructor
-   */
-  public AdresseModel() {
-  }
+	/**
+	 * Type de voie
+	 */
+	private String type_voie;
 
-  /**
-   * Get id
-   *
-   * @return Integer 
-   */
-  public Integer getId() {
-    return id;
-  }
+	/**
+	 * Nom de la voie
+	 */
+	private String nom_voie;
 
-  /**
-   * Set id
-   *
-   * @param p_id Identifiant
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setId(Integer p_id) {
-    this.id = p_id;
-    return this;
-  }
+	/**
+	 * Complément du nom de la voie
+	 */
+	private String complement_nom;
 
-  /**
-   * Get numero
-   *
-   * @return Integer 
-   */
-  public String getNumero() {
-    if (numero != null) {
-      return numero.toString();
-    }
-    return "";
-  }
+	/**
+	 * Identifiant de la ville
+	 */
+	private Integer id_ville;
 
-  /**
-   * Set numero
-   *
-   * @param p_numero Numéro
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setNumero(Integer p_numero) {
-    this.numero = p_numero;
-    return this;
-  }
+	/**
+	 * Code postal
+	 */
+	private String code_postal;
 
-  /**
-   * Set numero
-   *
-   * @param p_numero Numéro
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setNumero(String p_numero) {
-    if (p_numero != null) {
-      try {
-        this.numero = Integer.valueOf(p_numero);
-      } catch (Exception ex) {
-      }
-    } else {
-      this.numero = null;
-    }
-    return this;
-  }
-  
-  /**
-   * Get complementNumero Complément du numéro
-   *
-   * @return String 
-   */
-  public String getComplementNumero() {
-    if (this.complementNumero != null) {
-      return complementNumero;
-    }
-    return "";
-  }
+	/**
+	 * Ville
+	 */
+	private String ville;
 
-  /**
-   * Set complementNumero
-   *
-   * @param p_complementNumero Complément du numéro
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setComplementNumero(String p_complementNumero) {
-    this.complementNumero = p_complementNumero;
-    return this;
-  }
+	/**
+	 * Identifiant du pays
+	 */
+	private Integer id_pays;
 
-  /**
-   * Get etage
-   *
-   * @return String 
-   */
-  public String getEtage() {
-    if (this.etage != null) {
-      return this.etage;
-    }
-    return "";
-  }
+	/**
+	 * Code du pays
+	 */
+	private String code_pays;
 
-  /**
-   * Set etage
-   *
-   * @param p_etage Etage
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setEtage(String p_etage) {
-    this.etage = p_etage;
-    return this;
-  }
+	/**
+	 * Libellé du pays
+	 */
+	private String pays;
 
-  /**
-   * Get appartement
-   *
-   * @return String 
-   */
-  public String getAppartement() {
-    if (this.appartement != null) {
-      return this.appartement;
-    }
-    return "";
-  }
+	/**
+	 * Constructor
+	 */
+	public AdresseModel() {
+	}
 
-  /**
-   * Set appartement
-   *
-   * @param p_appartement Appartement
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setAppartement(String p_appartement) {
-    this.appartement = p_appartement;
-    return this;
-  }
+	/**
+	 * Get id
+	 *
+	 * @return Integer
+	 */
+	public Integer getId() {
+		return id;
+	}
 
-  /**
-   * Get id_voie
-   *
-   * @return Integer 
-   */
-  public Integer getId_voie() {
-    return id_voie;
-  }
+	/**
+	 * Set id
+	 *
+	 * @param p_id id
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setId(Integer p_id) {
+		this.id = p_id;
+		return this;
+	}
 
-  /**
-   * Set id_voie
-   *
-   * @param p_id_voie Identifiant de la voie
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setId_voie(Integer p_id_voie) {
-    this.id_voie = p_id_voie;
-    return this;
-  }
+	/**
+	 * Get numero
+	 *
+	 * @return Integer
+	 */
+	public String getNumero() {
+		if (numero != null) {
+			return numero.toString();
+		}
+		return "";
+	}
 
-  /**
-   * Get codeVoie
-   *
-   * @return String 
-   */
-  public String getCodeVoie() {
-    if (this.codeVoie != null) {
-      return this.codeVoie;
-    }
-    return "";
-  }
+	/**
+	 * Set numero
+	 *
+	 * @param p_numero numero
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setNumero(Integer p_numero) {
+		this.numero = p_numero;
+		return this;
+	}
 
-  /**
-   * Set codeVoie
-   *
-   * @param p_codeVoie Code de la voie
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setCodeVoie(String p_codeVoie) {
-    this.codeVoie = p_codeVoie;
-    return this;
-  }
+	/**
+	 * Set numero
+	 *
+	 * @param p_numero numero
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setNumero(String p_numero) {
+		if (p_numero != null) {
+			try {
+				this.numero = Integer.valueOf(p_numero);
+			} catch (Exception ex) {
+			}
+		} else {
+			this.numero = null;
+		}
+		return this;
+	}
 
-  /**
-   * Get typeVoie
-   *
-   * @return String 
-   */
-  public String getTypeVoie() {
-    if (this.typeVoie != null) {
-      return this.typeVoie;
-    }
-    return "";
-  }
+	/**
+	 * Get complement_numero
+	 *
+	 * @return String
+	 */
+	public String getComplementNumero() {
+		if (this.complement_numero != null) {
+			return complement_numero;
+		}
+		return "";
+	}
 
-  /**
-   * Set typeVoie
-   *
-   * @param p_typeVoie Type de voie
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setTypeVoie(String p_typeVoie) {
-    this.typeVoie = p_typeVoie;
-    return this;
-  }
+	/**
+	 * Set complement_numero
+	 *
+	 * @param p_complement_numero complement_numero
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setComplementNumero(String p_complement_numero) {
+		this.complement_numero = p_complement_numero;
+		return this;
+	}
 
-  /**
-   * Retourne l'article de la voie
-   * 
-   * @return String
-   */
-  public String getArticleVoie() {
-    if (this.articleVoie != null) {
-      return this.articleVoie;
-    }
-    return "";
-  }
+	/**
+	 * Get etage
+	 *
+	 * @return String
+	 */
+	public String getEtage() {
+		if (this.etage != null) {
+			return this.etage;
+		}
+		return "";
+	}
 
-  /**
-   * Affectation de l'article de la voie
-   * 
-   * @param p_article Article
-   * 
-   * @return AdresseModel
-   */
-  public AdresseModel setArticleVoie(String p_article) {
-    this.articleVoie = p_article;
-    return this;
-  }
+	/**
+	 * Set etage
+	 *
+	 * @param p_etage etage
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setEtage(String p_etage) {
+		this.etage = p_etage;
+		return this;
+	}
 
-  /**
-   * Get nom
-   *
-   * @return String 
-   */
-  public String getNomVoie() {
-    if (this.nomVoie != null) {
-      return nomVoie;
-    }
-    return "";
-  }
+	/**
+	 * Get appartement
+	 *
+	 * @return String
+	 */
+	public String getAppartement() {
+		if (this.appartement != null) {
+			return this.appartement;
+		}
+		return "";
+	}
 
-  /**
-   * Set nom
-   *
-   * @param p_nom Nom 
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setNomVoie(String p_nom) {
-    this.nomVoie = p_nom;
-    return this;
-  }
+	/**
+	 * Set appartement
+	 *
+	 * @param p_appartement appartement
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setAppartement(String p_appartement) {
+		this.appartement = p_appartement;
+		return this;
+	}
 
-  /**
-   * Get complementNom
-   *
-   * @return String 
-   */
-  public String getComplementNom() {
-    if (this.complementNom != null) {
-      return this.complementNom;
-    }
-    return "";
-  }
+	/**
+	 * Get id_voie
+	 *
+	 * @return Integer
+	 */
+	public Integer getId_voie() {
+		return id_voie;
+	}
 
-  /**
-   * Set complementNom
-   *
-   * @param p_complementNom Complément du nom
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setComplementNom(String p_complementNom) {
-    this.complementNom = p_complementNom;
-    return this;
-  }
+	/**
+	 * Set id_voie
+	 *
+	 * @param p_id_voie id_voie
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setId_voie(Integer p_id_voie) {
+		this.id_voie = p_id_voie;
+		return this;
+	}
 
-  /**
-   * Get id_ville
-   *
-   * @return Integer 
-   */
-  public Integer getId_ville() {
-    return id_ville;
-  }
+	/**
+	 * Get code_voie
+	 *
+	 * @return String
+	 */
+	public String getCodeVoie() {
+		if (this.code_voie != null) {
+			return this.code_voie;
+		}
+		return "";
+	}
 
-  /**
-   * Set id_ville
-   *
-   * @param p_id_ville Identifiant de la ville
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setId_ville(Integer p_id_ville) {
-    this.id_ville = p_id_ville;
-    return this;
-  }
+	/**
+	 * Set code_voie
+	 *
+	 * @param p_code_voie code_voie
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setCodeVoie(String p_code_voie) {
+		this.code_voie = p_code_voie;
+		return this;
+	}
 
-  /**
-   * Get codePostal
-   *
-   * @return String 
-   */
-  public String getCodePostal() {
-    if (this.codePostal != null) {
-      return this.codePostal;
-    }
-    return "";
-  }
+	/**
+	 * Get type_voie
+	 *
+	 * @return String
+	 */
+	public String getTypeVoie() {
+		if (this.type_voie != null) {
+			return this.type_voie;
+		}
+		return "";
+	}
 
-  /**
-   * Set codePostal
-   *
-   * @param p_codePostal Code postal
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setCodePostal(String p_codePostal) {
-    this.codePostal = p_codePostal;
-    return this;
-  }
+	/**
+	 * Set type_voie
+	 *
+	 * @param p_type_voie type_voie
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setTypeVoie(String p_type_voie) {
+		this.type_voie = p_type_voie;
+		return this;
+	}
 
-  /**
-   * Get ville
-   *
-   * @return String 
-   */
-  public String getVille() {
-    if (this.ville != null) {
-      return ville;
-    }
-    return "";
-  }
+	/**
+	 * Get article_voie
+	 * 
+	 * @return String
+	 */
+	public String getArticleVoie() {
+		if (this.article_voie != null) {
+			return this.article_voie;
+		}
+		return "";
+	}
 
-  /**
-   * Set ville
-   *
-   * @param p_ville Ville
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setVille(String p_ville) {
-    this.ville = p_ville;
-    return this;
-  }
+	/**
+	 * Set article_voie
+	 * 
+	 * @param p_article_voie article_voie
+	 * 
+	 * @return AdresseModel
+	 */
+	public AdresseModel setArticleVoie(String p_article_voie) {
+		this.article_voie = p_article_voie;
+		return this;
+	}
 
-  /**
-   * Get id_pays
-   *
-   * @return Integer 
-   */
-  public Integer getId_pays() {
-    return id_pays;
-  }
+	/**
+	 * Get nom_voie
+	 *
+	 * @return String
+	 */
+	public String getNomVoie() {
+		if (this.nom_voie != null) {
+			return nom_voie;
+		}
+		return "";
+	}
 
-  /**
-   * Set id_pays
-   *
-   * @param p_id_pays Identifiant du pays
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setId_pays(Integer p_id_pays) {
-    this.id_pays = p_id_pays;
-    return this;
-  }
+	/**
+	 * Set nom_voie
+	 *
+	 * @param p_nom_voie nom_voie
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setNomVoie(String p_nom_voie) {
+		this.nom_voie = p_nom_voie;
+		return this;
+	}
 
-  /**
-   * Get codePays
-   *
-   * @return String 
-   */
-  public String getCodePays() {
-    if (this.codePays != null) {
-      return this.codePays;
-    }
-    return "";
-  }
+	/**
+	 * Get complement_nom
+	 *
+	 * @return String
+	 */
+	public String getComplementNom() {
+		if (this.complement_nom != null) {
+			return this.complement_nom;
+		}
+		return "";
+	}
 
-  /**
-   * Set codePays
-   *
-   * @param p_codePays Code pays
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setCodePays(String p_codePays) {
-    this.codePays = p_codePays;
-    return this;
-  }
+	/**
+	 * Set complement_nom
+	 *
+	 * @param p_complement_nom complement_nom
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setComplementNom(String p_complement_nom) {
+		this.complement_nom = p_complement_nom;
+		return this;
+	}
 
-  /**
-   * Get pays
-   *
-   * @return String 
-   */
-  public String getPays() {
-    if (this.pays != null) {
-      return this.pays;
-    }
-    return "";
-  }
+	/**
+	 * Get id_ville
+	 *
+	 * @return Integer
+	 */
+	public Integer getId_ville() {
+		return id_ville;
+	}
 
-  /**
-   * Set pays
-   *
-   * @param p_pays Pays
-   *
-   * @return AdresseModel
-   */
-  public AdresseModel setPays(String p_pays) {
-    this.pays = p_pays;
-    return this;
-  }
+	/**
+	 * Set id_ville
+	 *
+	 * @param p_id_ville id_ville
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setId_ville(Integer p_id_ville) {
+		this.id_ville = p_id_ville;
+		return this;
+	}
 
-  /**
-   * Set from full address
-   * 
-   * @param p_adr1 Ligne 1
-   * @param p_adr2 Ligne 2
-   * @param p_adr3 Ligne 3
-   * 
-   * @return AdresseModel
-   */
-  public AdresseModel setFullAdresse(String p_adr1, String p_adr2, String p_adr3) {
-    String[] wordsType = new String[]{"CHEMIN","IMPASSE","VOIE","QUAI","RUE","ROUTE","BOULEVARD","AVENUE","ALLEE","AV","BLD","BLVD","IMP","QUARTIER","PLACE","IMP.","BLVD.","DOMAINE","SQUARE","ALLEES","ANCIEN","ANCIENNE","CHEMINS","ROUTES","VIEUX","BD","HAMEAU","CITE","RESIDENCE","RUELLE","PL","RTE"};
-    List<String> listType = Arrays.asList(wordsType);
-    String[] wordsArticle = new String[]{"DE","LE","LES","LA","DU","L'","DES","D'","AU","AUX"};
-    List<String> listArticle = Arrays.asList(wordsArticle);
-    String work = p_adr1.toUpperCase();
-    String[] words = work.split("[\\s\\t]+");
-    Boolean added = false;
-    this.articleVoie = "";
-    this.typeVoie = "";
-    this.nomVoie = "";
-    for(String s : words) {
-      added = false;
-      if (listType.contains(s)) {
-        if (this.typeVoie == "" && this.nomVoie == "") {
-          this.typeVoie += " " + s;
-          added = true;
-        }
-      } else {
-        if (listArticle.contains(s)) {
-          if (this.nomVoie == "") {
-            this.articleVoie += " " + s;
-            added = true;
-          }
-        } else {
-          if (this.typeVoie == "" && this.nomVoie == "") {
-            try {
-              // Ugly way
-              int i = Integer.parseInt(s);
-              this.numero = i;
-              added = true;
-            } catch (NumberFormatException e) {
-              
-            }
-            added = true;
-          }
-        }
-      }
-      if (!added) {
-        this.nomVoie += " " + s;
-      }
-    }
-    this.articleVoie = this.articleVoie.trim();
-    this.typeVoie = this.typeVoie.trim();
-    this.nomVoie = this.nomVoie.trim();
-    this.complementNom = p_adr2;
-    return this;
-  }
+	/**
+	 * Get code_postal
+	 *
+	 * @return String
+	 */
+	public String getCodePostal() {
+		if (this.code_postal != null) {
+			return this.code_postal;
+		}
+		return "";
+	}
 
-  /**
-   * toString
-   * 
-   * @return String
-   */
-  @Override
-  public String toString() {
-    String ret = "";
-    if (this.numero != null) {
-      ret = this.numero.toString();
-    }
-    if (this.complementNumero != null) {
-      ret = ret + " " + this.complementNumero;
-    }
-    if (this.nomVoie != null) {
-      ret = ret + " " + Tools.asString(this.typeVoie, "") + " " + Tools.asString(this.nomVoie, "");
-    }
-    ret = ret.trim() + "\n";
-    if (this.complementNom != null) {
-      ret = ret.trim() + this.complementNom + "\n";
-    }
-    ret = ret.trim() + " " +
-      Tools.asString(this.codePostal, "") + " " + 
-      Tools.asString(this.ville, "")
-    ;
-    return ret;
-  }
+	/**
+	 * Set code_postal
+	 *
+	 * @param p_code_postal code_postal
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setCodePostal(String p_code_postal) {
+		this.code_postal = p_code_postal;
+		return this;
+	}
+
+	/**
+	 * Get ville
+	 *
+	 * @return String
+	 */
+	public String getVille() {
+		if (this.ville != null) {
+			return ville;
+		}
+		return "";
+	}
+
+	/**
+	 * Set ville
+	 *
+	 * @param p_ville ville
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setVille(String p_ville) {
+		this.ville = p_ville;
+		return this;
+	}
+
+	/**
+	 * Get id_pays
+	 *
+	 * @return Integer
+	 */
+	public Integer getId_pays() {
+		return id_pays;
+	}
+
+	/**
+	 * Set id_pays
+	 *
+	 * @param p_id_pays id_pays
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setId_pays(Integer p_id_pays) {
+		this.id_pays = p_id_pays;
+		return this;
+	}
+
+	/**
+	 * Get code_pays
+	 *
+	 * @return String
+	 */
+	public String getCodePays() {
+		if (this.code_pays != null) {
+			return this.code_pays;
+		}
+		return "";
+	}
+
+	/**
+	 * Set code_pays
+	 *
+	 * @param p_code_pays code_pays
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setCodePays(String p_code_pays) {
+		this.code_pays = p_code_pays;
+		return this;
+	}
+
+	/**
+	 * Get pays
+	 *
+	 * @return String
+	 */
+	public String getPays() {
+		if (this.pays != null) {
+			return this.pays;
+		}
+		return "";
+	}
+
+	/**
+	 * Set pays
+	 *
+	 * @param p_pays pays
+	 *
+	 * @return AdresseModel
+	 */
+	public AdresseModel setPays(String p_pays) {
+		this.pays = p_pays;
+		return this;
+	}
+
+	/**
+	 * Set from full address
+	 * 
+	 * @param p_adr1 Ligne 1
+	 * @param p_adr2 Ligne 2
+	 * @param p_adr3 Ligne 3
+	 * 
+	 * @return AdresseModel
+	 */
+	public AdresseModel setFullAdresse(String p_adr1, String p_adr2, String p_adr3) {
+		String[] wordsType = new String[] { "CHEMIN", "IMPASSE", "VOIE", "QUAI", "RUE", "ROUTE", "BOULEVARD", "AVENUE",
+				"ALLEE", "AV", "BLD", "BLVD", "IMP", "QUARTIER", "PLACE", "IMP.", "BLVD.", "DOMAINE", "SQUARE",
+				"ALLEES", "ANCIEN", "ANCIENNE", "CHEMINS", "ROUTES", "VIEUX", "BD", "HAMEAU", "CITE", "RESIDENCE",
+				"RUELLE", "PL", "RTE" };
+		List<String> listType = Arrays.asList(wordsType);
+		String[] wordsArticle = new String[] { "DE", "LE", "LES", "LA", "DU", "L'", "DES", "D'", "AU", "AUX" };
+		List<String> listArticle = Arrays.asList(wordsArticle);
+		String work = p_adr1.toUpperCase();
+		String[] words = work.split("[\\s\\t]+");
+		Boolean added = false;
+
+		this.article_voie = "";
+		this.type_voie = "";
+		this.nom_voie = "";
+
+		for (String s : words) {
+			added = false;
+			if (listType.contains(s)) {
+				if (this.type_voie == "" && this.nom_voie == "") {
+					this.type_voie += " " + s;
+					added = true;
+				}
+			} else {
+				if (listArticle.contains(s)) {
+					if (this.nom_voie == "") {
+						this.article_voie += " " + s;
+						added = true;
+					}
+				} else {
+					if (this.type_voie == "" && this.nom_voie == "") {
+						try {
+							// Ugly way
+							int i = Integer.parseInt(s);
+							this.numero = i;
+							added = true;
+						} catch (NumberFormatException e) {
+
+						}
+						added = true;
+					}
+				}
+			}
+			if (!added) {
+				this.nom_voie += " " + s;
+			}
+		}
+
+		this.article_voie = this.article_voie.trim();
+		this.type_voie = this.type_voie.trim();
+		this.nom_voie = this.nom_voie.trim();
+		this.complement_nom = p_adr2;
+
+		return this;
+	}
+
+	/**
+	 * toString
+	 * 
+	 * @return String
+	 */
+	@Override
+	public String toString() {
+		String ret = "";
+
+		if (this.numero != null && this.numero > 0) {
+			ret = this.numero.toString();
+		}
+
+		if (this.complement_numero != null && this.complement_numero.trim() != "") {
+			ret = ret + (ret != "" ? " " : "") + this.complement_numero.trim();
+		}
+		if (this.nom_voie != null && this.nom_voie.trim() != "") {
+			ret = ret + (ret != "" ? " " : "") + Tools.asString(this.type_voie.trim(), "") + " "
+					+ Tools.asString(this.nom_voie.trim(), "");
+		}
+
+		if (this.complement_nom != null && this.complement_nom.trim() != "") {
+			ret = (ret != "" ? "\n" : "") + this.complement_nom.trim();
+		}
+
+		ret = (ret != "" ? "\n" : "") + Tools.asString(this.code_postal.trim(), "") + " "
+				+ Tools.asString(this.ville.trim(), "");
+
+		return ret;
+	}
 }

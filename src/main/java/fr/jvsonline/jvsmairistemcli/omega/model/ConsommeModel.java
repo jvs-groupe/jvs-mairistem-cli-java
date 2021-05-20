@@ -1,14 +1,19 @@
 package fr.jvsonline.jvsmairistemcli.omega.model;
 
-import com.github.jasminb.jsonapi.annotations.Type;
-import fr.jvsonline.jvsmairistemcli.core.BaseModel;
-import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
-import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
-import com.github.jasminb.jsonapi.annotations.Id;
-import com.github.jasminb.jsonapi.IntegerIdHandler;
+import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import fr.jvsonline.jvsmairistemcli.core.BaseModel;
+
+import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
+import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
+
+import com.github.jasminb.jsonapi.annotations.Type;
+import com.github.jasminb.jsonapi.annotations.Id;
+//import com.github.jasminb.jsonapi.annotations.Relationship;
+import com.github.jasminb.jsonapi.IntegerIdHandler;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -16,10 +21,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * ConsommeModel
- * 
- * @author jeromeklam
  */
-@Type("Partner_Consomme")
+@Type("POGRC_Consomme")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ConsommeModel extends BaseModel {
 
@@ -41,39 +44,39 @@ public class ConsommeModel extends BaseModel {
    */
   @JsonProperty("dateai")
   @JsonDeserialize(using = CustomDateDeserializer.class)
-  private Date dateAncienindex;
+  private Date date_ancien_index;
 
   /**
    * Ancien index
    */
   @JsonProperty("ai")
-  private Integer ancienIndex;
+  private Integer ancien_index;
 
   /**
    * Date nouvel index
    */
   @JsonProperty("dateni")
   @JsonDeserialize(using = CustomDateDeserializer.class)
-  private Date dateNouvelIndex;
+  private Date date_nouvel_index;
   
   /**
    * Nouvel index
    */
   @JsonProperty("ni")
-  private Integer nouvelIndex;
+  private Integer nouvel_index;
 
   /**
    * Type de relevé
    */
   @JsonProperty("enum_crlv")
-  private String typeReleve;
+  private String type_releve;
   
   /**
    * A facturer
    */
   @JsonProperty("afacturer")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
-  private Boolean aFacturer;
+  private Boolean a_facturer;
   
   /**
    * Facturé
@@ -88,24 +91,24 @@ public class ConsommeModel extends BaseModel {
   @JsonProperty("forfait")
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
   private Boolean forfait;
-  
-  /**
-   * Consommation relevée
-   */
-  @JsonProperty("consorlv")
-  private Integer consommationReleve;
-  
+
   /**
    * Budget
    */
   @JsonProperty("enum_budg")
   private String budget;
-  
+
+  /**
+   * Consommation relevée
+   */
+  @JsonProperty("consorlv")
+  private Integer consommation_releve;
+
   /**
    * Consommation facturée 
    */
   @JsonProperty("comsofact")
-  private Integer consommationFacturee;
+  private Integer consommation_facturee;
   
   /**
    * Constructor
@@ -114,7 +117,7 @@ public class ConsommeModel extends BaseModel {
   }
 
   /**
-   * Get Id
+   * Get id
    * 
    * @return Integer
    */
@@ -124,9 +127,9 @@ public class ConsommeModel extends BaseModel {
   }
 
   /**
-   * Set Id
+   * Set id
    * 
-   * @param p_id Identifiant
+   * @param p_id id
    * 
    * @return ConsommeModel
    */
@@ -146,153 +149,135 @@ public class ConsommeModel extends BaseModel {
   }
   
   /**
-   * Get date ancien index
+   * Get date_ancien_index
    * 
    * @return Date
    */
   @JsonIgnore
   public Date getDateAncienIndex() {
-    return this.dateAncienindex;
+    return this.date_ancien_index;
   }
   
   /**
-   * Set date ancien index
+   * Set date_ancien_index
    *  
-   * @param p_date Date
+   * @param p_date_ancien_index date_ancien_index
    * 
    * @return ConsommeModel
    */
-  public ConsommeModel setDateAncienIndex(Date p_date) {
-    this.dateAncienindex = p_date;
+  public ConsommeModel setDateAncienIndex(Date p_date_ancien_index) {
+    this.date_ancien_index = p_date_ancien_index;
     return this;
   }
   
   /**
-   * Get ancien index
+   * Get ancien_index
    * 
    * @return Integer
    */
   @JsonIgnore
   public Integer getAncienIndex() {
-    return this.ancienIndex;
+    return this.ancien_index;
   }
   
   /**
-   * Set ancien index
+   * Set ancien_index
    * 
-   * @param p_ancien_index Integer
+   * @param p_ancien_index ancien_index
    * 
    * @return ConsommeModel
    */
   public ConsommeModel setAncienIndex(Integer p_ancien_index) {
-    this.ancienIndex = p_ancien_index;
+    this.ancien_index = p_ancien_index;
     return this;
   }
   
   /**
-   * Get date nouvel index
+   * Get date_nouvel_index
    * 
    * @return Date
    */
   @JsonIgnore
   public Date getDateNouvelIndex() {
-    return this.dateNouvelIndex;
+    return this.date_nouvel_index;
   }
   
   /**
-   * Set date nouvel index
+   * Set date_nouvel_index
    * 
-   * @param p_date Date
+   * @param p_date_nouvel_index date_nouvel_index
    * 
    * @return ConsommeModel
    */
-  public ConsommeModel setDateNouvelIndex(Date p_date) {
-    this.dateNouvelIndex = p_date;
+  public ConsommeModel setDateNouvelIndex(Date p_date_nouvel_index) {
+    this.date_nouvel_index = p_date_nouvel_index;
     return this;
   }
   
   /**
-   * Retourne le nouvel index
+   * Get nouvel_index
    * 
    * @return Integer
    */
   @JsonIgnore
   public Integer getNouvelIndex() {
-    return this.nouvelIndex;
+    return this.nouvel_index;
   }
   
   /**
-   * Set nouvel index
+   * Set nouvel_index
    * 
-   * @param p_index Nouvel index
+   * @param p_nouvel_index nouvel_index
    * 
    * @return ConsommeModel
    */
-  public ConsommeModel setNouvelIndex(Integer p_index) {
-    this.nouvelIndex = p_index;
+  public ConsommeModel setNouvelIndex(Integer p_nouvel_index) {
+    this.nouvel_index = p_nouvel_index;
     return this;
   }
   
   /**
-   * Get type de relevé
+   * Get type_releve
    * 
    * @return String
    */
   @JsonIgnore
   public String getTypeReleve() {
-    return this.typeReleve;
+    return this.type_releve;
   }
   
   /**
-   * Set type de relevé
+   * Set type_releve
    * 
-   * @param p_type_releve String
+   * @param p_type_releve type_releve
    * 
    * @return ConsommeModel
    */
   public ConsommeModel setTypeReleve(String p_type_releve) {
-    this.typeReleve = p_type_releve;
+    this.type_releve = p_type_releve;
     return this;
   }
   
   /**
-   * Retourne vrai si la consommation ets à facturer
+   * Get a_facturer
    * 
    * @return Boolean
    */
-  public Boolean getAfacturer() {
-    return this.aFacturer;
+  public Boolean getAFacturer() {
+    return this.a_facturer;
   }
   
   /**
-   * Retourne vrai si la consommation est à facturer
+   * Get a_facturer
    * 
    * @return Boolean
    */
   public Boolean isAFacturer() {
-    return this.aFacturer;
+    return this.a_facturer;
   }
   
   /**
-   * Retourne vrai si c'est un forfait
-   * 
-   * @return Boolean
-   */
-  public Boolean getForfait() {
-    return this.forfait;
-  }
-  
-  /**
-   * Retourne vrai si c'est un forfait
-   * 
-   * @return Boolean
-   */
-  public Boolean isForfait() {
-    return this.forfait;
-  }
-  
-  /**
-   * Retourne vrai si facturé
+   * Get facture
    * 
    * @return Boolean
    */
@@ -301,41 +286,59 @@ public class ConsommeModel extends BaseModel {
   }
   
   /**
-   * Retourne vrai si facturé
+   * Get facture
    * 
    * @return Boolean
    */
-  public Boolean isFacture() {
+  public Boolean hasFacture() {
     return this.facture;
   }
-  
+
   /**
-   * Retourne le consommation relevée
+   * Get forfait
    * 
-   * @return Integer
+   * @return Boolean
    */
-  public Integer getConsommationRelevee() {
-    return this.consommationReleve;
+  public Boolean getForfait() {
+    return this.forfait;
   }
   
   /**
-   * Retourne la consommation facturée
+   * Get forfait
    * 
-   * @return Integer
+   * @return Boolean
    */
-  public Integer getConsommationFacturee() {
-    return this.consommationFacturee;
+  public Boolean isForfait() {
+    return this.forfait;
   }
-  
+
   /**
-   * Retourne le budget
+   * Get budget
    * 
    * @return String
    */
   public String getBudget() {
     return this.budget;
   }
+
+  /**
+   * Get consommation_releve
+   * 
+   * @return Integer
+   */
+  public Integer getConsommationRelevee() {
+    return this.consommation_releve;
+  }
   
+  /**
+   * Get consommation_facturee
+   * 
+   * @return Integer
+   */
+  public Integer getConsommationFacturee() {
+    return this.consommation_facturee;
+  }
+ 
   /**
    * toString
    * 
@@ -345,7 +348,8 @@ public class ConsommeModel extends BaseModel {
   @Override
   public String toString() {
     DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-    String converted = formatter.format(this.dateNouvelIndex);
-    return "Consomme " + this.nouvelIndex.toString() + " du " + converted;
+    String converted = formatter.format(this.date_nouvel_index);
+
+    return "Consomme " + this.nouvel_index.toString() + " du " + converted;
   }
 }

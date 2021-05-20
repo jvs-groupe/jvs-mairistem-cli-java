@@ -1,161 +1,197 @@
 package fr.jvsonline.jvsmairistemcli.omega.model;
 
-import com.github.jasminb.jsonapi.annotations.Type;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
-import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
+
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
+import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanToIntSerializer;
+
+import com.github.jasminb.jsonapi.annotations.Type;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * OrganismeModel
- * 
- * @author jeromeklam
  */
-@Type("Partner_Organism")
-public class OrganismeModel extends BaseModel implements BaseModelInterface {
+@Type("POGRC_Organisme")
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class OrganismeModel extends BaseModel {
 
-  /**
-   * Identifiant de l'organisme
-   */
-  @Id(IntegerIdHandler.class)
-  @JsonProperty("organism_id")
-  private Integer id;
+	/**
+	 * Identifiant de l'organisme
+	 */
+	@Id(IntegerIdHandler.class)
+	@JsonProperty("organism_id")
+	private Integer id;
 
-  /**
-   * Type d'organisme
-   */
-  @JsonProperty("enum_torg")
-  private String  type;
+	/**
+	 * Type d'organisme
+	 */
+	@JsonProperty("enum_torg")
+	private String type;
 
-  /**
-   * Nom
-   */
-  @JsonProperty("nomlorg")
-  private String  nom;
+	/**
+	 * Nom
+	 */
+	@JsonProperty("nomlorg")
+	private String nom;
 
-  /**
-   * Code postal
-   */
-  @JsonProperty("cporg")
-  private String  codePostal;
-  
-  /**
-   * Ville
-   */
-  @JsonProperty("villeorg")
-  private String  ville;
-  
-  /**
-   * Actif
-   */
-  @JsonProperty("actif")
-  @JsonDeserialize(using = CustomBooleanDeserializer.class)
-  private Boolean actif;
+	/**
+	 * Code postal
+	 */
+	@JsonProperty("cporg")
+	private String code_postal;
 
-  /**
-   * Constructor
-   */
-  public OrganismeModel() {
-  }
+	/**
+	 * Ville
+	 */
+	@JsonProperty("villeorg")
+	private String ville;
 
-  /**
-   * Get Id
-   * 
-   * @return Integer
-   */
-  @JsonIgnore
-  public Integer getId() {
-    return this.id;
-  }
+	/**
+	 * Actif
+	 */
+	@JsonProperty("actif")
+	@JsonDeserialize(using = CustomBooleanDeserializer.class) // nécessaire car on reçoit 'actif': 1
+	@JsonSerialize(using = CustomBooleanToIntSerializer.class) // nécessaire pour avoir 'actif': 1 si true. 0 dans le cas contraire.
+	private Boolean actif;
 
-  /**
-   * Set Id
-   * 
-   * @param p_id Identifiant
-   * 
-   * @return AdresseDesserteModel
-   */
-  public OrganismeModel setId(Integer p_id) {
-    this.id = p_id;
-    return this;
-  }
+	/**
+	 * Constructor
+	 */
+	public OrganismeModel() {
+	}
 
-  /**
-   * Get nom
-   *
-   * @return String 
-   */
-  @JsonIgnore
-  public String getNom() {
-    if (this.nom != null) {
-      return this.nom;
-    }
-    return "";
-  }
+	/**
+	 * Get id
+	 * 
+	 * @return Integer
+	 */
+	@JsonIgnore
+	public Integer getId() {
+		return this.id;
+	}
 
-  /**
-   * Set nom
-   *
-   * @param p_nom Nom
-   *
-   * @return OrganismeModel
-   */
-  public OrganismeModel setNom(String p_nom) {
-    this.nom = p_nom;
-    return this;
-  }
+	/**
+	 * Set id
+	 * 
+	 * @param p_id id
+	 * 
+	 * @return OrganismeModel
+	 */
+	public OrganismeModel setId(Integer p_id) {
+		this.id = p_id;
+		return this;
+	}
 
-  /**
-   * Get codePostal
-   *
-   * @return String 
-   */
-  @JsonIgnore
-  public String getCodePostal() {
-    if (this.codePostal != null) {
-      return this.codePostal;
-    }
-    return "";
-  }
+	/**
+	 * Get nom
+	 *
+	 * @return String
+	 */
+	@JsonIgnore
+	public String getNom() {
+		if (this.nom != null) {
+			return this.nom;
+		}
+		return "";
+	}
 
-  /**
-   * Set codePostal
-   *
-   * @param p_codePostal Code postal
-   *
-   * @return OrganismeModel
-   */
-  public OrganismeModel setCodePostal(String p_codePostal) {
-    this.codePostal = p_codePostal;
-    return this;
-  }
+	/**
+	 * Set nom
+	 *
+	 * @param p_nom nom
+	 *
+	 * @return OrganismeModel
+	 */
+	public OrganismeModel setNom(String p_nom) {
+		this.nom = p_nom;
+		return this;
+	}
 
-  /**
-   * Get ville
-   *
-   * @return String 
-   */
-  @JsonIgnore
-  public String getVille() {
-    if (this.ville != null) {
-      return this.ville;
-    }
-    return "";
-  }
+	/**
+	 * Get code_postal
+	 *
+	 * @return String
+	 */
+	@JsonIgnore
+	public String getCodePostal() {
+		if (this.code_postal != null) {
+			return this.code_postal;
+		}
+		return "";
+	}
 
-  /**
-   * Set ville
-   *
-   * @param p_ville Ville
-   *
-   * @return OrganismeModel
-   */
-  public OrganismeModel setVille(String p_ville) {
-    this.ville = p_ville;
-    return this;
-  }
+	/**
+	 * Set code_postal
+	 *
+	 * @param p_code_postal code_postal
+	 *
+	 * @return OrganismeModel
+	 */
+	public OrganismeModel setCodePostal(String p_code_postal) {
+		this.code_postal = p_code_postal;
+		return this;
+	}
+
+	/**
+	 * Get ville
+	 *
+	 * @return String
+	 */
+	@JsonIgnore
+	public String getVille() {
+		if (this.ville != null) {
+			return this.ville;
+		}
+		return "";
+	}
+
+	/**
+	 * Set ville
+	 *
+	 * @param p_ville ville
+	 *
+	 * @return OrganismeModel
+	 */
+	public OrganismeModel setVille(String p_ville) {
+		this.ville = p_ville;
+		return this;
+	}
+	
+	/**
+	 * Get actif
+	 * 
+	 * @return Boolean
+	 */
+	@JsonIgnore
+	public Boolean getActif() {
+		return this.actif;
+	}
+
+	/**
+	 * Get actif
+	 * 
+	 * @return Boolean
+	 */
+	public Boolean isActif() {
+		return this.actif;
+	}
+
+	/**
+	 * Set actif
+	 * 
+	 * @param p_actif actif
+	 * 
+	 * @return OrganismeModel
+	 */
+	public OrganismeModel setActif(Boolean p_actif) {
+		this.actif = p_actif;
+		return this;
+	}
 }

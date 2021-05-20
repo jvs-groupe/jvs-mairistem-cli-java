@@ -1,3 +1,11 @@
+# 1.4.0 : 20/05/2021
+
+* Correction des modèles de base autour du point de consommation
+* Correction de (dé)sérialisation Date et Boolean
+* Harmonisation de la déclaration des membres (plus de camelcase !)
+* Recherche et ajout d'une option dans Article pour traiter les valeurs null en sortie (cf ArticleModel)
+* Recherche et explication sur le pourquoi du JsonIgnore sur les méthodes get....() (cf ArticleModel)
+
 # 1.3.1 : 07/04/2021
 
 * Correction des modèles de base Adresse et Personne

@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
-import fr.jvsonline.jvsmairistemcli.omega.model.LigneEnumerationModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.XXX_LigneEnumerationModel;
 
 /**
  * EnumerationModel
@@ -19,7 +19,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.LigneEnumerationModel;
  */
 @Type("Partner_Enum")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class EnumerationModel extends BaseModel {
+public class XXX_EnumerationModel extends BaseModel {
 
   /**
    * Identifiant de l'énumération
@@ -45,12 +45,12 @@ public class EnumerationModel extends BaseModel {
    * Lignes
    */
   @Relationship("ligenums")
-  private List<LigneEnumerationModel> ligenums;
+  private List<XXX_LigneEnumerationModel> ligenums;
   
   /**
    * Constructor
    */
-  public EnumerationModel() {
+  public XXX_EnumerationModel() {
   }
 
   /**
@@ -69,7 +69,7 @@ public class EnumerationModel extends BaseModel {
    * 
    * @return EnumerationModel
    */
-  public EnumerationModel setId(Integer p_id) {
+  public XXX_EnumerationModel setId(Integer p_id) {
     this.id = p_id;
     return this;
   }
@@ -90,7 +90,7 @@ public class EnumerationModel extends BaseModel {
    * 
    * @return EnumerationModel
    */
-  public EnumerationModel setNom(String p_nom) {
+  public XXX_EnumerationModel setNom(String p_nom) {
     this.nom = p_nom;
     return this;
   }
@@ -111,7 +111,7 @@ public class EnumerationModel extends BaseModel {
    * 
    * @return EnumerationModel
    */
-  public EnumerationModel setLibre(Boolean p_libre) {
+  public XXX_EnumerationModel setLibre(Boolean p_libre) {
     this.libre = p_libre;
     return this;
   }
@@ -121,7 +121,7 @@ public class EnumerationModel extends BaseModel {
    * 
    * @return List
    */
-  public List<LigneEnumerationModel> getLignes() {
+  public List<XXX_LigneEnumerationModel> getLignes() {
     return this.ligenums;
   }
 }

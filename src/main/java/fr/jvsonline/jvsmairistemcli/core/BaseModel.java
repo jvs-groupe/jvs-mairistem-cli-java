@@ -3,20 +3,18 @@ package fr.jvsonline.jvsmairistemcli.core;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+
 import java.security.InvalidParameterException;
+
 import java.util.Arrays;
 import java.util.regex.Pattern;
-
-import fr.jvsonline.jvsmairistemcli.core.Loggable;
-import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
-import fr.jvsonline.jvsmairistemcli.core.RequestParameters;
 
 /**
  * BaseModel
  * 
  * @author jeromeklam
  */
-public class BaseModel extends Loggable {
+public class BaseModel extends Loggable implements BaseModelInterface {
 
   
   /**

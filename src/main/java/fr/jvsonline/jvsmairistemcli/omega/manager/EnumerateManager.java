@@ -6,82 +6,51 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.core.Response;
 
-import com.github.jasminb.jsonapi.DeserializationFeature;
 import com.github.jasminb.jsonapi.JSONAPIDocument;
 import com.github.jasminb.jsonapi.ResourceConverter;
-import com.github.jasminb.jsonapi.exceptions.ResourceParseException;
+import com.github.jasminb.jsonapi.DeserializationFeature;
 
 import fr.jvsonline.jvsmairistemcli.core.BaseManager;
 import fr.jvsonline.jvsmairistemcli.core.ClientWSInterface;
 import fr.jvsonline.jvsmairistemcli.core.Settings;
 
-import fr.jvsonline.jvsmairistemcli.omega.model.ArticleModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerateModel;
 
 /**
- * ArticleManager
+ * EnumerateManager
  * 
- * @author jeromeklam
  */
-public class ArticleManager extends BaseManager {
+public class EnumerateManager extends BaseManager {
 
 	/**
 	 * Constructor
 	 * 
 	 * @param p_client Client WS
 	 */
-	public ArticleManager(ClientWSInterface p_client) {
+	public EnumerateManager(ClientWSInterface p_client) {
 		super();
 		this.client = p_client;
 	}
 
 	/**
-	 * Find Article
+	 * Find Enumération(s)
+	 * 
+	 * @param p_codesList list des énumerations à retourner séparés par une virgule
 	 * 
 	 * @return List
 	 */
-	public List<ArticleModel> find() {
+	public List<EnumerateModel> find(String p_codesList) {
 		logger.info("find.start");
-		List<ArticleModel> myCollection = null;
-
-		try {
-			Settings omegaSettings = Settings.getInstance();
-			Invocation.Builder invocationBuilder = this.client.getClient(omegaSettings.getWsCrossroad() + "/article", this.parameters);
-
-			ResourceConverter converter = new ResourceConverter(ArticleModel.class); // convertisseur en JSONApi !
-
-			Response response = invocationBuilder.get(); // effectue un appel de type get
-
-			String strResponse = response.readEntity(String.class);
-			byte[] rawResponse = strResponse.getBytes();
-
-			converter.disableDeserializationOption(DeserializationFeature.REQUIRE_RESOURCE_ID);
-			converter.enableDeserializationOption(DeserializationFeature.ALLOW_UNKNOWN_INCLUSIONS); // permet de gérer les included inconnus. ex: Included section contains unknown resource type: POGRC_Trucmuche
-
-			JSONAPIDocument<List<ArticleModel>> artDocumentCollection = converter.readDocumentCollection(rawResponse, ArticleModel.class);
-			myCollection = artDocumentCollection.get();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
-
-		logger.info("find.end");
-		return myCollection;
-	}
-
-	/**
-	 * @return ArticleModel
-	 */
-	public ArticleModel testJsonApi(ArticleModel p_article) {
-		logger.info("testJsonApi Article.start");
-		ArticleModel myRequest = null;
+		List<EnumerateModel> myCollection = null;
 
 		try {
 			Settings omegaSettings = Settings.getInstance();
 			Invocation.Builder invocationBuilder = this.client.getClient(omegaSettings.getWsCrossroad() + "/enumerate", this.parameters);
 
-			ResourceConverter converter = new ResourceConverter(ArticleModel.class); // convertisseur en JSONApi !
+			ResourceConverter converter = new ResourceConverter(EnumerateModel.class); // convertisseur en JSONApi !
 
-			ArticleModel modelArticle = p_article;
+			EnumerateModel modelEnumerate = new EnumerateModel();
+			modelEnumerate.setCodeListe(p_codesList);
 
 // ne fonctionne pas, car génére un format JSON, or le back attend un jsonapi ! 
 //			Response response = invocationBuilder.post(Entity.entity(modelEnumerate, MediaType.APPLICATION_JSON));
@@ -103,15 +72,14 @@ public class ArticleManager extends BaseManager {
 
 		    // le try est obligatoire. il est imposé par le writeDocument ! 
 //			try {
-		    	byte [] serializedObject = converter.writeDocument(new JSONAPIDocument<>(modelArticle));
+		    	byte [] serializedObject = converter.writeDocument(new JSONAPIDocument<>(modelEnumerate));
 //			} catch (DocumentSerializationException e) {
 //				throw new RuntimeException(e);
 //			}
 
-		    	String serializedAsString = new String(serializedObject);
-		    logger.info(serializedAsString);
+		    String serializedAsString = new String(serializedObject);
+//		    logger.info(serializedAsString);
 
-/*
 		    Response response = invocationBuilder.post(Entity.entity(serializedAsString, "application/vnd.api+json")); // effectue un appel de type post
 
 //
@@ -119,17 +87,14 @@ public class ArticleManager extends BaseManager {
 		    String strResponse = response.readEntity(String.class);
 			byte[] rawResponse = strResponse.getBytes();
 
-			JSONAPIDocument<ArticleModel> bookDocument = converter.readDocument(rawResponse, ArticleModel.class);
-			myRequest = bookDocument.get();
-*/
-		} catch (ResourceParseException e) {
-			logger.error(e.getErrors().toString());
+			JSONAPIDocument<List<EnumerateModel>> enumDocumentCollection = converter.readDocumentCollection(rawResponse, EnumerateModel.class);
+			myCollection = enumDocumentCollection.get();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 
-		logger.info("testJsonApi Article.end");
-		return myRequest;
+		logger.info("find.end");
+		return myCollection;
 	}
 
 	/**
@@ -139,11 +104,11 @@ public class ArticleManager extends BaseManager {
 	 * 
 	 * @return String
 	 */
-	protected String getFilter(String p_field_name) {
-		ArticleModel myArt = new ArticleModel();
+	protected String getFilter(String p_fieldName) {
+		EnumerateModel myEnum = new EnumerateModel();
 		String param = "";
 		try {
-			param = myArt.getWSFieldName(p_field_name);
+			param = myEnum.getWSFieldName(p_fieldName);
 		} catch (Exception e) {
 			this.logger.error(e.getMessage());
 		}

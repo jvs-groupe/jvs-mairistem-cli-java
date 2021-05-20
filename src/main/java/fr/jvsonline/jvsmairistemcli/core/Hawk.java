@@ -29,17 +29,23 @@ public class Hawk extends Loggable {
   private final String key;
 
   /**
+   * Hawk App
+   */
+  private final String app;
+
+  /**
    * Constructor
    * 
    * @param p_id Identifiant
    * @param p_key Clef
    */
-  public Hawk(String p_id, String p_key) {
+  public Hawk(String p_id, String p_key, String p_app) {
     this.id = p_id;
     this.key = p_key;
+    this.app = p_app;
   }
 
-  /**
+/**
    * Obtain the port of an URI
    * 
    * @param p_uri URI
@@ -144,7 +150,7 @@ public class Hawk extends Loggable {
       p_requestContext.getMethod(),
       "",
       "",
-      "",
+      this.app, 
       ""
     );
     // Encode hmac SHA256
@@ -175,6 +181,10 @@ public class Hawk extends Loggable {
     }
     sb.append("\", mac=\"");
     sb.append(output);
+    if ((this.app != null) && (!"".equals(this.app))) {
+      sb.append("\", app=\"");
+      sb.append(this.app);
+    }
     sb.append('"');
     // End
     return sb.toString();

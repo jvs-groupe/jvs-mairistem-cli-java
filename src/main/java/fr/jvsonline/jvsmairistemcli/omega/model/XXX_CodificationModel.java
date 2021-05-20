@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
-import fr.jvsonline.jvsmairistemcli.omega.model.LigneCodificationModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.XXX_LigneCodificationModel;
 
 /**
  * CodificationModel
@@ -19,7 +19,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.LigneCodificationModel;
  */
 @Type("Partner_Listedef")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CodificationModel extends BaseModel {
+public class XXX_CodificationModel extends BaseModel {
 
   /**
    * Identifiant de l'énumération
@@ -50,12 +50,12 @@ public class CodificationModel extends BaseModel {
    * Lignes
    */
   @Relationship("listevals")
-  private List<LigneCodificationModel> listevals;
+  private List<XXX_LigneCodificationModel> listevals;
 
   /**
    * Constructor
    */
-  public CodificationModel() {
+  public XXX_CodificationModel() {
   }
 
   /**
@@ -74,7 +74,7 @@ public class CodificationModel extends BaseModel {
    * 
    * @return CodificationModel
    */
-  public CodificationModel setId(Integer p_id) {
+  public XXX_CodificationModel setId(Integer p_id) {
     this.id = p_id;
     return this;
   }
@@ -95,7 +95,7 @@ public class CodificationModel extends BaseModel {
    * 
    * @return CodificationModel
    */
-  public CodificationModel setNom(String p_nom) {
+  public XXX_CodificationModel setNom(String p_nom) {
     this.nom = p_nom;
     return this;
   }
@@ -116,7 +116,7 @@ public class CodificationModel extends BaseModel {
    * 
    * @return CodificationModel
    */
-  public CodificationModel setTypeListe(String p_type) {
+  public XXX_CodificationModel setTypeListe(String p_type) {
     this.typeListe = p_type;
     return this;
   }
@@ -137,7 +137,7 @@ public class CodificationModel extends BaseModel {
    * 
    * @return CodificationModel
    */
-  public CodificationModel setCodeListe(String p_code) {
+  public XXX_CodificationModel setCodeListe(String p_code) {
     this.codeListe = p_code;
     return this;
   }
@@ -147,7 +147,7 @@ public class CodificationModel extends BaseModel {
    * 
    * @return List
    */
-  public List<LigneCodificationModel> getLignes() {
+  public List<XXX_LigneCodificationModel> getLignes() {
     return this.listevals;
   }
 }

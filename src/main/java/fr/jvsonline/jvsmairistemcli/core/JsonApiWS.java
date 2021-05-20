@@ -55,7 +55,8 @@ public class JsonApiWS extends Loggable implements ClientWSInterface {
     logger.info("getJsonApiWS.start for " + p_service);
     HawkAuthentication hawkAuth = new HawkAuthentication(
       this.settings.getWsHawkId(),
-      this.settings.getWsHawkKey()
+      this.settings.getWsHawkKey(),
+      this.settings.getWsHawkApp()
     );
     Client client = ClientBuilder.newClient().register(hawkAuth);
     WebTarget target = client.target(
@@ -77,10 +78,10 @@ public class JsonApiWS extends Loggable implements ClientWSInterface {
     if (includes.length > 0) {
       target = target.queryParam("include", String.join(",", includes));
     }
-    target = target.queryParam("query_andor", p_parameters.getCondition());
+//    target = target.queryParam("query_andor", p_parameters.getCondition());
     logger.info(target.toString());
     Invocation.Builder invocationBuilder = target.request(JsonApiWS.getMediaType());
-    invocationBuilder.header("ApiId", this.settings.getWsApiId());
+    invocationBuilder.header("Api-Id", this.settings.getWsApiId());
     logger.info("getJsonApiWS.end");
     return invocationBuilder;
   }

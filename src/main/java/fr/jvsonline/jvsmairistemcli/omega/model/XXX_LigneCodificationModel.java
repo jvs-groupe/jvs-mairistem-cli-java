@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Type("Partner_Listeval")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LigneCodificationModel extends BaseModel {
+public class XXX_LigneCodificationModel extends BaseModel {
 
   /**
    * Identifiant de la ligne de codification
@@ -56,7 +56,7 @@ public class LigneCodificationModel extends BaseModel {
   /**
    * Constructor
    */
-  public LigneCodificationModel() {
+  public XXX_LigneCodificationModel() {
   }
 
   /**
@@ -75,7 +75,7 @@ public class LigneCodificationModel extends BaseModel {
    * 
    * @return LigneCodificationModel
    */
-  public LigneCodificationModel setId(Integer p_id) {
+  public XXX_LigneCodificationModel setId(Integer p_id) {
     this.id = p_id;
     return this;
   }
@@ -96,7 +96,7 @@ public class LigneCodificationModel extends BaseModel {
    * 
    * @return LigneCodificationModel
    */
-  public LigneCodificationModel setLibelle(String p_libelle) {
+  public XXX_LigneCodificationModel setLibelle(String p_libelle) {
     this.libelle = p_libelle;
     return this;
   }
@@ -117,7 +117,7 @@ public class LigneCodificationModel extends BaseModel {
    * 
    * @return LigneCodificationModel
    */
-  public LigneCodificationModel setCode(String p_code) {
+  public XXX_LigneCodificationModel setCode(String p_code) {
     this.code = p_code;
     return this;
   }
@@ -138,7 +138,7 @@ public class LigneCodificationModel extends BaseModel {
    * 
    * @return LigneCodificationModel
    */
-  public LigneCodificationModel setCodeListe(String p_code) {
+  public XXX_LigneCodificationModel setCodeListe(String p_code) {
     this.codeListe = p_code;
     return this;
   }
@@ -159,7 +159,7 @@ public class LigneCodificationModel extends BaseModel {
    * 
    * @return LigneCodificationModel
    */
-  public LigneCodificationModel setLibelleCourt(String p_libelleCourt) {
+  public XXX_LigneCodificationModel setLibelleCourt(String p_libelleCourt) {
     this.libelleCourt = p_libelleCourt;
     return this;
   }

@@ -4,6 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.lang.NullPointerException;
 import java.util.Properties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import fr.jvsonline.jvsmairistemcli.App;
 import fr.jvsonline.jvsmairistemcli.core.Tools;
 
 /**
@@ -13,216 +17,265 @@ import fr.jvsonline.jvsmairistemcli.core.Tools;
  */
 public class Settings {
 
-  /**
-   * Version
-   */
-  protected String        version    = "v1";
+	/**
+	 * Logger
+	 */
+	protected static final Logger logger = LoggerFactory.getLogger(Settings.class);
 
-  /**
-   * Artifact Id
-   */
-  protected String        artifactId = "JvsMairistemCli";
+	/**
+	 * Version
+	 */
+	protected String version = "v1";
 
-  /**
-   * Group Id
-   */
-  protected String        groupId    = "fr.jvsonline.jvsmairistemcli";
+	/**
+	 * Artifact Id
+	 */
+	protected String artifactId = "JvsMairistemCli";
 
-  /**
-   * WS End-Point
-   */
-  protected String        wsEndpoint = "";
+	/**
+	 * Group Id
+	 */
+	protected String groupId = "fr.jvsonline.jvsmairistemcli";
 
-  /**
-   * Application Id
-   */
-  protected String        wsApiId    = "";
+	/**
+	 * WS End-Point
+	 */
+	protected String wsEndpoint = "";
 
-  /**
-   * Hawk Auth Id
-   */
-  protected String        wsHawkId   = "";
+	/**
+	 * WS Crossroad !
+	 */
+	protected String wsCrossroad = "";
 
-  /**
-   * Hawk Auth Key
-   */
-  protected String        wsHawkKey  = "";
+	/**
+	 * Application Id
+	 */
+	protected String wsApiId = "";
 
-  /**
-   * Instance
-   */
-  private static Settings instance   = null;
+	/**
+	 * Hawk Auth Id
+	 */
+	protected String wsHawkId = "";
 
-  /**
-   * Constructor 
-   * 
-   * @param p_config Configuration
-   */
-  protected Settings(String p_config) {
-    if (p_config != null && p_config != "") {
-      this.read(p_config);
-    }
-  }
+	/**
+	 * Hawk Auth Key
+	 */
+	protected String wsHawkKey = "";
 
-  /**
-   * Get Instance
-   * 
-   * @return Settings
-   */
-  public static Settings getInstance() {
-    if (instance == null) {
-      instance = new Settings("");
-    }
-    return instance;
-  }
+	/**
+	 * Hawk Auth App
+	 */
+	protected String wsHawkApp = "";
 
-  /**
-   * Get Instance
-   * 
-   * @param p_config Configuration
-   * 
-   * @return Settings
-   */
-  public static Settings getInstance(String p_config) {
-    if (instance == null) {
-      instance = new Settings(p_config);
-    }
-    return instance;
-  }
+	/**
+	 * Instance
+	 */
+	private static Settings instance = null;
 
-  /**
-   * Read config
-   * 
-   * @param p_config Condiguration
-   */
-  protected void read(String p_config) {
-    InputStream inputStream;
-    Properties properties = new Properties();
-    String propFileName = p_config;
-    inputStream = Tools.getResource(propFileName);
-    try {
-      if (inputStream != null) {
-        properties.load(inputStream);
-      } else {
-        throw new FileNotFoundException(
-            "property file '" + propFileName + "' not found in the classpath");
-      }
-    } catch (Exception e) {
-      // System.out.println(e);
-    }
-    this.version = properties.getProperty("version");
-    this.artifactId = properties.getProperty("artifactId");
-    this.groupId = properties.getProperty("groupId");
-    this.wsEndpoint = properties.getProperty("wsEndpoint");
-    this.wsApiId = properties.getProperty("wsApiId");
-    this.wsHawkId = properties.getProperty("wsHawkId");
-    this.wsHawkKey = properties.getProperty("wsHawkKey");
-  }
+	/**
+	 * Constructor
+	 * 
+	 * @param p_config Configuration
+	 */
+	protected Settings(String p_config) {
+		if (p_config != null && p_config != "") {
+			this.read(p_config);
+		}
+	}
 
-  /**
-   * Get WS endpoint
-   * 
-   * @throws NullPointerException Si vide
-   * 
-   * @return the wsEndpoint
-   */
-  public String getWsEndpoint() {
-    if (this.wsEndpoint == null) {
-      throw new NullPointerException("ws.endpoint property cannot be null !");
-    }
-    return this.wsEndpoint;
-  }
+	/**
+	 * Get Instance
+	 * 
+	 * @return Settings
+	 */
+	public static Settings getInstance() {
+		try {
+			if (instance == null) {
+				throw new Exception("Undeclared interface !"); // instance = new Settings("");
+			}
+		} catch (Exception e) {
+			
+		}
+		return instance;
+	}
 
-  /**
-   * Set WS endpoint
-   * 
-   * @param p_endpoint Url du service web
-   * 
-   * @return Settings
-   */
-  public Settings setWsEndpoint(String p_endpoint) {
-    this.wsEndpoint = p_endpoint;
-    return this;
-  }
+	/**
+	 * Get Instance
+	 * 
+	 * @param p_config Configuration
+	 * 
+	 * @return Settings
+	 */
+	public static Settings getInstance(String p_config) {
+		if (instance == null) {
+			instance = new Settings(p_config);
+		}
+		return instance;
+	}
 
-  /**
-   * Get the version
-   * 
-   * @return the version
-   */
-  public String getVersion() {
-    if (this.version == null) {
-      throw new NullPointerException("version property cannot be null !");
-    }
-    return this.version;
-  }
+	/**
+	 * Read config
+	 * 
+	 * @param p_config Condiguration
+	 */
+	protected void read(String p_config) {
+		InputStream inputStream;
+		Properties properties = new Properties();
+		String propFileName = p_config;
+		inputStream = Tools.getResource(propFileName);
+		try {
+			if (inputStream != null) {
+				properties.load(inputStream);
+			} else {
+				throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+			}
+		} catch (Exception e) {
+			// System.out.println(e);
+		}
+		this.version = properties.getProperty("version");
+		this.artifactId = properties.getProperty("artifactId");
+		this.groupId = properties.getProperty("groupId");
+		this.wsEndpoint = properties.getProperty("wsEndpoint");
+		this.wsApiId = properties.getProperty("wsApiId");
+		this.wsHawkId = properties.getProperty("wsHawkId");
+		this.wsHawkKey = properties.getProperty("wsHawkKey");
+		this.wsHawkApp = properties.getProperty("wsHawkApp");
 
-  /**
-   * Set version
-   * 
-   * @param p_version Version
-   * 
-   * @return Settings
-   */
-  public Settings setVersion(String p_version) {
-    this.version = p_version;
-    return this;
-  }
+		String wsCrossroad = properties.getProperty("wsCrossroad");
+		this.wsCrossroad = ((wsCrossroad.equals("${ws.crossroad}") || wsCrossroad.equals("")) ? "partners"
+				: wsCrossroad);
+	}
 
-  /**
-   * @return the wsApiId
-   */
-  public String getWsApiId() {
-    return this.wsApiId;
-  }
+	/**
+	 * Get WS endpoint
+	 * 
+	 * @throws NullPointerException Si vide
+	 * 
+	 * @return the wsEndpoint
+	 */
+	public String getWsEndpoint() {
+		if (this.wsEndpoint == null) {
+			throw new NullPointerException("ws.endpoint property cannot be null !");
+		}
+		return this.wsEndpoint;
+	}
 
-  /**
-   * Set API Id
-   * 
-   * @param p_api_id Id de l'application (broker)
-   * 
-   * @return Settings
-   */
-  public Settings setWsApiId(String p_api_id) {
-    this.wsApiId = p_api_id;
-    return this;
-  }
+	/**
+	 * Set WS endpoint
+	 * 
+	 * @param p_endpoint Url du service web
+	 * 
+	 * @return Settings
+	 */
+	public Settings setWsEndpoint(String p_endpoint) {
+		this.wsEndpoint = p_endpoint;
+		return this;
+	}
 
-  /**
-   * @return the wsHawkId
-   */
-  public String getWsHawkId() {
-    return this.wsHawkId;
-  }
+	/**
+	 * Get the version
+	 * 
+	 * @return the version
+	 */
+	public String getVersion() {
+		if (this.version == null) {
+			throw new NullPointerException("version property cannot be null !");
+		}
+		return this.version;
+	}
 
-  /**
-   * Set HAWK Id
-   * 
-   * @param p_hawk_id Identifiant Hawk
-   * 
-   * @return Settings
-   */
-  public Settings setWsHawkId(String p_hawk_id) {
-    this.wsHawkId = p_hawk_id;
-    return this;
-  }
+	/**
+	 * Set version
+	 * 
+	 * @param p_version Version
+	 * 
+	 * @return Settings
+	 */
+	public Settings setVersion(String p_version) {
+		this.version = p_version;
+		return this;
+	}
 
-  /**
-   * @return the wsHawkKey
-   */
-  public String getWsHawkKey() {
-    return this.wsHawkKey;
-  }
+	/**
+	 * @return the wsApiId
+	 */
+	public String getWsApiId() {
+		return this.wsApiId;
+	}
 
-  /**
-   * Set WS HAWK Key
-   * 
-   * @param p_hawk_key Clef Hawk (secret)
-   * 
-   * @return Settings
-   */
-  public Settings setWsHawkKey(String p_hawk_key) {
-    this.wsHawkKey = p_hawk_key;
-    return this;
-  }
+	/**
+	 * Set API Id
+	 * 
+	 * @param p_api_id Id de l'application (broker)
+	 * 
+	 * @return Settings
+	 */
+	public Settings setWsApiId(String p_api_id) {
+		this.wsApiId = p_api_id;
+		return this;
+	}
+
+	/**
+	 * @return the wsHawkId
+	 */
+	public String getWsHawkId() {
+		return this.wsHawkId;
+	}
+
+	/**
+	 * Set HAWK Id
+	 * 
+	 * @param p_hawk_id Identifiant Hawk
+	 * 
+	 * @return Settings
+	 */
+	public Settings setWsHawkId(String p_hawk_id) {
+		this.wsHawkId = p_hawk_id;
+		return this;
+	}
+
+	/**
+	 * @return the wsHawkKey
+	 */
+	public String getWsHawkKey() {
+		return this.wsHawkKey;
+	}
+
+	/**
+	 * Set WS HAWK Key
+	 * 
+	 * @param p_hawk_key Clef Hawk (secret)
+	 * 
+	 * @return Settings
+	 */
+	public Settings setWsHawkKey(String p_hawk_key) {
+		this.wsHawkKey = p_hawk_key;
+		return this;
+	}
+
+	/**
+	 * @return the wsHawkApp
+	 */
+	public String getWsHawkApp() {
+		return this.wsHawkApp;
+	}
+
+	/**
+	 * Set WS HAWK App
+	 * 
+	 * @param p_hawk_app Identifiant App
+	 * 
+	 * @return Settings
+	 */
+	public Settings setWsHawkApp(String p_hawk_app) {
+		this.wsHawkApp = p_hawk_app;
+		return this;
+	}
+
+	/**
+	 * @return the wsCrossroad
+	 */
+	public String getWsCrossroad() {
+		return this.wsCrossroad;
+	}
 }

@@ -7,40 +7,40 @@ import com.github.jasminb.jsonapi.JSONAPIDocument;
 import com.github.jasminb.jsonapi.ResourceConverter;
 import fr.jvsonline.jvsmairistemcli.core.BaseManager;
 import fr.jvsonline.jvsmairistemcli.core.ClientWSInterface;
-import fr.jvsonline.jvsmairistemcli.omega.model.CodificationModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.XXX_EnumerationModel;
 
 /**
- * CodificationManager
+ * EnumerationManager
  * 
  * @author jeromeklam
  */
-public class CodificationManager extends BaseManager {
+public class XXX_EnumerationManager extends BaseManager {
 
   /**
    * Constructor
    * 
    * @param p_client Client WS
    */
-  public CodificationManager(ClientWSInterface p_client) {
+  public XXX_EnumerationManager(ClientWSInterface p_client) {
     this.client = p_client;
   }
 
   /**
-   * Find Codifications
+   * Find Enumération
    * 
    * @return List
    */
-  public List<CodificationModel> find() {
+  public List<XXX_EnumerationModel> find() {
     logger.info("find.start");
-    List<CodificationModel> myCollection = null;
+    List<XXX_EnumerationModel> myCollection = null;
     try {
-      Invocation.Builder invocationBuilder = this.client.getClient("partner/listedef", this.parameters);
+      Invocation.Builder invocationBuilder = this.client.getClient("partner/enum", this.parameters);
       Response response = invocationBuilder.get();
       String strResponse = response.readEntity(String.class);
       byte[] rawResponse = strResponse.getBytes();
-      ResourceConverter converter = new ResourceConverter(CodificationModel.class);
-      JSONAPIDocument<List<CodificationModel>> enumDocumentCollection = converter
-          .readDocumentCollection(rawResponse, CodificationModel.class);
+      ResourceConverter converter = new ResourceConverter(XXX_EnumerationModel.class);
+      JSONAPIDocument<List<XXX_EnumerationModel>> enumDocumentCollection = converter
+          .readDocumentCollection(rawResponse, XXX_EnumerationModel.class);
       myCollection = enumDocumentCollection.get();
     } catch (Exception e) {
       logger.error(e.getMessage());
@@ -57,7 +57,7 @@ public class CodificationManager extends BaseManager {
    * @return String
    */
   protected String getFilter(String p_fieldName) {
-    CodificationModel myEnum = new CodificationModel();
+    XXX_EnumerationModel myEnum = new XXX_EnumerationModel();
     String param = "";
     try {
       param = myEnum.getWSFieldName(p_fieldName);

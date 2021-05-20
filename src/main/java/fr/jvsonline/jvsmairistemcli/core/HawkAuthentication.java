@@ -23,16 +23,23 @@ public class HawkAuthentication extends Loggable implements ClientRequestFilter 
    * Key
    */
   private final String key;
-  
+
+  /**
+   * App
+   */
+  private final String app;
+
   /**
    * Constructor
    * 
    * @param p_id Identifiant
    * @param p_key Clef
+   * @param p_app App
    */
-  public HawkAuthentication(String p_id, String p_key) {
+  public HawkAuthentication(String p_id, String p_key, String p_app) {
     this.id = p_id;
     this.key = p_key;
+    this.app = p_app;
   }
 
   /**
@@ -44,7 +51,7 @@ public class HawkAuthentication extends Loggable implements ClientRequestFilter 
   public void filter(ClientRequestContext p_requestContext) throws IOException {
     logger.info("filter.start");
     MultivaluedMap<String, Object> headers = p_requestContext.getHeaders();
-    Hawk hawkAuth = new Hawk(this.id, this.key);
+    Hawk hawkAuth = new Hawk(this.id, this.key, this.app);
     final String basicAuthentication = hawkAuth.getHawkHeader(p_requestContext);
     headers.add("Authorization", basicAuthentication);
     logger.info("filter.end");

@@ -13,7 +13,7 @@ public enum RequestParameterOperator {
    * Constantes
    */
   EQUAL ("eq"),
-  LIKE ("like"),
+  LIKE ("contains"),
   IN ("in");
   
   /**

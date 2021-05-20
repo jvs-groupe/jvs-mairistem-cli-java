@@ -35,19 +35,25 @@ public abstract class BaseManager extends Loggable {
   /**
    * Set default condition
    * 
-   * @param condition AND/OR
+   * @param condition enum RequestParameterCondition (ex: RequestParameterCondition.AND)
+   * 
+   * @return BaseManager
    */
-  public void setDefaultCondition(RequestParameterCondition condition) {
+  public BaseManager setDefaultCondition(RequestParameterCondition condition) {
     this.parameters.setDefaultCondition(condition);
+    return this;    
   }
   
   /**
    * Set default operator
    * 
-   * @param operator LIKE, EQUAL, ...
+   * @param operator enum RequestParameterOperator (ex: RequestParameterOperator.EQUAL)
+   * 
+   * @return BaseManager
    */
-  public void setDefaultOperator(RequestParameterOperator operator) {
+  public BaseManager setDefaultOperator(RequestParameterOperator operator) {
     this.parameters.setDefaultOperator(operator);
+    return this;
   }
   
   /**
@@ -60,28 +66,30 @@ public abstract class BaseManager extends Loggable {
   /**
    * Add request parameter
    * 
-   * @param p_fieldName Champ en notation modèle
-   * @param p_value Valeur recherchée
+   * @param p_fieldName field name in model notation
+   * @param p_value expected value
    * 
-   * @return boolean
+   * @return BaseManager
    */
-  public boolean addRequestParameter(String p_fieldName, String p_value) {
+  public BaseManager addRequestParameter(String p_fieldName, String p_value) {
     String field = this.getFilter(p_fieldName);
-    return this.parameters.addParameter(field, p_value);
+    this.parameters.addParameter(field, p_value);
+    return this;
   }
   
   /**
    * Add request parameter
    * 
-   * @param p_fieldName Champ en notation modèle
-   * @param p_value Valeur recherchée
-   * @param p_oper RequestParameterOperator opérateur
+   * @param p_fieldName field name in model notation
+   * @param p_value expected value
+   * @param p_oper RequestParameterOperator.AND or RequestParameterOperator.OR 
    * 
-   * @return boolean
+   * @return BaseManager
    */
-  public boolean addRequestParameter(String p_fieldName, String p_value, RequestParameterOperator p_oper) {
+  public BaseManager addRequestParameter(String p_fieldName, String p_value, RequestParameterOperator p_oper) {
     String field = this.getFilter(p_fieldName);
-    return this.parameters.addParameter(field, p_value, p_oper);
+    this.parameters.addParameter(field, p_value, p_oper);
+    return this;
   }
   
   /**
@@ -98,14 +106,15 @@ public abstract class BaseManager extends Loggable {
    * 
    * @param p_condition condition
    * 
-   * @return boolean
+   * @return BaseManager
    */
-  public boolean addRequestCondition(RequestParameters p_condition) {
+  public BaseManager addRequestCondition(RequestParameters p_condition) {
     for (RequestParameter param : p_condition.getParameters()) {
       String field = this.getFilter(param.getName());
       param.setName(field);
     }
-    return this.parameters.addRequestCondition(p_condition);
+    this.parameters.addRequestCondition(p_condition);
+    return this;
   }
   
   /**
@@ -118,25 +127,29 @@ public abstract class BaseManager extends Loggable {
   }
   
   /**
-   * Set page
+   * Set page number you want to receive
+   * <br/>if value is less than 1, then the value 1 will be assigned to it by default.
    * 
-   * @param p_page Numéro de page : 1 à
+   * @param p_page number of page you want to receive ( 1 to ...)
    * 
-   * @return boolean
+   * @return BaseManager
    */
-  public boolean setPage(int p_page) {
-    return this.parameters.setPage(p_page);
+  public BaseManager setPage(int p_page) {
+    this.parameters.setPage(p_page);
+    return this;
   }
   
   /**
    * Set page limit
+   * <br/>if value is less than 1, then the value 20 (constant PAGE_LENGTH) will be assigned to it by default.
+
+   * @param p_limit number of rows per page should return
    * 
-   * @param p_limit Limite
-   * 
-   * @return boolean
+   * @return BaseManager
    */
-  public boolean setPageLimit(int p_limit) {
-    return this.parameters.setLimit(p_limit);
+  public BaseManager setPageLimit(int p_limit) {
+    this.parameters.setLimit(p_limit);
+    return this;
   }
   
   /**

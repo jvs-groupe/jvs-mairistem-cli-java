@@ -1,200 +1,197 @@
 package fr.jvsonline.jvsmairistemcli.omega.model;
 
+import fr.jvsonline.jvsmairistemcli.core.BaseModel;
+
 import com.github.jasminb.jsonapi.annotations.Type;
 import com.github.jasminb.jsonapi.annotations.Id;
-import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.github.jasminb.jsonapi.annotations.Relationship;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.github.jasminb.jsonapi.IntegerIdHandler;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import fr.jvsonline.jvsmairistemcli.core.BaseModel;
-import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
-import fr.jvsonline.jvsmairistemcli.model.AdresseModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeModel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * AdresseDesserteModel
- * 
- * @author jeromeklam
  */
-@Type("Partner_Pdessadr")
+@Type("POGRC_Pdessadr")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AdresseDesserteModel extends BaseModel implements BaseModelInterface {
+public class AdresseDesserteModel extends BaseModel {
 
-  /**
-   * Identifiant de l'adresse de desserte
-   */
-  @Id(IntegerIdHandler.class)
-  @JsonProperty("pdessadr_id")
-  private Integer id;
+	/**
+	 * Identifiant de l'adresse de desserte
+	 */
+	@Id(IntegerIdHandler.class)
+	@JsonProperty("pdessadr_id")
+	private Integer id;
 
-  /**
-   * Identifiant de la voie
-   */
-  @JsonProperty("voie_id")
-  private Integer id_voie;
+	/**
+	 * Identifiant de la voie
+	 */
+	@JsonProperty("voie_id")
+	private Integer id_voie;
 
-  /**
-   * Numéro de voie
-   */
-  @JsonProperty("numvoirie")
-  private String numeroVoie;
+	/**
+	 * Numéro de voie
+	 */
+	@JsonProperty("numvoirie")
+	private String numero_voie;
 
-  /**
-   * Complément du numéro de voie
-   */
-  @JsonProperty("cpltnumvoi")
-  private String complementNumeroVoie;
+	/**
+	 * Complément du numéro de voie
+	 */
+	@JsonProperty("cpltnumvoi")
+	private String complement_numero_voie;
 
-  /**
-   * Voie
-   */
-  @Relationship("voie")
-  private VoieModel voie;
+	/**
+	 * Voie
+	 */
+	@Relationship("voie")
+	private VoieModel voie;
 
-  /**
-   * Constructor
-   */
-  public AdresseDesserteModel() {
-  }
+	/**
+	 * Constructor
+	 */
+	public AdresseDesserteModel() {
+	}
 
-  /**
-   * Get Id
-   * 
-   * @return Integer
-   */
-  public Integer getId() {
-    return this.id;
-  }
+	/**
+	 * Get Id
+	 * 
+	 * @return Integer
+	 */
+	public Integer getId() {
+		return this.id;
+	}
 
-  /**
-   * Set Id
-   * 
-   * @param p_id Identifiant
-   * 
-   * @return AdresseDesserteModel
-   */
-  public AdresseDesserteModel setId(Integer p_id) {
-    this.id = p_id;
-    return this;
-  }
+	/**
+	 * Set Id
+	 * 
+	 * @param p_id Identifiant
+	 * 
+	 * @return AdresseDesserteModel
+	 */
+	public AdresseDesserteModel setId(Integer p_id) {
+		this.id = p_id;
+		return this;
+	}
 
-  /**
-   * Get identifiant de la voie
-   * 
-   * @return Integer
-   */
-  public Integer getIdVoie() {
-    return this.id_voie;
-  }
+	/**
+	 * Get id_voie
+	 * 
+	 * @return Integer
+	 */
+	public Integer getIdVoie() {
+		return this.id_voie;
+	}
 
-  /**
-   * Set identifiant de la voie
-   * 
-   * @param p_idVoie Identifiant de la voie
-   * 
-   * @return AdresseDesserteModel
-   */
-  public AdresseDesserteModel setIdVoie(Integer p_idVoie) {
-    this.id_voie = p_idVoie;
-    return this;
-  }
+	/**
+	 * Set id_voie
+	 * 
+	 * @param p_id_voie id_voie
+	 * 
+	 * @return AdresseDesserteModel
+	 */
+	public AdresseDesserteModel setIdVoie(Integer p_id_voie) {
+		this.id_voie = p_id_voie;
+		return this;
+	}
 
-  /**
-   * Get numero de voie
-   * 
-   * @return String
-   */
-  public String getNumeroVoie() {
-    if (this.numeroVoie != null) {
-      return this.numeroVoie;
-    }
-    return "";
-  }
+	/**
+	 * Get numero_voie
+	 * 
+	 * @return String
+	 */
+	public String getNumeroVoie() {
+		if (this.numero_voie != null) {
+			return this.numero_voie;
+		}
+		return "";
+	}
 
-  /**
-   * Set numero de voie
-   * 
-   * @param p_numeroVoie Numéro de la voie
-   * 
-   * @return AdresseDesserteModel
-   */
-  public AdresseDesserteModel setNumeroVoie(String p_numeroVoie) {
-    this.numeroVoie = p_numeroVoie;
-    return this;
-  }
+	/**
+	 * Set numero_voie
+	 * 
+	 * @param p_numero_voie numero_voie
+	 * 
+	 * @return AdresseDesserteModel
+	 */
+	public AdresseDesserteModel setNumeroVoie(String p_numero_voie) {
+		this.numero_voie = p_numero_voie;
+		return this;
+	}
 
-  /**
-   * Get voie
-   * 
-   * @return VoieModel
-   */
-  public VoieModel getVoie() {
-    return this.voie;
-  }
+	/**
+	 * Get complement_numero_voie
+	 * 
+	 * @return String
+	 */
+	public String getComplementNumeroVoie() {
+		if (this.complement_numero_voie != null) {
+			return this.complement_numero_voie;
+		}
+		return "";
+	}
 
-  /**
-   * Get complement numero
-   * 
-   * @return String
-   */
-  public String getComplementNumeroVoie() {
-    if (this.complementNumeroVoie!= null) {
-      return this.complementNumeroVoie;
-    }
-    return "";
-  }
+	/**
+	 * Get voie
+	 * 
+	 * @return VoieModel
+	 */
+	public VoieModel getVoie() {
+		return this.voie;
+	}
 
-  /**
-   * Get nom voie
-   * 
-   * @return String
-   */
-  public String getNomVoie() {
-    if (this.voie != null) {
-      return this.voie.getNom();
-    }
-    return "";
-  }
+	/**
+	 * Get nom of voie
+	 * 
+	 * @return String
+	 */
+	public String getNomVoie() {
+		if (this.voie != null) {
+			return this.voie.getNom();
+		}
+		return "";
+	}
 
-  /**
-   * Get code voie
-   * 
-   * @return String
-   */
-  public String getCodeVoie() {
-    if (this.voie != null) {
-      return this.voie.getNom();
-    }
-    return "";
-  }
+	/**
+	 * Get code of voie
+	 * 
+	 * @return String
+	 */
+	public String getCodeVoie() {
+		if (this.voie != null) {
+			return this.voie.getCode();
+		}
+		return "";
+	}
 
-  /**
-   * Get code postal
-   * 
-   * @return String
-   */
-  public String getCodePostalVille() {
-    if (this.voie != null) {
-      OrganismeModel commune = this.voie.getCommune();
-      if (commune != null) {
-        return commune.getCodePostal();
-      }
-    }
-    return "";
-  }
+	/**
+	 * Get code postal commune of voie
+	 * 
+	 * @return String
+	 */
+	public String getCodePostalVille() {
+		if (this.voie != null) {
+			OrganismeModel commune = this.voie.getCommune();
+			if (commune != null) {
+				return commune.getCodePostal();
+			}
+		}
+		return "";
+	}
 
-  /**
-   * Get nom ville
-   * 
-   * @return String
-   */
-  public String getNomVille() {
-    if (this.voie != null) {
-      OrganismeModel commune = this.voie.getCommune();
-      if (commune != null) {
-        return commune.getNom();
-      }
-    }
-    return "";
-  }
+	/**
+	 * Get ville commune of voie
+	 * 
+	 * @return String
+	 */
+	public String getNomVille() {
+		if (this.voie != null) {
+			OrganismeModel commune = this.voie.getCommune();
+			if (commune != null) {
+				return commune.getVille();
+			}
+		}
+		return "";
+	}
 }

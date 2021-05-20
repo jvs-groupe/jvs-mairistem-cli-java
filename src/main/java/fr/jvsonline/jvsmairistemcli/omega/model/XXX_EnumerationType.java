@@ -1,19 +1,31 @@
 package fr.jvsonline.jvsmairistemcli.omega.model;
 
 /**
- * CodificationType
+ * EnumerationType
  * 
  * @author jeromeklam
  */
-public enum CodificationType {
+public enum XXX_EnumerationType {
   /**
-   * Nature juridique
+   * Type d'habitation
    */
-  NATURE_JURIDIQUE("NATJU"),
+  TYPE_HABITATION("THAB"),
   /**
-   * Catégorie de Tiers
+   * Marque compteur
    */
-  CATEGORIE_TIERS("CTIER");
+  MARQUE_COMPTEUR("MQCPT"),
+  /**
+   * Diamètre compteur
+   */
+  DIAMETRE_COMPTEUR("DCPT"),
+  /**
+   * Calibre compteur
+   */
+  CALIBRE_COMPTEUR("CALIB"),
+  /**
+   * Civilité
+   */
+  CIVILITE("CIV");
   /**
    * Code
    */
@@ -26,7 +38,7 @@ public enum CodificationType {
    * 
    * @return void
    */
-  private CodificationType(String p_code) {
+  private XXX_EnumerationType(String p_code) {
     this.code = p_code;
   }
 

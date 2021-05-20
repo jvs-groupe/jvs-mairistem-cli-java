@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Type("Partner_Ligenum")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LigneEnumerationModel extends BaseModel {
+public class XXX_LigneEnumerationModel extends BaseModel {
 
   /**
    * Identifiant de la ligne d'énumération
@@ -56,7 +56,7 @@ public class LigneEnumerationModel extends BaseModel {
   /**
    * Constructor
    */
-  public LigneEnumerationModel() {
+  public XXX_LigneEnumerationModel() {
   }
 
   /**
@@ -75,7 +75,7 @@ public class LigneEnumerationModel extends BaseModel {
    * 
    * @return LigneEnumerationModel
    */
-  public LigneEnumerationModel setId(Integer p_id) {
+  public XXX_LigneEnumerationModel setId(Integer p_id) {
     this.id = p_id;
     return this;
   }
@@ -96,7 +96,7 @@ public class LigneEnumerationModel extends BaseModel {
    * 
    * @return LigneEnumerationModel
    */
-  public LigneEnumerationModel setLibelle(String p_libelle) {
+  public XXX_LigneEnumerationModel setLibelle(String p_libelle) {
     this.libelle = p_libelle;
     return this;
   }
@@ -117,7 +117,7 @@ public class LigneEnumerationModel extends BaseModel {
    * 
    * @return LigneEnumerationModel
    */
-  public LigneEnumerationModel setCode(String p_code) {
+  public XXX_LigneEnumerationModel setCode(String p_code) {
     this.code = p_code;
     return this;
   }
@@ -138,7 +138,7 @@ public class LigneEnumerationModel extends BaseModel {
    * 
    * @return LigneEnumerationModel
    */
-  public LigneEnumerationModel setLibelleCourt(String p_libelleCourt) {
+  public XXX_LigneEnumerationModel setLibelleCourt(String p_libelleCourt) {
     this.libelleCourt = p_libelleCourt;
     return this;
   }
