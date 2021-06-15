@@ -117,6 +117,8 @@ Les articles sont nécessaires pour une facturation. En effet ce sont les codes 
   artManager.setPageLimit(100);
   // On ne prend que les actifs, attention en cas de gestion d'affichage d'un historique
   artManager.addRequestParameter("actif", "1");
+  // Pour filtrer sur un budget spécifique
+  artManager.addRequestParameter("compositionTarif.redevance.budget", BudgetType.ASSAINISSEMENT);
   // Recherche
   List<ArticleModel> myListArts = artManager.find();
   omegaContainer.setArticles(myListArts);
