@@ -193,6 +193,12 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
   private PersonneModel proprietaire;
 
   /**
+   * Complément du propriétaire
+   */
+  @Relationship("complement_proprietaire")
+  private ComplementPersonnePConsoModel complement_proprietaire;
+  
+  /**
    * Contrats
    */
   @Relationship("contrats")
@@ -649,6 +655,15 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     return this.proprietaire;
   }
 
+  /**
+   * Get complément propriétaire
+   * 
+   * @return ComplementPersonnePConsoModel
+   */
+  public ComplementPersonnePConsoModel getComplementProprietaire() {
+    return this.complement_proprietaire;
+  }
+  
   /**
    * Get Latitude
    * 

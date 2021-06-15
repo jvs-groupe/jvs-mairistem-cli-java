@@ -25,7 +25,11 @@ public enum EnumerationType {
   /**
    * Civilité
    */
-  CIVILITE("CIV");
+  CIVILITE("CIV"),
+  /**
+   * Budget
+   */
+  BUDGET("BUDG");
   /**
    * Code
    */

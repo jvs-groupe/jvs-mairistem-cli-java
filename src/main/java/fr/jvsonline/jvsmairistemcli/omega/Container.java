@@ -9,6 +9,7 @@ import fr.jvsonline.jvsmairistemcli.omega.manager.CodificationManager;
 import fr.jvsonline.jvsmairistemcli.omega.manager.EnumerationManager;
 import fr.jvsonline.jvsmairistemcli.omega.manager.OrganismeFactureurManager;
 import fr.jvsonline.jvsmairistemcli.omega.model.ArticleModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.BudgetType;
 import fr.jvsonline.jvsmairistemcli.omega.model.CodificationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.CodificationType;
 import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;
@@ -16,6 +17,7 @@ import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationType;
 import fr.jvsonline.jvsmairistemcli.omega.model.LigneCodificationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.LigneEnumerationModel;
 import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeFactureurModel;
+import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
 
 /**
  * Container
@@ -288,6 +290,18 @@ public class Container extends Loggable {
    * @return Container
    */
   public Container init(JsonApiWS p_wsClient) {
+    return this.init(p_wsClient, BudgetType.TOUS);
+  }
+  
+  /**
+   * Initialisation des listes
+   * 
+   * @param p_wsClient Client API
+   * @param p_budget Budget
+   * 
+   * @return Container
+   */
+  public Container init(JsonApiWS p_wsClient, BudgetType p_budget) {
     ArticleManager artManager = new ArticleManager(p_wsClient);
     CodificationManager codifManager = new CodificationManager(p_wsClient);
     EnumerationManager enumManager = new EnumerationManager(p_wsClient);
@@ -310,6 +324,9 @@ public class Container extends Loggable {
     artManager.setPage(1);
     artManager.setPageLimit(100);
     artManager.addRequestParameter("actif", "1");
+    if (p_budget != BudgetType.TOUS) {
+      artManager.addRequestParameter("compositionTarif.redevance.budget", p_budget.getCode());
+    }
     List<ArticleModel> myListArts = artManager.find();
     if (myListArts == null) {
       logger.info("Empty result...");

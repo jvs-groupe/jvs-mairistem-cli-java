@@ -79,7 +79,7 @@ public class PointDeConsommationManager extends BaseManager {
    * @return List
    */
   public List<PointDeConsommationModel> findBasic() {
-    String[] includes = {"contratactif", "tournee", "contratactif.natabo", "contratactif.redevable", "contratactif.occupant", "proprietaire", "compteur", "pdessadr", "pdessadr.voie", "pdessadr.voie.commune", "dernierreleve"};
+    String[] includes = {"contratactif", "tournee", "contratactif.natabo", "contratactif.redevable", "contratactif.occupant", "proprietaire", "compteur", "pdessadr", "pdessadr.voie", "pdessadr.voie.commune", "dernierreleve", "complement_proprietaire", "contratactif.complement_occupant", "contratactif.complement_redevable"};
     return this.findBasic(includes);
   }
   
@@ -105,7 +105,7 @@ public class PointDeConsommationManager extends BaseManager {
    * @return PointDeConsommationModel
    */
   public PointDeConsommationModel getById(Integer p_id) {
-    String[] includes = {"contrats", "contrats.natabo", "tournee", "contrats.redevable", "contrats.occupant", "contrats.consommes", "proprietaire", "compteur", "pdessadr", "pdessadr.voie", "pdessadr.voie.commune", "dernierreleve"};
+    String[] includes = {"contrats", "contrats.natabo", "tournee", "contrats.redevable", "contrats.occupant", "contrats.consommes", "proprietaire", "compteur", "pdessadr", "pdessadr.voie", "pdessadr.voie.commune", "dernierreleve", "complement_proprietaire", "contratactif.complement_occupant", "contratactif.complement_redevable"};
     return this.getById(p_id, includes);
   }
 

@@ -5,6 +5,7 @@ import fr.jvsonline.jvsmairistemcli.core.BaseModel;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
 import com.github.jasminb.jsonapi.annotations.Id;
+import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -78,6 +79,12 @@ public class ArticleModel extends BaseModel {
   @JsonDeserialize(using = CustomBooleanDeserializer.class)
   private Boolean actif;
 
+  /**
+   * Comptar
+   */
+  @Relationship("comptar")
+  private CompositionTarifModel compositionTarif;
+  
   /**
    * Constructor
    */

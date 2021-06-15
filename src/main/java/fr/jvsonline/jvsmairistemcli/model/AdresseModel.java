@@ -528,6 +528,15 @@ public class AdresseModel {
    * @return AdresseModel
    */
   public AdresseModel setFullAdresse(String p_adr1, String p_adr2, String p_adr3) {
+    if (p_adr1 == null) {
+      p_adr1 = "";
+    }
+    if (p_adr2 == null) {
+      p_adr2 = "";
+    }
+    if (p_adr3 == null) {
+      p_adr3 = "";
+    }
     String[] wordsType = new String[]{"CHEMIN","IMPASSE","VOIE","QUAI","RUE","ROUTE","BOULEVARD","AVENUE","ALLEE","AV","BLD","BLVD","IMP","QUARTIER","PLACE","IMP.","BLVD.","DOMAINE","SQUARE","ALLEES","ANCIEN","ANCIENNE","CHEMINS","ROUTES","VIEUX","BD","HAMEAU","CITE","RESIDENCE","RUELLE","PL","RTE"};
     List<String> listType = Arrays.asList(wordsType);
     String[] wordsArticle = new String[]{"DE","LE","LES","LA","DU","L'","DES","D'","AU","AUX"};
@@ -587,20 +596,20 @@ public class AdresseModel {
     if (this.numero != null) {
       ret = this.numero.toString();
     }
-    if (this.complementNumero != null) {
+    if (this.complementNumero != null && this.complementNumero != "") {
       ret = ret + " " + this.complementNumero;
     }
-    if (this.nomVoie != null) {
+    if (this.nomVoie != null && this.nomVoie != "") {
       ret = ret + " " + Tools.asString(this.typeVoie, "") + " " + Tools.asString(this.nomVoie, "");
     }
     ret = ret.trim() + "\n";
-    if (this.complementNom != null) {
+    if (this.complementNom != null && this.complementNom != "") {
       ret = ret.trim() + this.complementNom + "\n";
     }
     ret = ret.trim() + " " +
       Tools.asString(this.codePostal, "") + " " + 
       Tools.asString(this.ville, "")
     ;
-    return ret;
+    return ret.trim();
   }
 }

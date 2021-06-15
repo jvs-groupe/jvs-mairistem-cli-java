@@ -1,31 +1,7 @@
 package fr.jvsonline.jvsmairistemcli;
 
-import fr.jvsonline.jvsmairistemcli.omega.manager.PointDeConsommationManager;
-import fr.jvsonline.jvsmairistemcli.omega.manager.CompteurManager;
-import fr.jvsonline.jvsmairistemcli.omega.manager.DemandeManager;
-import fr.jvsonline.jvsmairistemcli.omega.manager.EnumerationManager;
-import fr.jvsonline.jvsmairistemcli.omega.manager.ArticleManager;
-import fr.jvsonline.jvsmairistemcli.omega.manager.CodificationManager;
-import fr.jvsonline.jvsmairistemcli.omega.manager.DemandeManager;
-import fr.jvsonline.jvsmairistemcli.omega.manager.OrganismeFactureurManager;
-import fr.jvsonline.jvsmairistemcli.omega.model.PointDeConsommationModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.CompteurModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.ContratModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.ReleveModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.AdresseDesserteModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.EnumerationType;
-import fr.jvsonline.jvsmairistemcli.omega.model.LigneEnumerationModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.ArticleModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.CodificationModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.DemandeModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.OrganismeFactureurModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.PersonneModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.FactureExterneModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.LigneFactureExterneModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.NatureAbonneModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.TourneeModel;
-import fr.jvsonline.jvsmairistemcli.omega.model.VoieModel;
+import fr.jvsonline.jvsmairistemcli.omega.manager.*;
+import fr.jvsonline.jvsmairistemcli.omega.model.*;
 import fr.jvsonline.jvsmairistemcli.omega.Container;
 import fr.jvsonline.jvsmairistemcli.core.JsonApiWS;
 import fr.jvsonline.jvsmairistemcli.core.RequestParameters;
@@ -71,7 +47,7 @@ public class App {
     JsonApiWS wsClient = new JsonApiWS(omegaSettings);
     Container omegaContainer = Container.getInstance();
     // Appels des services web de base pour initialiser le composant
-    omegaContainer.init(wsClient);
+    omegaContainer.init(wsClient, BudgetType.ASSAINISSEMENT);
 
     // Chargement des données dans le singleton
     PointDeConsommationManager pconsoManager = new PointDeConsommationManager(wsClient);
@@ -273,8 +249,12 @@ public class App {
             logger.info("    * Occupant : " + contratActif.getOccupant());
           }
           PersonneModel proprio = item.getProprietaire();
+          ComplementPersonnePConsoModel cplProprio = item.getComplementProprietaire();
           if (proprio != null) {
             logger.info("    * Propriétaire : " + proprio.toPersonne());
+            if (cplProprio != null) {
+              logger.info("    *         arrivée:   " + cplProprio.getDateArrivee());
+            }
             logger.info("    *                " + proprio.getComplementNom());
             logger.info("    *         adr:   " + proprio.getAdresse1());
             logger.info("    *                " + proprio.getAdresse2());

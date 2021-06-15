@@ -1,3 +1,28 @@
+# 1.4.0 : 15/06/2021
+
+* A l'initialisartion du conteneur, possibilité de préciser un budget pour récupérer les tarifs
+
+```java
+    import fr.jvsonline.jvsmairistemcli.core.Settings;
+    import fr.jvsonline.jvsmairistemcli.omega.Container;
+    import fr.jvsonline.jvsmairistemcli.core.JsonApiWS;
+    import fr.jvsonline.jvsmairistemcli.omega.model.BudgetType;
+    //
+    Settings omegaSettings   = Settings.getInstance("jvsmairistemcli.properties");
+    JsonApiWS wsClient       = new JsonApiWS(omegaSettings);
+    Container omegaContainer = Container.getInstance();
+    // Init
+    omegaContainer.init(wsClient, BudgetType.ASSAINISSEMENT);
+```
+
+* Ajout des compléments de personne sur propriétaire, occupant et redevable (dates d'arrivée et départ)
+    * PointDeConsommationModel.getComplementProprietaire
+    * ContratModel.getComplementOccupant
+    * ContratModel.getComplementRedevable
+
+* Adresse
+    * Quelques optimisations et corrections sur le découpage et la gestion des espaces
+
 # 1.3.1 : 07/04/2021
 
 * Correction des modèles de base Adresse et Personne

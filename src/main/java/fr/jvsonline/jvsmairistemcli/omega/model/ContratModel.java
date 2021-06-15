@@ -143,10 +143,22 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   private PersonneModel occupant;
   
   /**
+   * Complément de l'occupant
+   */
+  @Relationship("complement_occupant")
+  private ComplementPersonneContratModel complement_occupant;
+  
+  /**
    * Redevable
    */
   @Relationship("redevable")
   private PersonneModel redevable;
+  
+  /**
+   * Complément du redevable
+   */
+  @Relationship("complement_redevable")
+  private ComplementPersonneContratModel complement_redevable;
   
   /**
    * Nature d'abonné
@@ -269,12 +281,30 @@ public class ContratModel extends BaseModel implements BaseModelInterface {
   }
   
   /**
+   * Get complément occupant
+   * 
+   * @return ComplementPersonneContratModel
+   */
+  public ComplementPersonneContratModel getComplementOccupant() {
+    return this.complement_occupant;
+  }
+  
+  /**
    * Get redevable
    * 
    * @return PersonneModel
    */
   public PersonneModel getRedevable() {
     return this.redevable;
+  }
+  
+  /**
+   * Get complément redevable
+   * 
+   * @return ComplementPersonneContratModel
+   */
+  public ComplementPersonneContratModel getComplementRedevable() {
+    return this.complement_redevable;
   }
   
   /**
