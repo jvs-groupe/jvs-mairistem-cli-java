@@ -792,6 +792,19 @@ public class PointDeConsommationModel extends BaseModel implements BaseModelInte
     }
     return "";
   }
+  
+  /**
+   * Get complement nom voie
+   * 
+   * @return String
+   */
+  public String getComplementNomVoie() {
+    AdresseDesserteModel adr = this.getAdresseDesserte();
+    if (adr != null) {
+      return adr.getComplementNomVoie();
+    }
+    return "";
+  }
 
   /**
    * Get code postal ville

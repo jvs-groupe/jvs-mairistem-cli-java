@@ -44,6 +44,12 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
    */
   @JsonProperty("cpltnumvoi")
   private String complementNumeroVoie;
+  
+  /**
+   * Complément du nom de voie
+   */
+  @JsonProperty("cpltnomvoi")
+  private String complementNomVoie;
 
   /**
    * Voie
@@ -143,7 +149,19 @@ public class AdresseDesserteModel extends BaseModel implements BaseModelInterfac
     }
     return "";
   }
-
+  
+  /**
+   * Get complement nom
+   * 
+   * @return String
+   */
+  public String getComplementNomVoie() {
+    if (this.complementNomVoie!= null) {
+      return this.complementNomVoie;
+    }
+    return "";
+  }
+  
   /**
    * Get nom voie
    * 

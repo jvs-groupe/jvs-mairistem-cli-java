@@ -13,7 +13,11 @@ public enum CodificationType {
   /**
    * Catégorie de Tiers
    */
-  CATEGORIE_TIERS("CTIER");
+  CATEGORIE_TIERS("CTIER"),
+  /**
+   * Pays
+   */
+  PAYS("PAYSR");
   /**
    * Code
    */

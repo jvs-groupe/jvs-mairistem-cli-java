@@ -4,6 +4,9 @@ import com.github.jasminb.jsonapi.annotations.Type;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.IntegerIdHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -12,6 +15,7 @@ import fr.jvsonline.jvsmairistemcli.core.BaseModelInterface;
 import fr.jvsonline.jvsmairistemcli.core.PersonneInterface;
 import fr.jvsonline.jvsmairistemcli.core.Tools;
 import fr.jvsonline.jvsmairistemcli.jackson.CustomBooleanDeserializer;
+import fr.jvsonline.jvsmairistemcli.jackson.CustomDateDeserializer;
 import fr.jvsonline.jvsmairistemcli.omega.Container;
 
 /**
@@ -151,6 +155,13 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
   private String natureJuridique;
 
   /**
+   * Date de naissance
+   */
+  @JsonProperty("datenais")
+  @JsonDeserialize(using = CustomDateDeserializer.class)
+  private Date dateNaissance;
+  
+  /**
    * Constructor
    */
   public PersonneModel() {
@@ -282,7 +293,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    */
   public String getAdresse1() {
     if (this.adresse1 != null) {
-      return this.adresse1;
+      return this.adresse1.trim();
     }
     return "";
   }
@@ -306,7 +317,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    */
   public String getAdresse2() {
     if (this.adresse2 != null) {
-      return this.adresse2;
+      return this.adresse2.trim();
     }
     return "";
   }
@@ -330,7 +341,7 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
    */
   public String getAdresse3() {
     if (this.adresse3 != null) {
-      return this.adresse3;
+      return this.adresse3.trim();
     }
     return "";
   }
@@ -396,13 +407,27 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
   }
 
   /**
+   * Retourne le code pays
+   * 
+   * @return String
+   */
+  public String getCodePays()
+  {
+    if (this.pays != null) {
+      return this.pays;
+    }
+    return "";
+  }
+  
+  /**
    * Retourne le pays
    * 
    * @return String
    */
   public String getPays() {
     if (this.pays != null) {
-      return this.pays;
+      Container omegaContainer = Container.getInstance();
+      return omegaContainer.getLibellePays(this.pays);
     }
     return "";
   }
@@ -623,6 +648,15 @@ public class PersonneModel extends BaseModel implements BaseModelInterface, Pers
       return this.natureJuridique;
     }
     return "";
+  }
+
+  /**
+   * Retourne la date de naissance
+   * 
+   * @return Date
+   */
+  public Date getDateNaissance() {
+    return this.dateNaissance;
   }
 
   /**

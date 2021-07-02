@@ -240,7 +240,7 @@ public class Container extends Loggable {
   /**
    * Libellé de la civilité
    * 
-   * @param p_value Valeur
+   * @param p_value Code énumération
    * 
    * @return String
    */
@@ -248,6 +248,21 @@ public class Container extends Loggable {
     LigneEnumerationModel ligenum = this.getLigneEnumeration(EnumerationType.CIVILITE, p_value);
     if (ligenum != null) {
       return ligenum.getLibelle();
+    }
+    return "";
+  }
+  
+  /**
+   * Libellé du pays
+   * 
+   * @param p_value Code énumération
+   * 
+   * @return
+   */
+  public String getLibellePays(String p_value) {
+    LigneCodificationModel ligCodif = this.getLigneCodification(CodificationType.PAYS, p_value);
+    if (ligCodif != null) {
+      return ligCodif.getLibelle();
     }
     return "";
   }

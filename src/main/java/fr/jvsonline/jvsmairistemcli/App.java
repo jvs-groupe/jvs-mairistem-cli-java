@@ -231,7 +231,7 @@ public class App {
       logger.info("----------------------------------------------------------");
       logger.info("   Liste des points de consommation avec une rue principale...");
       pconsoManager.flushRequestParameters();
-      pconsoManager.addRequestParameter("adresseDesserte.voie.nom", "GAUL");
+      pconsoManager.addRequestParameter("adresseDesserte.voie.nom", "GE");
       List<PointDeConsommationModel> myListV = pconsoManager.findBasic();
       if (myListV == null) {
         logger.info("Empty result...");
@@ -262,6 +262,7 @@ public class App {
             logger.info("    *                " + proprio.getCodePostal());
             logger.info("    *                " + proprio.getVille());
             logger.info("    *                " + proprio.getPays());
+            logger.info("    *         nais:  " + proprio.getDateNaissance());
             logger.info("    *         tel:   " + proprio.getTelephone());
             logger.info("    *         mob:   " + proprio.getTelephoneMobile());
             logger.info("    *         email: " + proprio.getEmail());

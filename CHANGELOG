@@ -1,3 +1,10 @@
+# 1.4.1 : 02/07/2021
+
+* Ajout du complément du nom de voie sur l'adresse de point de desserte
+* Ajout de la date de naissance sur les personnes
+* La méthode getPays retourne directement le libellé du pays, utiliser getCodePays pour récupérer le code
+* Les exemples dans App.java ont été compltés
+
 # 1.4.0 : 15/06/2021
 
 * A l'initialisartion du conteneur, possibilité de préciser un budget pour récupérer les tarifs
