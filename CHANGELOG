@@ -9,7 +9,7 @@
 
 * A l'initialisartion du conteneur, possibilité de préciser un budget pour récupérer les tarifs
 
-```java
+```
     import fr.jvsonline.jvsmairistemcli.core.Settings;
     import fr.jvsonline.jvsmairistemcli.omega.Container;
     import fr.jvsonline.jvsmairistemcli.core.JsonApiWS;
