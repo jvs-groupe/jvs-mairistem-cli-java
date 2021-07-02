@@ -276,6 +276,8 @@ public class App {
           logger.info("    * N° voie : " + item.getNumeroVoie());
           logger.info("    * Cplt n° voie : " + item.getComplementNumeroVoie());
           logger.info("    * Nom voie : " + item.getNomVoie());
+          logger.info("    * Cplt nom voie : " + item.getComplementNomVoie());
+          logger.info("    * Cplt adresse : " + item.getComplement());
           logger.info("    * Code postal : " + item.getCodePostalVille());
           logger.info("    * Ville : " + item.getNomVille());
           logger.info("    * " + item.toAdresse());
